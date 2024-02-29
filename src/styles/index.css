@@ -35,17 +35,14 @@ body {
 .text-yellow {
   color: #F3DE6D;
 }
+.bg-yellow {
+  background-color: #F3DE6D;
+}
 .text-deep-yellow {
   color: #EBC80C;
 }
 .bg-deep-yellow {
   background-color: #EBC80C;
-}
-.bg-yellow {
-  background-color: #F3DE6D;
-}
-.text-pure-gray {
-  color: #5F6C72;
 }
 .text-gray {
   color: #303639;
@@ -53,12 +50,22 @@ body {
 .bg-gray {
   background-color: #303639;
 }
+.text-offgray {
+  color: #77878F;
+}
+.bg-offgray {
+  background-color: #77878F;
+}
+.text-pure-gray {
+  color: #5F6C72;
+}
 .bg-bluish {
   background-color: #1B6392;
 }
 .bg-offwhite {
   background-color: rgba(242, 244, 245, 1);
 }
+
 /* gradients */
 .bgWithDarkOverlay {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)),
@@ -120,7 +127,7 @@ body {
 }
 
 .scrollToTop {
-  position: relative;
+  position: fixed;
 }
 .scrollToTop::after {
   font-family: 'font-awesome';
