@@ -44,13 +44,21 @@ body {
 .bg-yellow {
   background-color: #F3DE6D;
 }
+.text-pure-gray {
+  color: #5F6C72;
+}
 .text-gray {
   color: #303639;
 }
 .bg-gray {
   background-color: #303639;
 }
-
+.bg-bluish {
+  background-color: #1B6392;
+}
+.bg-offwhite {
+  background-color: rgba(242, 244, 245, 1);
+}
 /* gradients */
 .bgWithDarkOverlay {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)),
@@ -119,7 +127,7 @@ body {
   position: fixed;
   bottom: 5px;
   right: 10px;
-  color: rgba(255, 170, 165, 1);
+  color: #EBC80C;
   display: block;
   content: '\f062';
   font-size: 24px;
@@ -136,7 +144,7 @@ body {
   position: fixed;
   bottom: 5px;
   right: 15px;
-  color: rgba(255, 170, 165, 1);
+  color: #EBC80C;
   display: block;
   content: '\f107';
   font-size: 24px;
