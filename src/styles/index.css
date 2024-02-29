@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* default */
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+
+/* default */
 * {
     margin: 0;
     padding: 0;
@@ -13,24 +16,40 @@
 html,
 body {
   scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
 }
 
 *::-webkit-scrollbar {
   display: none;
 }
 
-/* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-.font-inter {
-  font-family: 'Inter', sans-serif;
-}
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-.font-roboto {
-  font-family: 'Roboto', sans-serif;
-}
+
 
 /* common classes */
-
+.bg-black {
+  background-color: #191C1F;
+}
+.text-black {
+  color: #191C1F;
+}
+.text-yellow {
+  color: #F3DE6D;
+}
+.text-deep-yellow {
+  color: #EBC80C;
+}
+.bg-deep-yellow {
+  background-color: #EBC80C;
+}
+.bg-yellow {
+  background-color: #F3DE6D;
+}
+.text-gray {
+  color: #303639;
+}
+.bg-gray {
+  background-color: #303639;
+}
 
 /* gradients */
 .bgWithDarkOverlay {
@@ -67,11 +86,6 @@ body {
   .main-container {
     max-width: 720px !important;
   }
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-    .main-container {
-        max-width: 720px !important;
-    }
 }
 @media (min-width: 992px) {
   .main-container {
