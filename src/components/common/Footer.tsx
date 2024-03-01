@@ -130,11 +130,11 @@ const Footer = () => {
       </div>
       <div className="h-[1px] bg-gray mt-16"></div>
       <div className="flex gap-x-8 justify-center items-center mt-6">
-        <p className="text-white text-[12px] font-semibold">
+        <p className="text-offgray text-[12px] font-semibold">
           All rights reserved by GizmoBuy &copy;2024
         </p>
-        <p className="text-white text-[12px] font-semibold">|</p>
-        <p className="text-white text-[12px] font-semibold">
+        <p className="text-offgray text-[12px] font-semibold">|</p>
+        <p className="text-offgray text-[12px] font-semibold">
           Developed with love by Babul Akter&trade;
         </p>
       </div>
