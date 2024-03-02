@@ -65,6 +65,12 @@ body {
 .bg-offwhite {
   background-color: rgba(242, 244, 245, 1);
 }
+.text-orange {
+  color: #FA8232;
+}
+.bg-orange {
+  background-color: #FA8232;
+}
 
 /* gradients */
 .bgWithDarkOverlay {

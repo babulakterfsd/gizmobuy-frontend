@@ -1,4 +1,11 @@
-import { useState } from 'react';
+import {
+  setUserInLocalState,
+  useCurrentToken,
+  useCurrentUser,
+} from '@/redux/features/authSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { TCurrentUser } from '@/types/commonTypes';
+import { useEffect, useState } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BsCart2 } from 'react-icons/bs';
 import { CiHeart, CiLocationOn } from 'react-icons/ci';
@@ -14,11 +21,31 @@ import logo from '../../assets/images/logo-white.png';
 const Navbar = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [showCategory, setShowCategory] = useState(false);
+  const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
+
+  const token = useAppSelector(useCurrentToken);
+  const dispatch = useAppDispatch();
 
   const handleSearchEverything = (e: any) => {
     e.preventDefault();
     setSearchKeyword('');
   };
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/auth/verify-token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token }),
+    })
+      .then((res) => res.json())
+      .then((data: any) => {
+        if (data?.data !== true) {
+          dispatch(setUserInLocalState({ user: null, token: null }));
+        }
+      });
+  }, [token]);
 
   return (
     <div className="navbar">
@@ -27,7 +54,11 @@ const Navbar = () => {
           {/* welcome */}
           <div className="flex justify-between items-center py-3">
             <h1 className="text-white text-sm">
-              Welcome to GizmoBuy ecommerce store.
+              {` ${
+                currentUser?.name
+                  ? `Welcome to GizmoBuy, ${currentUser?.name}`
+                  : 'Welcome to GizmoBuy ecommerce store.'
+              }`}
             </h1>
             <div className="text-sm flex gap-x-2 items-center">
               <span className="mr-3">Follow us: </span>
@@ -83,9 +114,11 @@ const Navbar = () => {
               <span className="text-2xl text-white cursor-pointer">
                 <CiHeart />
               </span>
-              <span className="text-2xl text-white cursor-pointer">
-                <AiOutlineUser />
-              </span>
+              <Link to={token ? '/dashboard' : '/login'}>
+                <span className="text-2xl text-white cursor-pointer">
+                  <AiOutlineUser />
+                </span>
+              </Link>
             </div>
           </div>
         </div>
