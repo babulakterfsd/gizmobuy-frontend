@@ -26,19 +26,19 @@ const AdminDashboard = () => {
       return;
     }
 
-    if (location.pathname === '/dashboard') {
+    if (location.pathname === '/dashboard/admin/overview') {
+      setActiveDashboardRoute('overview');
+    } else if (location.pathname === '/dashboard/admin/profile') {
       setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/profile') {
-      setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/manage-products') {
+    } else if (location.pathname === '/dashboard/admin/manage-products') {
       setActiveDashboardRoute('productmanagement');
-    } else if (location.pathname === '/dashboard/manage-vendors') {
+    } else if (location.pathname === '/dashboard/admin/manage-vendors') {
       setActiveDashboardRoute('vendormanagement');
-    } else if (location.pathname === '/dashboard/manage-customers') {
+    } else if (location.pathname === '/dashboard/admin/manage-customers') {
       setActiveDashboardRoute('customermanagement');
-    } else if (location.pathname === '/dashboard/manage-orders') {
+    } else if (location.pathname === '/dashboard/admin/manage-orders') {
       setActiveDashboardRoute('ordermanagement');
-    } else if (location.pathname === '/dashboard/sells-report') {
+    } else if (location.pathname === '/dashboard/admin/sells-report') {
       setActiveDashboardRoute('sellsreport');
     }
   }, [location.pathname, dispatch, role]);
@@ -97,8 +97,8 @@ const AdminDashboard = () => {
       >
         <div className="h-screen px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <Link
-            to="/dashboard"
-            onClick={() => setActiveDashboardRoute('profile')}
+            to={`/dashboard/admin/overview`}
+            onClick={() => setActiveDashboardRoute('overview')}
           >
             <div
               className="flex justify-center items-center space-x-1 hover:cursor-pointer"
@@ -127,7 +127,7 @@ const AdminDashboard = () => {
           </div>
           <ul className="font-medium lg:mt-12">
             <Link
-              to="/dashboard/profile"
+              to={`/dashboard/admin/profile`}
               className={` lg:hidden flex ml-1 lg:ml-0 items-center space-x-2 mb-4 hover:text-orange-400 transition-all duration-300 ease-in-out rounded-md py-2.5 px-3 ${
                 activeDashboardRoute === 'profile'
                   ? 'bg-orange text-white'
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
             <hr className="mt-2 lg:hidden" />
             <li>
               <Link
-                to="/dashboard/manage-products"
+                to={`/dashboard/admin/manage-products`}
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'productmanagement'
                     ? 'bg-orange text-white'
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/manage-vendors"
+                to="/dashboard/admin/manage-vendors"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'vendormanagement'
                     ? 'bg-orange text-white'
@@ -179,7 +179,7 @@ const AdminDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/manage-customers"
+                to="/dashboard/admin/manage-customers"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'customermanagement'
                     ? 'bg-orange text-white'
@@ -198,7 +198,7 @@ const AdminDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/manage-orders"
+                to="/dashboard/admin/manage-orders"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'ordermanagement'
                     ? 'bg-orange text-white'
@@ -217,7 +217,7 @@ const AdminDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/sells-report"
+                to="/dashboard/admin/sells-report"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'sellsreport'
                     ? 'bg-orange text-white'
@@ -274,7 +274,7 @@ const AdminDashboard = () => {
         {/* dashboard content */}
         <div className="py-10 hidden lg:flex justify-end items-center bg-gray-50">
           <Link
-            to="/dashboard/profile"
+            to="/dashboard/admin/profile"
             className={`flex justify-center items-center space-x-2 hover:text-orange-400 mr-10 ${
               activeDashboardRoute === 'profile'
                 ? 'text-orange'

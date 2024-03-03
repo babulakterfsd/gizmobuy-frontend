@@ -26,15 +26,15 @@ const VendorDashboard = () => {
       return;
     }
 
-    if (location.pathname === '/dashboard') {
+    if (location.pathname === '/dashboard/vendor/overview') {
+      setActiveDashboardRoute('overview');
+    } else if (location.pathname === '/dashboard/vendor/profile') {
       setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/profile') {
-      setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/manage-products') {
+    } else if (location.pathname === '/dashboard/vendor/manage-products') {
       setActiveDashboardRoute('productmanagement');
-    } else if (location.pathname === '/dashboard/manage-orders') {
+    } else if (location.pathname === '/dashboard/vendor/manage-orders') {
       setActiveDashboardRoute('ordermanagement');
-    } else if (location.pathname === '/dashboard/sells-report') {
+    } else if (location.pathname === '/dashboard/vendor/sells-report') {
       setActiveDashboardRoute('sellsreport');
     }
   }, [location.pathname, dispatch, role]);
@@ -93,8 +93,8 @@ const VendorDashboard = () => {
       >
         <div className="h-screen px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <Link
-            to="/dashboard"
-            onClick={() => setActiveDashboardRoute('profile')}
+            to="/dashboard/vendor/overview"
+            onClick={() => setActiveDashboardRoute('overview')}
           >
             <div
               className="flex justify-center items-center space-x-1 hover:cursor-pointer"
@@ -123,7 +123,7 @@ const VendorDashboard = () => {
           </div>
           <ul className="font-medium lg:mt-12">
             <Link
-              to="/dashboard/profile"
+              to="/dashboard/vendor/profile"
               className={` lg:hidden flex ml-1 lg:ml-0 items-center space-x-2 mb-4 hover:text-orange-400 transition-all duration-300 ease-in-out rounded-md py-2.5 px-3 ${
                 activeDashboardRoute === 'profile'
                   ? 'bg-orange text-white'
@@ -137,7 +137,7 @@ const VendorDashboard = () => {
             <hr className="mt-2 lg:hidden" />
             <li>
               <Link
-                to="/dashboard/manage-products"
+                to="/dashboard/vendor/manage-products"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'productmanagement'
                     ? 'bg-orange text-white'
@@ -156,7 +156,7 @@ const VendorDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/manage-orders"
+                to="/dashboard/vendor/manage-orders"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'ordermanagement'
                     ? 'bg-orange text-white'
@@ -175,7 +175,7 @@ const VendorDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/sells-report"
+                to="/dashboard/vendor/sells-report"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'sellsreport'
                     ? 'bg-orange text-white'
@@ -232,7 +232,7 @@ const VendorDashboard = () => {
         {/* dashboard content */}
         <div className="py-10 hidden lg:flex justify-end items-center bg-gray-50">
           <Link
-            to="/dashboard/profile"
+            to="/dashboard/vendor/profile"
             className={`flex justify-center items-center space-x-2 hover:text-orange-400 mr-10 ${
               activeDashboardRoute === 'profile'
                 ? 'text-orange'

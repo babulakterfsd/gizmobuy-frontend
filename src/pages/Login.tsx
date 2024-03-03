@@ -2,12 +2,14 @@ import { useLoginMutation } from '@/redux/api/authApi';
 import {
   setUserInLocalState,
   useCurrentToken,
+  useCurrentUser,
 } from '@/redux/features/authSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { FieldValues, useForm } from 'react-hook-form';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { toast } from 'sonner';
 
+import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { FaGoogle, FaSignInAlt } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
@@ -22,6 +24,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector(useCurrentToken);
+  const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
 
   const handleGoogleLogin = () => {
     toast.error('Login with Google is not implemented yet', {
@@ -93,7 +96,7 @@ const Login = () => {
         if (data?.data !== true) {
           dispatch(setUserInLocalState({ user: null, token: null }));
         } else {
-          navigate('/dashboard');
+          navigate(`/dashboard/${currentUser?.role}/overview`);
         }
       });
   }, [token, navigate, dispatch]);
@@ -124,7 +127,7 @@ const Login = () => {
           })
         );
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate(`/dashboard/${userFromDB?.role}/overview`);
         }, 500);
       }
     }

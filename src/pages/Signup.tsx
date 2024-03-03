@@ -2,8 +2,10 @@ import { useLoginMutation, useSignupMutation } from '@/redux/api/authApi';
 import {
   setUserInLocalState,
   useCurrentToken,
+  useCurrentUser,
 } from '@/redux/features/authSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { FaSignInAlt } from 'react-icons/fa';
@@ -20,10 +22,11 @@ const Signup = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector(useCurrentToken);
+  const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboard');
+      navigate(`/dashboard/${currentUser?.role}/overview`);
     }
   }, [token, navigate]);
 
@@ -70,7 +73,7 @@ const Signup = () => {
             })
           );
           setTimeout(() => {
-            navigate('/dashboard');
+            navigate(`/dashboard/${userFromDB?.role}/overview`);
           }, 500);
         }
       } else {

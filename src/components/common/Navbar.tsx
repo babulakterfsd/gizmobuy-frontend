@@ -114,7 +114,11 @@ const Navbar = () => {
               <span className="text-2xl text-white cursor-pointer">
                 <CiHeart />
               </span>
-              <Link to={token ? '/dashboard' : '/login'}>
+              <Link
+                to={
+                  token ? `/dashboard/${currentUser?.role}/overview` : '/login'
+                }
+              >
                 <span className="text-2xl text-white cursor-pointer">
                   <AiOutlineUser />
                 </span>

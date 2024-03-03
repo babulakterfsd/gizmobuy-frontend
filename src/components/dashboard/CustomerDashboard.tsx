@@ -26,13 +26,13 @@ const CustomerDashboard = () => {
       return;
     }
 
-    if (location.pathname === '/dashboard') {
+    if (location.pathname === '/dashboard/customer/overview') {
+      setActiveDashboardRoute('overview');
+    } else if (location.pathname === '/dashboard/customer/profile') {
       setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/profile') {
-      setActiveDashboardRoute('profile');
-    } else if (location.pathname === '/dashboard/manage-orders') {
+    } else if (location.pathname === '/dashboard/customer/manage-orders') {
       setActiveDashboardRoute('ordermanagement');
-    } else if (location.pathname === '/dashboard/buy-history') {
+    } else if (location.pathname === '/dashboard/customer/buy-history') {
       setActiveDashboardRoute('buyhistory');
     }
   }, [location.pathname, dispatch, role]);
@@ -91,8 +91,8 @@ const CustomerDashboard = () => {
       >
         <div className="h-screen px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <Link
-            to="/dashboard"
-            onClick={() => setActiveDashboardRoute('profile')}
+            to="/dashboard/customer/overview"
+            onClick={() => setActiveDashboardRoute('overview')}
           >
             <div
               className="flex justify-center items-center space-x-1 hover:cursor-pointer"
@@ -121,7 +121,7 @@ const CustomerDashboard = () => {
           </div>
           <ul className="font-medium lg:mt-12">
             <Link
-              to="/dashboard/profile"
+              to="/dashboard/customer/profile"
               className={` lg:hidden flex ml-1 lg:ml-0 items-center space-x-2 mb-4 hover:text-orange-400 transition-all duration-300 ease-in-out rounded-md py-2.5 px-3 ${
                 activeDashboardRoute === 'profile'
                   ? 'bg-orange text-white'
@@ -135,7 +135,7 @@ const CustomerDashboard = () => {
             <hr className="mt-2 lg:hidden" />
             <li className="my-2">
               <Link
-                to="/dashboard/manage-orders"
+                to="/dashboard/customer/manage-orders"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'ordermanagement'
                     ? 'bg-orange text-white'
@@ -154,7 +154,7 @@ const CustomerDashboard = () => {
             </li>
             <li className="my-2">
               <Link
-                to="/dashboard/buy-hisory"
+                to="/dashboard/customer/buy-history"
                 className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
                   activeDashboardRoute === 'buyhistory'
                     ? 'bg-orange text-white'
@@ -211,7 +211,7 @@ const CustomerDashboard = () => {
         {/* dashboard content */}
         <div className="py-10 hidden lg:flex justify-end items-center bg-gray-50">
           <Link
-            to="/dashboard/profile"
+            to="/dashboard/customer/profile"
             className={`flex justify-center items-center space-x-2 hover:text-orange-400 mr-10 ${
               activeDashboardRoute === 'profile'
                 ? 'text-orange'
