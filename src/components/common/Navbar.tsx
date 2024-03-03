@@ -13,8 +13,11 @@ import { FaSearch } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { IoIosInformationCircleOutline, IoLogoGithub } from 'react-icons/io';
 import { IoLogoFacebook } from 'react-icons/io5';
-import { LiaPhoneVolumeSolid } from 'react-icons/lia';
-import { PiArrowBendDoubleUpRightThin, PiHeadphonesThin } from 'react-icons/pi';
+import {
+  PiArrowBendDoubleUpRightThin,
+  PiHeadphonesThin,
+  PiPhoneDisconnectThin,
+} from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo-white.png';
 
@@ -253,9 +256,9 @@ const Navbar = () => {
             </div>
           </div>
           {/* phone */}
-          <div className="phone flex items-center space-x-2 ml-auto">
-            <LiaPhoneVolumeSolid />
-            <span className="text-pure-gray text-sm">+88-01740-020464</span>
+          <div className="phone flex items-center space-x-1 ml-auto">
+            <PiPhoneDisconnectThin />
+            <span className="text-pure-gray text-sm">+880-1740-020464</span>
           </div>
         </div>
       </div>
