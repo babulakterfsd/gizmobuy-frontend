@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/ui/ToTop';
 import { useLoginMutation, useSignupMutation } from '@/redux/api/authApi';
 import {
   setUserInLocalState,
@@ -104,137 +105,140 @@ const Signup = () => {
   };
 
   return (
-    <div className="main-container flex justify-center items-center min-h-screen">
-      <div className="shadow-lg pb-8 w-10/12 md:6/12 lg:w-4/12">
-        <div className="shadow py-3">
-          <h3 className="text-black text-xl font-bold ml-8">
-            Create New Account
-          </h3>
-        </div>
-        <div className="h-[2px] w-3/5 mb-6 bg-orange"></div>
-        <div className="px-8">
-          <form
-            className="space-y-4 md:space-y-6"
-            onSubmit={handleSubmit(handleSignup)}
-          >
-            <div>
-              <h3 className="block mb-2 text-sm font-medium text-gray-900">
-                Role
-              </h3>
-              <ul className="items-center w-full text-sm font-medium text-gray-900 bg-gray-50 border border-gray-300 rounded-lg sm:flex ">
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
-                  <div className="flex items-center ps-3">
-                    <input
-                      id="horizontal-list-radio-license"
-                      type="radio"
-                      value="customer"
-                      name="role"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                      onChange={handleRoleChange}
-                      checked={role === 'customer'}
-                    />
-                    <label
-                      htmlFor="horizontal-list-radio-license"
-                      className="w-full py-3 ms-2 text-sm font-medium text-gray-900 "
-                    >
-                      Customer
-                    </label>
-                  </div>
-                </li>
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
-                  <div className="flex items-center ps-3">
-                    <input
-                      id="horizontal-list-radio-id"
-                      type="radio"
-                      value="vendor"
-                      name="role"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 "
-                      onChange={handleRoleChange}
-                      checked={role === 'vendor'}
-                    />
-                    <label
-                      htmlFor="horizontal-list-radio-id"
-                      className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                      Vendor
-                    </label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 focus:outline-none"
-                placeholder="e.g. Babul Akter"
-                {...register('name')}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 focus:outline-none"
-                placeholder="name@company.com"
-                {...register('email')}
-              />
-            </div>
-            <div className="relative">
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="••••••••"
-                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   focus:outline-none"
-                {...register('password')}
-              />
-              <span
-                className="absolute cursor-pointer top-10 right-3"
-                onClick={toggleShowingPassword}
-              >
-                {isPasswordVisible ? <IoEyeOutline /> : <IoEyeOffOutline />}
-              </span>
-            </div>
-            <button
-              type="submit"
-              className="w-full text-white bg-orange font-medium rounded-lg text-sm px-5 py-2.5 text-center flex justify-center space-x-4 items-center"
+    <>
+      <ScrollToTop />
+      <div className="main-container flex justify-center items-center min-h-screen">
+        <div className="shadow-lg pb-8 w-10/12 md:6/12 lg:w-4/12">
+          <div className="shadow py-3">
+            <h3 className="text-black text-xl font-bold ml-8">
+              Create New Account
+            </h3>
+          </div>
+          <div className="h-[2px] w-3/5 mb-6 bg-orange"></div>
+          <div className="px-8">
+            <form
+              className="space-y-4 md:space-y-6"
+              onSubmit={handleSubmit(handleSignup)}
             >
-              <FaSignInAlt />
-              <span>Sign Up</span>
-            </button>
-          </form>
+              <div>
+                <h3 className="block mb-2 text-sm font-medium text-gray-900">
+                  Role
+                </h3>
+                <ul className="items-center w-full text-sm font-medium text-gray-900 bg-gray-50 border border-gray-300 rounded-lg sm:flex ">
+                  <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
+                    <div className="flex items-center ps-3">
+                      <input
+                        id="horizontal-list-radio-license"
+                        type="radio"
+                        value="customer"
+                        name="role"
+                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                        onChange={handleRoleChange}
+                        checked={role === 'customer'}
+                      />
+                      <label
+                        htmlFor="horizontal-list-radio-license"
+                        className="w-full py-3 ms-2 text-sm font-medium text-gray-900 "
+                      >
+                        Customer
+                      </label>
+                    </div>
+                  </li>
+                  <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r ">
+                    <div className="flex items-center ps-3">
+                      <input
+                        id="horizontal-list-radio-id"
+                        type="radio"
+                        value="vendor"
+                        name="role"
+                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 "
+                        onChange={handleRoleChange}
+                        checked={role === 'vendor'}
+                      />
+                      <label
+                        htmlFor="horizontal-list-radio-id"
+                        className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Vendor
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
 
-          {/* not registered */}
-          <div className="flex items-center justify-between mt-12">
-            <p className="text-sm text-offgray">Already Registered?</p>
-            <Link to="/login">
-              <span className="text-sm hover:text-orange-400 hover:transition-all duration-300 underline text-offgray">
-                Go to SignIn
-              </span>
-            </Link>
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 focus:outline-none"
+                  placeholder="e.g. Babul Akter"
+                  {...register('name')}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 focus:outline-none"
+                  placeholder="name@company.com"
+                  {...register('email')}
+                />
+              </div>
+              <div className="relative">
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   focus:outline-none"
+                  {...register('password')}
+                />
+                <span
+                  className="absolute cursor-pointer top-10 right-3"
+                  onClick={toggleShowingPassword}
+                >
+                  {isPasswordVisible ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                </span>
+              </div>
+              <button
+                type="submit"
+                className="w-full text-white bg-orange font-medium rounded-lg text-sm px-5 py-2.5 text-center flex justify-center space-x-4 items-center"
+              >
+                <FaSignInAlt />
+                <span>Sign Up</span>
+              </button>
+            </form>
+
+            {/* not registered */}
+            <div className="flex items-center justify-between mt-12">
+              <p className="text-sm text-offgray">Already Registered?</p>
+              <Link to="/login">
+                <span className="text-sm hover:text-orange-400 hover:transition-all duration-300 underline text-offgray">
+                  Go to SignIn
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

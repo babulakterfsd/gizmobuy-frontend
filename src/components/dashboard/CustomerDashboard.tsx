@@ -12,6 +12,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
 import logo from '../../assets/images/logo.png';
+import ScrollToTop from '../ui/ToTop';
 
 const CustomerDashboard = () => {
   const userInfo = useAppSelector(useCurrentUser);
@@ -58,6 +59,7 @@ const CustomerDashboard = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <button
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"
