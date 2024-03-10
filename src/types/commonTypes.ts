@@ -28,20 +28,14 @@ export type TProduct = {
   title: string;
   price: number;
   stock: number;
-  reviews: object[];
+  reviews: string[];
   brand: string;
   category: string;
-  color: string;
-  size?: string;
-  memory?: string;
-  storage?: string;
   photos: string[];
   displayImage: string;
   description: string;
   vendor: string;
-  weight?: string;
   runningDiscount: number;
-  onHoldSelling: boolean;
   releaseDate: string;
 };
 
