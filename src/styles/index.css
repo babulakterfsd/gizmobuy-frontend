@@ -53,11 +53,17 @@ body {
 .text-offgray {
   color: #77878F;
 }
+.text-graish {
+  color: #475156;
+}
 .bg-offgray {
   background-color: #77878F;
 }
 .text-pure-gray {
   color: #5F6C72;
+}
+.text-bluish {
+  color: #2DA5F3
 }
 .bg-bluish {
   background-color: #1B6392;

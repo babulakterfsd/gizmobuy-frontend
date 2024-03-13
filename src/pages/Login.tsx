@@ -57,7 +57,7 @@ const Login = () => {
       return;
     } else {
       const response = await fetch(
-        'http://localhost:5000/api/auth/forgot-password',
+        'https://gizmobuy-backend.vercel.app/api/auth/forgot-password',
         {
           method: 'POST',
           headers: {
@@ -85,7 +85,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/auth/verify-token', {
+    fetch('https://gizmobuy-backend.vercel.app/api/auth/verify-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import Newsletter from '@/components/Newsletter';
+import Newsletter from '@/components/homepage/Newsletter';
 import ScrollToTop from '@/components/ui/ToTop';
 
 const Home = () => {

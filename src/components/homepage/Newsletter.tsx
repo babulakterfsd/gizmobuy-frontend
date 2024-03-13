@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import amazon from '../assets/images/Frame.png';
-import google from '../assets/images/google-2015 1.png';
-import philips from '../assets/images/philips 1.png';
-import samsung from '../assets/images/samsung-4 1.png';
-import toshiba from '../assets/images/toshiba-1 1.png';
+import amazon from '../../assets/images/Frame.png';
+import google from '../../assets/images/google-2015 1.png';
+import philips from '../../assets/images/philips 1.png';
+import samsung from '../../assets/images/samsung-4 1.png';
+import toshiba from '../../assets/images/toshiba-1 1.png';
 
 const Newsletter = () => {
   const [emailToBeSubscribed, setEmailToBeSubscribed] = useState('');
