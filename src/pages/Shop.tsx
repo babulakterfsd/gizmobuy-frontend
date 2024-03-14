@@ -26,7 +26,7 @@ const Shop = () => {
   const [page, setPage] = useState<string>('1');
   const [sortBy, setSortBy] = useState<string>('relevance');
   const [sortOrder, setSortOrder] = useState<string>('desc');
-  const limit = '12';
+  const limit = '16';
 
   let allFilters = {
     page: page,
