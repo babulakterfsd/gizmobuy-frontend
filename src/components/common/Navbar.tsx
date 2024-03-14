@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    fetch('https://gizmobuy-backend.vercel.app/api/auth/verify-token', {
+    fetch('http://localhost:5000/api/auth/verify-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
