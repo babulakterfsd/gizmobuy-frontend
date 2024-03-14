@@ -20,17 +20,16 @@ const Shop = () => {
   const [filterPriceTo, setFilterPriceTo] = useState<string>('');
   const [selectedBrand, setSelectedBrand] = useState<string>('');
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [sort, setSort] = useState('');
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [page, setPage] = useState<string>('1');
-  const [sortBy, setSortBy] = useState<string>('relevance');
-  const [sortOrder, setSortOrder] = useState<string>('desc');
+  const [sortBy, setSortBy] = useState<string>('');
+  const [sortOrder, setSortOrder] = useState<string>('');
   const limit = '12';
 
   let allFilters = {
     page: page,
     limit: limit,
-    sortBy: sort,
+    sortBy: sortBy,
     sortOrder: sortOrder,
     category: selectedCategory,
     minPrice: filterPriceFrom,
@@ -78,7 +77,7 @@ const Shop = () => {
     setFilterPriceFrom('');
     setFilterPriceTo('');
     setSelectedBrand('');
-    setSort('');
+    setSortBy('');
     setSearchKeyword('');
   };
 
@@ -89,6 +88,16 @@ const Shop = () => {
 
   const handlePageChange = (page: number) => {
     setPage(page.toString());
+  };
+
+  const handleSort = (e: any) => {
+    if (sortOrder == 'default') {
+      setSortBy('');
+      setSortOrder('');
+    } else {
+      setSortBy('price');
+      setSortOrder(e);
+    }
   };
 
   const handleBrandChange = (brand: string) => {
@@ -122,13 +131,18 @@ const Shop = () => {
     setFilterPriceFrom('');
     setFilterPriceTo('');
     setSelectedBrand('');
-    setSort('');
+    setSortBy('');
     setPage('1');
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [page]);
+    window.scrollTo({ top: 100, behavior: 'smooth' });
+
+    if (sortOrder === 'default') {
+      setSortBy('');
+      setSortOrder('');
+    }
+  }, [page, sortOrder]);
 
   return (
     <div>
@@ -459,14 +473,12 @@ const Shop = () => {
                   name="sort"
                   id="sort"
                   className="bg-offwhite py-2 px-3 rounded-sm focus:outline-none focus:border-none text-graish text-sm"
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
+                  value={sortOrder}
+                  onChange={(e) => handleSort(e.target.value)}
                 >
-                  <option value="featured">Default</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="rating-desc">Rating: High to Low</option>
-                  <option value="rating-asc">Rating: Low to High</option>
+                  <option value="default">Default</option>
+                  <option value="asc">Price: Low to High</option>
+                  <option value="desc">Price: High to Low</option>
                 </select>
               </div>
               {/* reset all filters */}
