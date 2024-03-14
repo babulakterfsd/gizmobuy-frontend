@@ -9,7 +9,6 @@ import {
   FaChevronRight,
   FaSearch,
   FaStar,
-  FaTimes,
 } from 'react-icons/fa';
 import { PiEyeLight } from 'react-icons/pi';
 import headphoneImage from '../assets/images/headphone.png';
@@ -19,14 +18,14 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filterPriceFrom, setFilterPriceFrom] = useState<string>('');
   const [filterPriceTo, setFilterPriceTo] = useState<string>('');
-  const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
+  const [selectedBrand, setSelectedBrand] = useState<string>('');
   const [searchKeyword, setSearchKeyword] = useState('');
   const [sort, setSort] = useState('');
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [page, setPage] = useState<string>('1');
   const [sortBy, setSortBy] = useState<string>('relevance');
   const [sortOrder, setSortOrder] = useState<string>('desc');
-  const limit = '16';
+  const limit = '12';
 
   let allFilters = {
     page: page,
@@ -78,7 +77,7 @@ const Shop = () => {
     setSelectedCategory('all');
     setFilterPriceFrom('');
     setFilterPriceTo('');
-    setSelectedBrand([]);
+    setSelectedBrand('');
     setSort('');
     setSearchKeyword('');
   };
@@ -93,13 +92,8 @@ const Shop = () => {
   };
 
   const handleBrandChange = (brand: string) => {
-    if (selectedBrand.includes(brand)) {
-      setSelectedBrand(selectedBrand.filter((item) => item !== brand));
-      setPage('1');
-    } else {
-      setSelectedBrand([...selectedBrand, brand]);
-      setPage('1');
-    }
+    setSelectedBrand(brand);
+    setPage('1');
   };
 
   const handleCategoryChange = (category: string) => {
@@ -127,7 +121,7 @@ const Shop = () => {
     setSelectedCategory('all');
     setFilterPriceFrom('');
     setFilterPriceTo('');
-    setSelectedBrand([]);
+    setSelectedBrand('');
     setSort('');
     setPage('1');
   };
@@ -327,77 +321,81 @@ const Shop = () => {
             <h3 className="text-black font-semibold mt-8 mb-4">
               Popular Brands
             </h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-3">
-              <div className="flex items-center ">
-                <input
-                  id="inline-checkbox"
-                  type="checkbox"
-                  className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleBrandChange('Apple')}
-                  checked={selectedBrand.includes('Apple')}
-                />
-                <label
-                  htmlFor="inline-checkbox"
-                  className="ms-1.5 text-sm font-medium text-graish"
-                >
-                  Apple
-                </label>
+            <div className="flex gap-x-4 gap-y-3 flex-col">
+              <div className="flex gap-x-4">
+                <div className="flex items-center ">
+                  <input
+                    id="inline-radio"
+                    type="radio"
+                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleBrandChange('Apple')}
+                    checked={selectedBrand.includes('Apple')}
+                  />
+                  <label
+                    htmlFor="inline-radio"
+                    className="ms-1.5 text-sm font-medium text-graish"
+                  >
+                    Apple
+                  </label>
+                </div>
+                <div className="flex items-center ">
+                  <input
+                    id="inline-radio"
+                    type="radio"
+                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleBrandChange('Microsoft')}
+                    checked={selectedBrand.includes('Microsoft')}
+                  />
+                  <label
+                    htmlFor="inline-radio"
+                    className="ms-1.5 text-sm font-medium text-graish"
+                  >
+                    Microsoft
+                  </label>
+                </div>
+              </div>
+              <div className="flex gap-x-4">
+                <div className="flex items-center ">
+                  <input
+                    id="inline-radio"
+                    type="radio"
+                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleBrandChange('Dell')}
+                    checked={selectedBrand.includes('Dell')}
+                  />
+                  <label
+                    htmlFor="inline-radio"
+                    className="ms-1.5 text-sm font-medium text-graish"
+                  >
+                    Dell
+                  </label>
+                </div>
+                <div className="flex items-center ">
+                  <input
+                    id="inline-radio"
+                    type="radio"
+                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleBrandChange('Nike')}
+                    checked={selectedBrand.includes('Nike')}
+                  />
+                  <label
+                    htmlFor="inline-radio"
+                    className="ms-1.5 text-sm font-medium text-graish"
+                  >
+                    Nike
+                  </label>
+                </div>
               </div>
               <div className="flex items-center ">
                 <input
-                  id="inline-checkbox"
-                  type="checkbox"
-                  className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleBrandChange('Microsoft')}
-                  checked={selectedBrand.includes('Microsoft')}
-                />
-                <label
-                  htmlFor="inline-checkbox"
-                  className="ms-1.5 text-sm font-medium text-graish"
-                >
-                  Microsoft
-                </label>
-              </div>
-              <div className="flex items-center ">
-                <input
-                  id="inline-checkbox"
-                  type="checkbox"
-                  className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleBrandChange('Dell')}
-                  checked={selectedBrand.includes('Dell')}
-                />
-                <label
-                  htmlFor="inline-checkbox"
-                  className="ms-1.5 text-sm font-medium text-graish"
-                >
-                  Dell
-                </label>
-              </div>
-              <div className="flex items-center ">
-                <input
-                  id="inline-checkbox"
-                  type="checkbox"
-                  className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleBrandChange('Nike')}
-                  checked={selectedBrand.includes('Nike')}
-                />
-                <label
-                  htmlFor="inline-checkbox"
-                  className="ms-1.5 text-sm font-medium text-graish"
-                >
-                  Nike
-                </label>
-              </div>
-              <div className="flex items-center ">
-                <input
-                  id="inline-checkbox"
-                  type="checkbox"
+                  id="inline-radio"
+                  type="radio"
                   className="w-3 h-3 focus:outline-none border-none cursor-pointer"
                   onChange={() => handleBrandChange('Samsung')}
                   checked={selectedBrand.includes('Samsung')}
                 />
                 <label
-                  htmlFor="inline-checkbox"
+                  htmlFor="inline-radio"
                   className="ms-1.5 text-sm font-medium text-graish"
                 >
                   Samsung
@@ -474,7 +472,7 @@ const Shop = () => {
               {/* reset all filters */}
               <button
                 onClick={resetAllFiter}
-                className="bg-offwhite py-2 px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold"
+                className="bg-offwhite py-2 px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold hover:bg-orange-400 hover:text-white"
               >
                 Reset All Filters
               </button>
@@ -485,23 +483,14 @@ const Shop = () => {
                 <p className="text-black font-semibold text-sm mr-2">
                   Active Filters:
                 </p>
-                <p className="mr-4 text-graish bg-white py-0 px-4 rounded">{`${selectedCategory}`}</p>
+                <p className="mr-4 text-graish bg-white py-0 px-4 rounded">{`${
+                  selectedCategory && selectedCategory !== 'all'
+                    ? `Catgegory: ${selectedCategory}`
+                    : ''
+                }`}</p>
 
                 <div className="flex space-x-2 bg-white py-0 px-4 rounded mr-2">
-                  {selectedBrand.map((brand) => (
-                    <div
-                      key={brand}
-                      className="flex items-center text-graish text-xs"
-                    >
-                      <span className="text-sm font-medium">{brand}</span>
-                      <button
-                        onClick={() => handleBrandChange(brand)}
-                        className="focus:outline-none"
-                      >
-                        <FaTimes className="text-sm text-gray-400" />
-                      </button>
-                    </div>
-                  ))}
+                  {`${selectedBrand ? `Brand: ${selectedBrand}` : ''}`}
                 </div>
                 {filterPriceFrom && (
                   <p className="mr-1 text-graish bg-white py-0 px-4 rounded text-sm">{`min $${filterPriceFrom}`}</p>
