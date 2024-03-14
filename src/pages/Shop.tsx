@@ -101,12 +101,10 @@ const Shop = () => {
     setSearchKeyword('');
   };
 
-  const { data, error, isLoading } = useGetProductsQuery(queryParams);
+  const { data, isLoading } = useGetProductsQuery(queryParams);
   let products = data?.data?.data;
   const totalItems = data?.data?.meta?.total;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
-
-  console.log(setSortBy, setSortOrder, error);
 
   const handlePageChange = (page: number) => {
     setPage(page.toString());
@@ -451,6 +449,13 @@ const Shop = () => {
                   <option value="rating-asc">Rating: Low to High</option>
                 </select>
               </div>
+              {/* reset all filters */}
+              <button
+                onClick={resetAllFiter}
+                className="bg-offwhite py-2 px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold"
+              >
+                Reset All Filters
+              </button>
             </div>
             {/* active filters */}
             <div className="bg-offwhite my-6 py-1  px-4 w-full">
@@ -561,7 +566,7 @@ const Shop = () => {
               <div></div>
             ) : (
               <div
-                className={`flex justify-center items-center my-5 ${
+                className={`flex justify-center items-center my-5 space-x-2 lg:space-x-4 ${
                   products?.length < 5 ? 'mt-[323px]' : 'mt-6 lg:mt-12'
                 }`}
               >
