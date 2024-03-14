@@ -7,7 +7,6 @@ import {
   FaArrowRight,
   FaChevronLeft,
   FaChevronRight,
-  FaSearch,
   FaStar,
 } from 'react-icons/fa';
 import { PiEyeLight } from 'react-icons/pi';
@@ -35,6 +34,7 @@ const Shop = () => {
     minPrice: filterPriceFrom,
     maxPrice: filterPriceTo,
     brand: selectedBrand,
+    search: searchKeyword,
   };
 
   const createQueryString = (obj: any) => {
@@ -125,13 +125,13 @@ const Shop = () => {
   };
 
   const handleSearchEverything = (e: any) => {
-    e.preventDefault();
-    setSearchKeyword('');
+    setSearchKeyword(e);
     setSelectedCategory('all');
     setFilterPriceFrom('');
     setFilterPriceTo('');
     setSelectedBrand('');
     setSortBy('');
+    setSortOrder('');
     setPage('1');
   };
 
@@ -445,22 +445,16 @@ const Shop = () => {
             {/* search and sort */}
             <div className="flex justify-between items-center flex-col md:flex-row">
               {/* search */}
-              <form className="relative" onSubmit={handleSearchEverything}>
-                <input
-                  type="search"
-                  className="bg-offwhite py-2 px-3 rounded-sm w-full md:w-96 focus:outline-none focus:border-none text-black relative"
-                  placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
-                  required
-                  value={searchKeyword}
-                  onChange={(e) => setSearchKeyword(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="bg-gray-200 absolute right-0 py-3  px-5 rounded text-gray-400"
-                >
-                  <FaSearch />
-                </button>
-              </form>
+
+              <input
+                type="search"
+                className="bg-offwhite py-2 px-3 rounded-sm w-full md:w-96 focus:outline-none focus:border-none text-black relative"
+                placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
+                required
+                value={searchKeyword}
+                onChange={(e) => handleSearchEverything(e.target.value)}
+              />
+
               {/* sort */}
               <div>
                 <label
