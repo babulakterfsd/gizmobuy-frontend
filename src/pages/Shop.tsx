@@ -28,24 +28,6 @@ const Shop = () => {
   const [sortOrder, setSortOrder] = useState<string>('desc');
   const limit = '12';
 
-  const handleBrandChange = (brand: string) => {
-    if (selectedBrand.includes(brand)) {
-      setSelectedBrand(selectedBrand.filter((item) => item !== brand));
-    } else {
-      setSelectedBrand([...selectedBrand, brand]);
-    }
-  };
-
-  const handleSearchEverything = (e: any) => {
-    e.preventDefault();
-    setSearchKeyword('');
-    setSelectedCategory('all');
-    setFilterPriceFrom('');
-    setFilterPriceTo('');
-    setSelectedBrand([]);
-    setSort('');
-  };
-
   let allFilters = {
     page: page,
     limit: limit,
@@ -110,6 +92,46 @@ const Shop = () => {
     setPage(page.toString());
   };
 
+  const handleBrandChange = (brand: string) => {
+    if (selectedBrand.includes(brand)) {
+      setSelectedBrand(selectedBrand.filter((item) => item !== brand));
+      setPage('1');
+    } else {
+      setSelectedBrand([...selectedBrand, brand]);
+      setPage('1');
+    }
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setPage('1');
+  };
+
+  const handleMinPriceChange = (e: any) => {
+    setFilterPriceFrom(e);
+    setTimeout(() => {
+      setPage('1');
+    }, 1000);
+  };
+
+  const handleMaxPriceChange = (e: any) => {
+    setFilterPriceTo(e);
+    setTimeout(() => {
+      setPage('1');
+    }, 1000);
+  };
+
+  const handleSearchEverything = (e: any) => {
+    e.preventDefault();
+    setSearchKeyword('');
+    setSelectedCategory('all');
+    setFilterPriceFrom('');
+    setFilterPriceTo('');
+    setSelectedBrand([]);
+    setSort('');
+    setPage('1');
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page]);
@@ -131,7 +153,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('all')}
+                  onChange={() => handleCategoryChange('all')}
                   checked={selectedCategory === 'all'}
                 />
                 <label
@@ -148,7 +170,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('desktop')}
+                  onChange={() => handleCategoryChange('desktop')}
                   checked={selectedCategory === 'desktop'}
                 />
                 <label
@@ -165,7 +187,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('laptop')}
+                  onChange={() => handleCategoryChange('laptop')}
                   checked={selectedCategory === 'laptop'}
                 />
                 <label
@@ -182,7 +204,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('smartphone')}
+                  onChange={() => handleCategoryChange('smartphone')}
                   checked={selectedCategory === 'smartphone'}
                 />
                 <label
@@ -199,7 +221,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('watch')}
+                  onChange={() => handleCategoryChange('watch')}
                   checked={selectedCategory === 'watch'}
                 />
                 <label
@@ -216,7 +238,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('headphone')}
+                  onChange={() => handleCategoryChange('headphone')}
                   checked={selectedCategory === 'headphone'}
                 />
                 <label
@@ -233,7 +255,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('fashion')}
+                  onChange={() => handleCategoryChange('fashion')}
                   checked={selectedCategory === 'fashion'}
                 />
                 <label
@@ -250,7 +272,7 @@ const Shop = () => {
                   value={selectedCategory}
                   name="category"
                   className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => setSelectedCategory('accessories')}
+                  onChange={() => handleCategoryChange('accessories')}
                   checked={selectedCategory === 'accessories'}
                 />
                 <label
@@ -279,7 +301,7 @@ const Shop = () => {
                   className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 focus:outline-none"
                   placeholder="e.g. 5"
                   value={filterPriceFrom}
-                  onChange={(e) => setFilterPriceFrom(e.target.value)}
+                  onChange={(e) => handleMinPriceChange(e.target.value)}
                 />
               </div>
               <div className="w-2/3">
@@ -297,7 +319,7 @@ const Shop = () => {
                   className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 border-gray-600  focus:outline-none"
                   placeholder="e.g. 100"
                   value={filterPriceTo}
-                  onChange={(e) => setFilterPriceTo(e.target.value)}
+                  onChange={(e) => handleMaxPriceChange(e.target.value)}
                 />
               </div>
             </div>
