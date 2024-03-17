@@ -135,7 +135,15 @@ const Footer = () => {
         </p>
         <p className="text-offgray text-[12px] font-semibold">|</p>
         <p className="text-offgray text-[12px] font-semibold">
-          Developed with love by Babul Akter&trade;
+          Developed with love by{' '}
+          <a
+            href="https://babulakter.com"
+            target="_blank"
+            className="hover:text-orange-400"
+          >
+            Babul Akter
+          </a>
+          &trade;
         </p>
       </div>
     </div>
