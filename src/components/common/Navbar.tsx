@@ -10,7 +10,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { BsCart2 } from 'react-icons/bs';
 import { CiHeart, CiLocationOn } from 'react-icons/ci';
 import { FaSearch } from 'react-icons/fa';
-import { FaLinkedinIn } from 'react-icons/fa6';
+import { FaArrowRightLong, FaLinkedinIn } from 'react-icons/fa6';
 import { IoIosInformationCircleOutline, IoLogoGithub } from 'react-icons/io';
 import { IoLogoFacebook } from 'react-icons/io5';
 import {
@@ -133,108 +133,13 @@ const Navbar = () => {
       {/* categories */}
       <div className="categories py-4 shadow-sm mb-6">
         <div className="main-container flex items-center">
-          {/* product types menu */}
-          <div>
-            <button
-              id="dropdownDefaultButton"
-              data-dropdown-toggle="dropdown"
-              className="text-white bg-offwhite hover:bg-[#e8ebec] focus:outline-none rounded-sm text-sm px-5 py-4 text-center inline-flex items-center text-gray font-bold"
-              type="button"
-              onClick={() => setShowCategory(!showCategory)}
-            >
-              All Categories
-              <svg
-                className="w-2.5 h-2.5 ms-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 4 4 4-4"
-                />
-              </svg>
-            </button>
-
-            <div
-              id="dropdown"
-              className={`z-50 mt-2 bg-white divide-y divide-gray-100 rounded-sm shadow-lg w-48 absolute ${
-                showCategory ? 'block' : 'hidden'
-              }`}
-            >
-              <ul
-                className="py-2 text-sm text-gray-700"
-                aria-labelledby="dropdownDefaultButton"
-              >
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Desktop
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Laptop
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    SmartPhone
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Watch
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Headphone
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Fashion
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => setShowCategory(false)}
-                  >
-                    Accessories
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* shop button*/}
+          <div className="">
+            <Link to="/shop">
+              <button className="bg-[#ebc80c] py-4 px-6 text-black rounded-sm text-sm  mt-4 md:mt-0 font-semibold hover:bg-yellow-500 hover:text-white flex items-center space-x-2 hover:transition-all duration-300">
+                <span>Shop Now</span> <FaArrowRightLong />
+              </button>
+            </Link>
           </div>
           {/* process */}
           <div className="flex space-x-5 items-center lg:ml-10">
