@@ -5,11 +5,10 @@ import {
 } from '@/redux/features/authSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BsCart2 } from 'react-icons/bs';
 import { CiHeart, CiLocationOn } from 'react-icons/ci';
-import { FaSearch } from 'react-icons/fa';
 import { FaArrowRightLong, FaLinkedinIn } from 'react-icons/fa6';
 import { IoIosInformationCircleOutline, IoLogoGithub } from 'react-icons/io';
 import { IoLogoFacebook } from 'react-icons/io5';
@@ -22,17 +21,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo-white.png';
 
 const Navbar = () => {
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [showCategory, setShowCategory] = useState(false);
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
 
   const token = useAppSelector(useCurrentToken);
   const dispatch = useAppDispatch();
-
-  const handleSearchEverything = (e: any) => {
-    e.preventDefault();
-    setSearchKeyword('');
-  };
 
   useEffect(() => {
     fetch('http://localhost:5000/api/auth/verify-token', {
@@ -90,24 +82,30 @@ const Navbar = () => {
               />
               <span className="font-bold text-3xl">GizmoBuy</span>
             </Link>
-            {/* searchbar */}
+            {/* menubar */}
             <div>
-              <form className="relative" onSubmit={handleSearchEverything}>
-                <input
-                  type="search"
-                  className="bg-white py-2 px-3 rounded-sm w-full md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-black relative"
-                  placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
-                  required
-                  value={searchKeyword}
-                  onChange={(e) => setSearchKeyword(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="bg-gray-200 absolute right-0 py-3  px-5 rounded text-gray-400"
-                >
-                  <FaSearch />
-                </button>
-              </form>
+              <ul className="flex space-x-5 items-center">
+                <Link to="/shop">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                    Shop
+                  </li>
+                </Link>
+                <Link to="/about-us">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                    About Us
+                  </li>
+                </Link>
+                <Link to="/blog">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                    Our Blog
+                  </li>
+                </Link>
+                <Link to="/support">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                    Support
+                  </li>
+                </Link>
+              </ul>
             </div>
             {/* items */}
             <div className="flex justify-center space-x-5 items-center">
@@ -130,14 +128,14 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* categories */}
-      <div className="categories py-4 shadow-sm mb-6">
+      <div className="py-4 shadow-sm mb-6">
         <div className="main-container flex items-center">
           {/* shop button*/}
           <div className="">
             <Link to="/shop">
-              <button className="bg-[#ebc80c] py-4 px-6 text-black rounded-sm text-sm  mt-4 md:mt-0 font-semibold hover:bg-yellow-500 hover:text-white flex items-center space-x-2 hover:transition-all duration-300">
-                <span>Shop Now</span> <FaArrowRightLong />
+              <button className="text-white bg-offwhite hover:bg-[#e8ebec] focus:outline-none rounded-sm text-sm px-5 py-4 text-center items-center text-gray flex space-x-2">
+                <span className="font-semibold">Shop Now</span>{' '}
+                <FaArrowRightLong />
               </button>
             </Link>
           </div>
