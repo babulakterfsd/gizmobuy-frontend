@@ -129,7 +129,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="py-4 shadow-sm mb-6">
-        <div className="main-container flex items-center">
+        <div className="main-container items-center hidden lg:flex">
           {/* shop button*/}
           <div className="">
             <Link to="/shop">

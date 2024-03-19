@@ -25,6 +25,7 @@ export type TCurrentUser = {
 
 export type TProduct = {
   _id: string;
+  intro?: string;
   title: string;
   price: number;
   stock: number;

@@ -65,6 +65,9 @@ body {
 .text-bluish {
   color: #2DA5F3
 }
+.bg-deep-bluish {
+  background-color: #2DA5F3
+}
 .bg-bluish {
   background-color: #1B6392;
 }
@@ -183,5 +186,32 @@ body {
   }
   100% {
     transform: translateY(-10px);
+  }
+}
+
+/* swiper js */
+.swiper-wrapper {
+  position: relative !important;
+  padding-bottom: 50px !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+.swiper-pagination-bullet {
+  margin: 0px 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FA8232 !important;
+  transform: scale(1) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-pagination {
+    position: absolute !important;
+    bottom: 70px !important;
+    left: 120px !important;
   }
 }
