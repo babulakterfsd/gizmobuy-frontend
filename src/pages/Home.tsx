@@ -1,10 +1,18 @@
+import Loader from '@/components/common/Loader';
+import BestDeals from '@/components/homepage/BestDeals';
 import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
 import Newsletter from '@/components/homepage/Newsletter';
 import Carousel from '@/components/homepage/ProductCarousel';
 import ScrollToTop from '@/components/ui/ToTop';
+import { useGetProductsQuery } from '@/redux/api/productApi';
 
 const Home = () => {
+  const { data, isLoading } = useGetProductsQuery(undefined);
+  let products = data?.data?.data;
+
+  if (isLoading) return <Loader />;
+
   return (
     <div>
       <ScrollToTop />
@@ -20,6 +28,8 @@ const Home = () => {
         </div>
         {/* features */}
         <FeatureSummary />
+        {/* best deals */}
+        <BestDeals products={products} />
       </div>
       <Newsletter />
     </div>
