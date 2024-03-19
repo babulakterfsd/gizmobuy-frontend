@@ -19,9 +19,7 @@ const Home = () => {
           </div>
         </div>
         {/* features */}
-        <div className="mt-6 border border-gray-300 rounded-md w-full h-20 flex justify-around items-center">
-          <FeatureSummary />
-        </div>
+        <FeatureSummary />
       </div>
       <Newsletter />
     </div>
