@@ -43,7 +43,7 @@ const CarouselSideProducts = () => {
           />
         </div>
         <div className="col-span-6 mt-6">
-          <h2 className="text-2xl font-bold mb-4 text-black">
+          <h2 className="text-2xl font-bold mb-4 text-custom-black">
             {samsungWatch4?.title}
           </h2>
 

@@ -20,7 +20,9 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
   return (
     <div className="mt-14 lg:mt-20">
       <div className="header flex items-center mb-6">
-        <h2 className="text-black font-semibold text-2xl mr-10">Best Deals</h2>
+        <h2 className="text-custom-black font-semibold text-2xl mr-10">
+          Best Deals
+        </h2>
         <div className="flex items-center space-x-2">
           <span>Deals ends in </span>
           <CountDown targetDate={targetDate} />
@@ -52,7 +54,9 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
             <FaStar className="text-yellow text-xs" />
             <span className="text-graish text-xs">(5)</span>
           </div>
-          <h4 className="text-black mb-4">{bestDealProducts[0]?.title}</h4>
+          <h4 className="text-custom-black mb-4">
+            {bestDealProducts[0]?.title}
+          </h4>
           <h5 className="text-bluish font-semibold text-md mt-2 mb-4">
             {`$${bestDealProducts[0]?.price}`}
           </h5>

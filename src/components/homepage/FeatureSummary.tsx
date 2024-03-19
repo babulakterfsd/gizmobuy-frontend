@@ -14,7 +14,7 @@ const FeatureSummary = () => {
           className="object-contain w-10 h-10 col-span-6"
         />
         <div className="col-span-6">
-          <h2 className="text-sm font-semibold text-black uppercase">
+          <h2 className="text-sm font-semibold text-custom-black uppercase">
             Faster Delivery
           </h2>
           <p className="text-sm  text-graish font-thin">Delivery in 24/4</p>
@@ -28,7 +28,7 @@ const FeatureSummary = () => {
           className="object-contain w-10 h-10 col-span-6"
         />
         <div className="col-span-6">
-          <h2 className="text-sm font-semibold text-black uppercase">
+          <h2 className="text-sm font-semibold text-custom-black uppercase">
             24 hours return
           </h2>
           <p className="text-sm  text-graish font-thin">
@@ -44,7 +44,7 @@ const FeatureSummary = () => {
           className="object-contain w-10 h-10 col-span-6"
         />
         <div className="col-span-6">
-          <h2 className="text-sm font-semibold text-black uppercase">
+          <h2 className="text-sm font-semibold text-custom-black uppercase">
             Secure Payment
           </h2>
           <p className="text-sm  text-graish font-thin">Your money is safe</p>
@@ -58,7 +58,7 @@ const FeatureSummary = () => {
           className="object-contain w-10 h-10 col-span-6"
         />
         <div className="col-span-6">
-          <h2 className="text-sm font-semibold text-black uppercase">
+          <h2 className="text-sm font-semibold text-custom-black uppercase">
             Support 24/7
           </h2>
           <p className="text-sm  text-graish font-thin">

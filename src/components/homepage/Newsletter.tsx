@@ -26,7 +26,7 @@ const Newsletter = () => {
         <form className="relative" onSubmit={handleEmailSubscription}>
           <input
             type="email"
-            className="bg-white py-4 px-3 rounded-sm w-full md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-black relative"
+            className="bg-white py-4 px-3 rounded-sm w-full md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-custom-black relative"
             placeholder="e.g. babulakterfsd@gmail.com"
             required
             value={emailToBeSubscribed}

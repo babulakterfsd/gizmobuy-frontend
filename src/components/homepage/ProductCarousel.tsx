@@ -38,7 +38,7 @@ const Carousel = () => {
             >
               <div className="col-span-6 mt-12">
                 <h4 className="text-bluish font-semibold mb-1 text-sm">{`- ${product?.intro}`}</h4>
-                <h2 className="text-4xl font-bold mb-4 text-black">
+                <h2 className="text-4xl font-bold mb-4 text-custom-black">
                   {product?.title}
                 </h2>
                 <p className="text-graish leading-5">

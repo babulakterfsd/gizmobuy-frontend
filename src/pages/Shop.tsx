@@ -152,7 +152,7 @@ const Shop = () => {
           {/* shop sidebar */}
           <div className="col-span-12 md:col-span-3 w-full h-full">
             {/* product category filter */}
-            <h3 className="text-black font-semibold mb-4">Category</h3>
+            <h3 className="text-custom-black font-semibold mb-4">Category</h3>
             <form className="flex gap-y-2 flex-col">
               <div className="flex items-center">
                 <input
@@ -292,7 +292,9 @@ const Shop = () => {
               </div>
             </form>
             {/* price filter */}
-            <h3 className="text-black font-semibold mt-8 mb-4">Price Range</h3>
+            <h3 className="text-custom-black font-semibold mt-8 mb-4">
+              Price Range
+            </h3>
             <div className="flex flex-col gap-y-3">
               <div className="w-2/3">
                 <label
@@ -332,7 +334,7 @@ const Shop = () => {
               </div>
             </div>
             {/* brand filter */}
-            <h3 className="text-black font-semibold mt-8 mb-4">
+            <h3 className="text-custom-black font-semibold mt-8 mb-4">
               Popular Brands
             </h3>
             <div className="flex gap-x-4 gap-y-3 flex-col">
@@ -428,14 +430,14 @@ const Shop = () => {
               </h4>
               <div className="flex space-x-3 justify-center items-center">
                 <span className="text-sm">Only for</span>
-                <button className="bg-yellow text-black font-semibold text-center text-sm px-3 py-0.5">
+                <button className="bg-yellow text-custom-black font-semibold text-center text-sm px-3 py-0.5">
                   $299
                 </button>
               </div>
-              <p className="text-black font-bold text-center my-8">
+              <p className="text-custom-black font-bold text-center my-8">
                 Heavy On Features <br /> Light On Price
               </p>
-              <button className="bg-yellow py-2 px-8 font-semibold text-center text-black flex items-center space-x-2">
+              <button className="bg-yellow py-2 px-8 font-semibold text-center text-custom-black flex items-center space-x-2">
                 <span>Shop Now</span> <FaArrowRight />
               </button>
             </div>
@@ -448,7 +450,7 @@ const Shop = () => {
 
               <input
                 type="search"
-                className="bg-offwhite py-2 px-3 rounded-sm w-full md:w-96 focus:outline-none focus:border-none text-black relative"
+                className="bg-offwhite py-2 px-3 rounded-sm w-full md:w-96 focus:outline-none focus:border-none text-custom-black relative"
                 placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
                 required
                 value={searchKeyword}
@@ -486,7 +488,7 @@ const Shop = () => {
             {/* active filters */}
             <div className="bg-offwhite my-6 py-1  px-4 w-full">
               <div className="flex items-center h-12">
-                <p className="text-black font-semibold text-sm mr-2">
+                <p className="text-custom-black font-semibold text-sm mr-2">
                   Active Filters:
                 </p>
                 <p className="mr-4 text-graish bg-white py-0 px-4 rounded">{`${
@@ -505,7 +507,7 @@ const Shop = () => {
                   <p className="mr-4 text-graish bg-white py-0 px-4 rounded text-sm">{`max $${filterPriceTo}`}</p>
                 )}
 
-                <p className="text-black font-semibold text-sm ml-auto">{`Showing ${
+                <p className="text-custom-black font-semibold text-sm ml-auto">{`Showing ${
                   products?.length
                 } ${products?.length > 1 ? 'products' : 'product'}   `}</p>
               </div>

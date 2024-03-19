@@ -16,7 +16,7 @@ const Topbar = () => {
     <div className="bg-black">
       <div className="main-container flex justify-between items-center text-white h-16">
         <div className="flex gap-x-2">
-          <p className="bg-yellow text-black px-2 py-1 -rotate-6 rounded font-semibold">
+          <p className="bg-yellow text-custom-black px-2 py-1 -rotate-6 rounded font-semibold">
             Black
           </p>
           <span>Friday</span>
@@ -28,7 +28,7 @@ const Topbar = () => {
         </div>
         <div>
           <Link to="/shop">
-            <button className="bg-deep-yellow py-2.5 px-6 rounded text-black font-semibold flex items-center gap-x-2">
+            <button className="bg-deep-yellow py-2.5 px-6 rounded text-custom-black font-semibold flex items-center gap-x-2">
               Shop Now <FaArrowRightLong />
             </button>
           </Link>

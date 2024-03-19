@@ -153,7 +153,9 @@ const Login = () => {
       <div className="main-container flex justify-center items-center min-h-screen">
         <div className="shadow-lg pb-8 w-10/12 md:6/12 lg:w-4/12">
           <div className="shadow py-3">
-            <h3 className="text-black text-xl font-bold ml-8">Sign In</h3>
+            <h3 className="text-custom-black text-xl font-bold ml-8">
+              Sign In
+            </h3>
           </div>
           <div className="h-[2px] w-3/5 mb-6 bg-orange"></div>
           <div className="px-8">

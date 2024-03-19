@@ -4,6 +4,7 @@ import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
 import Newsletter from '@/components/homepage/Newsletter';
 import Carousel from '@/components/homepage/ProductCarousel';
+import ShopCategories from '@/components/homepage/ShopCategories';
 import ScrollToTop from '@/components/ui/ToTop';
 import { useGetProductsQuery } from '@/redux/api/productApi';
 
@@ -30,6 +31,8 @@ const Home = () => {
         <FeatureSummary />
         {/* best deals */}
         <BestDeals products={products} />
+        {/* shop categories */}
+        <ShopCategories />
       </div>
       <Newsletter />
     </div>
