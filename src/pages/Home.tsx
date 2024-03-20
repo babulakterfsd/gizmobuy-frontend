@@ -2,6 +2,7 @@ import Loader from '@/components/common/Loader';
 import BestDeals from '@/components/homepage/BestDeals';
 import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
+import NewArrivals from '@/components/homepage/NewArrivals';
 import Newsletter from '@/components/homepage/Newsletter';
 import Carousel from '@/components/homepage/ProductCarousel';
 import ShopCategories from '@/components/homepage/ShopCategories';
@@ -33,6 +34,8 @@ const Home = () => {
         <BestDeals products={products} />
         {/* shop categories */}
         <ShopCategories />
+        {/* new arrivals */}
+        <NewArrivals products={products} />
       </div>
       <Newsletter />
     </div>
