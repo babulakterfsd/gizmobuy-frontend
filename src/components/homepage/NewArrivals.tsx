@@ -63,7 +63,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
                   product?.displayImage ? product?.displayImage : headphoneImage
                 }
                 alt="product"
-                className="w-full h-40 object-cover"
+                className="w-full h-40 object-contain"
               />
               <h5 className="mt-5 text-sm">{`${product?.title}`}</h5>
               <p className="text-bluish font-semibold text-md">{`$${product?.price}`}</p>
@@ -78,7 +78,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           <img
             src={newArrivalProducts[0]?.displayImage}
             alt={newArrivalProducts[0]?.title}
-            className="w-full h-40 object-cover"
+            className="w-full h-40 object-contain"
           />
           <div className="flex items-center space-x-1 mt-6 mb-1">
             <FaStar className="text-orange text-xs" />

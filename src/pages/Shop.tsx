@@ -423,7 +423,7 @@ const Shop = () => {
               <img
                 src={bannerWatch}
                 alt="banner"
-                className="w-28 h-28 object-cover mb-3"
+                className="w-28 h-28 object-contain mb-3"
               />
               <h4 className="text-graish font-semibold mb-2">
                 Apple Watch Series
@@ -563,7 +563,7 @@ const Shop = () => {
                           : headphoneImage
                       }
                       alt="product"
-                      className="w-full h-40 object-cover"
+                      className="w-full h-40 object-contain"
                     />
                     {/* show star depending on rating */}
                     <div className="flex items-center space-x-1 mt-4">

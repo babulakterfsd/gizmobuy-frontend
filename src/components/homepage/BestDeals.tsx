@@ -44,7 +44,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
           <img
             src={bestDealProducts[0]?.displayImage}
             alt={bestDealProducts[0]?.title}
-            className="w-full h-40 object-cover"
+            className="w-full h-40 object-contain"
           />
           <div className="flex items-center space-x-1 mt-6 mb-1">
             <FaStar className="text-yellow text-xs" />
@@ -105,7 +105,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
                   product?.displayImage ? product?.displayImage : headphoneImage
                 }
                 alt="product"
-                className="w-full h-40 object-cover"
+                className="w-full h-40 object-contain"
               />
               <h5 className="mt-5 text-sm">{`${product?.title}`}</h5>
               <p className="text-bluish font-semibold text-md">{`$${product?.price}`}</p>
