@@ -16,7 +16,7 @@ const ShopCategories = () => {
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-20 h-20"
+                className="w-20 h-20 object-cover"
               />
               <p className="text-center text-sm font-semibold">
                 {category.name}
