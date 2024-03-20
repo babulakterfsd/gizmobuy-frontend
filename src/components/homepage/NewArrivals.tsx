@@ -32,13 +32,13 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
         </Link>
       </div>
       {/* product cards */}
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-1 md:grid-cols-12">
         {/* small products */}
-        <div className="col-span-10 grid grid-cols-12">
+        <div className="col-span-12 lg:col-span-10 grid grid-cols-2 lg:grid-cols-4">
           {newArrivalProducts?.slice(1, 9)?.map((product: TProduct) => (
             <div
               key={product?._id}
-              className="col-span-3 border border-gray-100 py-2 px-4 relative"
+              className="border border-gray-100 py-2 px-4 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
@@ -71,9 +71,9 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           ))}
         </div>
         {/* big product */}
-        <div className="col-span-2 border border-gray-100 px-3 py-4 bg-yellow">
+        <div className="cols-span-12 lg:col-span-2 border border-gray-100 py-4 bg-yellow px-10 lg:px-3">
           <h3 className="text-center font-semibold text-sm mb-2">
-            Buy todays hot deal <br /> with best price in the market
+            Buy today's hot deal <br /> with the best price in the market
           </h3>
           <img
             src={newArrivalProducts[0]?.displayImage}
