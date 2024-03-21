@@ -22,9 +22,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Flash Sale Today
         </h4>
         <div className="flex flex-col space-y-4">
-          {flashSaleToday.map((product: TProduct) => (
+          {flashSaleToday?.map((product: TProduct) => (
             <div
-              key={product._id}
+              key={product?._id}
               className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
@@ -66,9 +66,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Best Sellers
         </h4>
         <div className="flex flex-col space-y-4">
-          {bestSellers.map((product: TProduct) => (
+          {bestSellers?.map((product: TProduct) => (
             <div
-              key={product._id}
+              key={product?._id}
               className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
@@ -110,9 +110,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Top Rated
         </h4>
         <div className="flex flex-col space-y-4">
-          {topRated.map((product: TProduct) => (
+          {topRated?.map((product: TProduct) => (
             <div
-              key={product._id}
+              key={product?._id}
               className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
@@ -154,9 +154,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           New Arrival
         </h4>
         <div className="flex flex-col space-y-4">
-          {newArrival.map((product: TProduct) => (
+          {newArrival?.map((product: TProduct) => (
             <div
-              key={product._id}
+              key={product?._id}
               className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
