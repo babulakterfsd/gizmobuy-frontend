@@ -1,5 +1,6 @@
 import Loader from '@/components/common/Loader';
 import BestDeals from '@/components/homepage/BestDeals';
+import Blog from '@/components/homepage/Blog';
 import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
 import Collections from '@/components/homepage/Collections';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
@@ -43,6 +44,7 @@ const Home = () => {
         <SamsungS22 />
         <Collections products={products} />
       </div>
+      <Blog />
       <Newsletter />
     </div>
   );
