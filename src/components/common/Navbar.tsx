@@ -95,11 +95,6 @@ const Navbar = () => {
                     About Us
                   </li>
                 </Link>
-                <Link to="/blog">
-                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
-                    Our Blog
-                  </li>
-                </Link>
                 <Link to="/support">
                   <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
                     Support

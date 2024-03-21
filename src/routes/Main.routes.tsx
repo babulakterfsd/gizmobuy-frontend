@@ -1,5 +1,4 @@
 import AboutUs from '@/pages/AboutUs';
-import Blog from '@/pages/Blog';
 import Faq from '@/pages/Faq';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
@@ -12,7 +11,6 @@ import TermsAndConditions from '@/pages/TermsAndConditions';
 export const mainRoutePaths = [
   { index: true, element: <Home /> },
   { path: 'about-us', element: <AboutUs /> },
-  { path: 'blog', element: <Blog /> },
   { path: 'faq', element: <Faq /> },
   { path: 'compare-product', element: <ProductCompare /> },
   { path: 'shop', element: <Shop /> },
