@@ -45,7 +45,7 @@ const Macbook = () => {
         <img
           src={macbook?.displayImage}
           alt={macbook?.title}
-          className="object-contain"
+          className="object-contain h-56 w-56 lg:h-80 lg:w-80"
         />
       </div>
     </div>

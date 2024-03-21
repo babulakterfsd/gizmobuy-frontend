@@ -1,6 +1,7 @@
 import Loader from '@/components/common/Loader';
 import BestDeals from '@/components/homepage/BestDeals';
 import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
+import Collections from '@/components/homepage/Collections';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
 import Macbook from '@/components/homepage/Macbook';
 import NewArrivals from '@/components/homepage/NewArrivals';
@@ -40,6 +41,7 @@ const Home = () => {
         {/* new arrivals */}
         <NewArrivals products={products} />
         <SamsungS22 />
+        <Collections products={products} />
       </div>
       <Newsletter />
     </div>

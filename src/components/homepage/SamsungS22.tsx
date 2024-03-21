@@ -2,7 +2,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 const s22 = {
-  title: 'Samsung Galaxy S22 Ultra',
+  title: 'Galaxy S22 Ultra',
   price: 1199,
   stock: 20,
   reviews: [],
@@ -27,7 +27,7 @@ const SamsungS22 = () => {
         <img
           src={s22?.displayImage}
           alt={s22?.title}
-          className="object-contain h-56 lg:h-72 w-56 lg:w-72 mb-10"
+          className="object-contain h-44 lg:h-60 w-44 lg:w-60 mb-10"
         />
       </div>
       {/* description */}
