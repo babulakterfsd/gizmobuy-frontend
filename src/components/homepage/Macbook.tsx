@@ -30,7 +30,7 @@ const Macbook = () => {
         <p className="my-4 text-custom-black text-3xl lg:text-5xl font-bold">
           {macbook?.title}
         </p>
-        <p className="my-4 text-custom-black lg:text-lg font-thin w-full lg:w-6/12">
+        <p className="my-4 text-custom-black lg:text-lg font-thin w-full lg:w-8/12">
           {macbook?.description.slice(0, 150)}
         </p>
         <button

@@ -71,7 +71,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           ))}
         </div>
         {/* big product */}
-        <div className="cols-span-12 lg:col-span-2 border border-gray-100 py-4 bg-yellow px-10 lg:px-3">
+        <div className="cols-span-12 lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3">
           <h3 className="text-center font-semibold text-sm mb-2">
             Buy today's hot deal <br /> with the best price in the market
           </h3>
@@ -97,7 +97,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           <h5 className="text-graish text-sm mt-2 mb-2">
             {newArrivalProducts[0]?.description?.slice(0, 100)}
           </h5>
-          <div className="flex items-center space-x-1 justify-around mt-4">
+          <div className="flex items-center space-x-2  lg:justify-around mt-4">
             <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
               <CiHeart />
             </button>

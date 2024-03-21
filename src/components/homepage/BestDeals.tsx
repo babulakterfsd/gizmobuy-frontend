@@ -63,7 +63,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
           <h5 className="text-graish text-sm mt-2 mb-2">
             {bestDealProducts[0]?.description?.slice(0, 100)}
           </h5>
-          <div className="flex items-center space-x-1 justify-around mt-4">
+          <div className="flex items-center space-x-2  lg:justify-around mt-4">
             <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
               <CiHeart />
             </button>

@@ -6,6 +6,7 @@ import Macbook from '@/components/homepage/Macbook';
 import NewArrivals from '@/components/homepage/NewArrivals';
 import Newsletter from '@/components/homepage/Newsletter';
 import Carousel from '@/components/homepage/ProductCarousel';
+import SamsungS22 from '@/components/homepage/SamsungS22';
 import ShopCategories from '@/components/homepage/ShopCategories';
 import ScrollToTop from '@/components/ui/ToTop';
 import { useGetProductsQuery } from '@/redux/api/productApi';
@@ -38,6 +39,7 @@ const Home = () => {
         <Macbook />
         {/* new arrivals */}
         <NewArrivals products={products} />
+        <SamsungS22 />
       </div>
       <Newsletter />
     </div>
