@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
-import { BsCart2 } from 'react-icons/bs';
-import { CiHeart, CiLocationOn } from 'react-icons/ci';
+import { BsCart2, BsHeart } from 'react-icons/bs';
+import { CiLocationOn } from 'react-icons/ci';
 import { FaArrowRightLong, FaLinkedinIn } from 'react-icons/fa6';
 import { IoIosInformationCircleOutline, IoLogoGithub } from 'react-icons/io';
 import { IoLogoFacebook } from 'react-icons/io5';
@@ -47,7 +47,7 @@ const Navbar = () => {
       <div className="bg-bluish text-white">
         <div className="main-container">
           {/* welcome */}
-          <div className="flex justify-between items-center py-3">
+          <div className="flex flex-col md:flex-row gap-y-2 justify-between items-center py-3">
             <h1 className="text-white text-sm">
               {` ${
                 currentUser?.name
@@ -107,8 +107,8 @@ const Navbar = () => {
               <span className="text-2xl text-white cursor-pointer">
                 <BsCart2 />
               </span>
-              <span className="text-2xl text-white cursor-pointer">
-                <CiHeart />
+              <span className="text-xl mt-1 text-white cursor-pointer">
+                <BsHeart />
               </span>
               <Link
                 to={
