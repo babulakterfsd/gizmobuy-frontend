@@ -30,7 +30,7 @@ const Topbar = () => {
         </div>
         <div>
           <Link to="/shop">
-            <button className="bg-deep-yellow py-2 lg:py-2.5 px-2 lg:px-6 rounded text-custom-black font-semibold flex items-center gap-x-1 md:gap-x-2">
+            <button className="bg-deep-yellow py-1.5 md:py-2 lg:py-2.5 px-2 lg:px-6 rounded text-custom-black font-semibold flex items-center gap-x-1 md:gap-x-2">
               Shop Now <FaArrowRightLong />
             </button>
           </Link>
