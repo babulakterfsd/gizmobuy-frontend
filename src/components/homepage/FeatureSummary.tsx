@@ -5,7 +5,7 @@ import trophy from '../../assets/images/Trophy.svg';
 
 const FeatureSummary = () => {
   return (
-    <div className="mt-6 border border-gray-100 rounded-md w-full flex justify-around flex-col lg:flex-row gap-y-8 py-6 px-10 lg:p-6">
+    <div className="mt-14 lg:mt-20 border border-gray-100 rounded-md w-full flex justify-around flex-col lg:flex-row gap-y-8 py-6 px-10 lg:p-6">
       {/* feature 1 */}
       <div className="flex space-x-4">
         <img
