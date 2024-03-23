@@ -145,10 +145,10 @@ const Footer = () => {
         <p className="text-offgray text-sm font-semibold mt-2 lg:mt-0">
           All rights reserved by GizmoBuy &copy;2024
         </p>
-        <p className="text-offgray text-sm font-semibold hidden lg:inline-block">
+        <p className="text-offgray text-[13px] lg:text-sm font-semibold hidden lg:inline-block">
           |
         </p>
-        <p className="text-offgray text-sm font-semibold">
+        <p className="text-offgray text-[13px] lg:text-sm font-semibold">
           Developed with love by{' '}
           <a
             href="https://babulakter.com"
