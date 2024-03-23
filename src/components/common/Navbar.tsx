@@ -74,29 +74,31 @@ const Navbar = () => {
         <div className="bg-bluish py-5">
           <div className="main-container flex justify-between items-center">
             {/* logo */}
-            <Link className="flex gap-x-2 items-center w-24" to="/">
+            <Link className="flex gap-x-1 lg:gap-x-2 items-center w-24" to="/">
               <img
                 src={logo}
                 alt="GizmoBuy"
-                className="w-12 h-12 object-cover"
+                className="w-6 lg:w-10 h-6 lg:h-10 object-cover"
               />
-              <span className="font-bold text-3xl">GizmoBuy</span>
+              <span className="font-bold text-xl md:text-2xl lg:text-2xl">
+                GizmoBuy
+              </span>
             </Link>
             {/* menubar */}
-            <div>
-              <ul className="flex space-x-5 items-center">
+            <div className="hidden md:block md:ml-20 lg:ml-0">
+              <ul className="flex space-x-5 items-center justify-center">
                 <Link to="/shop">
-                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     Shop
                   </li>
                 </Link>
                 <Link to="/about-us">
-                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     About Us
                   </li>
                 </Link>
                 <Link to="/support">
-                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-sm">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     Support
                   </li>
                 </Link>
@@ -104,10 +106,10 @@ const Navbar = () => {
             </div>
             {/* items */}
             <div className="flex justify-center space-x-5 items-center">
-              <span className="text-2xl text-white cursor-pointer">
+              <span className="text-xl md:text-2xl text-white cursor-pointer">
                 <BsCart2 />
               </span>
-              <span className="text-xl mt-1 text-white cursor-pointer">
+              <span className="text-base md:text-xl mt-1 text-white cursor-pointer">
                 <BsHeart />
               </span>
               <Link
@@ -115,7 +117,7 @@ const Navbar = () => {
                   token ? `/dashboard/${currentUser?.role}/overview` : '/login'
                 }
               >
-                <span className="text-2xl text-white cursor-pointer">
+                <span className="text-xl md:text-2xl text-white cursor-pointer">
                   <AiOutlineUser />
                 </span>
               </Link>
