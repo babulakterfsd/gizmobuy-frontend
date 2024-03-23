@@ -18,7 +18,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
   return (
     <div className="mt-14 lg:mt-20">
       <div className="header flex items-center mb-6">
-        <h2 className="text-custom-black font-semibold text-2xl mr-10">
+        <h2 className="text-custom-black font-semibold text-xl md:text-2xl mr-10">
           New Arrivals
         </h2>
         <Link to="/shop" className="ml-auto">
