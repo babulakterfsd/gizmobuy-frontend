@@ -23,7 +23,7 @@ body {
 }
 
 /* common classes */
-.bg-black {
+.bg-custom-black {
   background-color: #191c1f;
 }
 .text-custom-black {

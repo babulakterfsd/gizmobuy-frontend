@@ -13,7 +13,7 @@ const Topbar = () => {
   if (!showTopbar) return null;
 
   return (
-    <div className="bg-black">
+    <div className="bg-custom-black">
       <div className="main-container flex justify-between items-center text-white h-16">
         <div className="flex gap-x-2">
           <p className="bg-yellow text-custom-black px-2 py-1 -rotate-6 rounded font-semibold">

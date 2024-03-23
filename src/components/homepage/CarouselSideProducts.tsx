@@ -7,7 +7,7 @@ const CarouselSideProducts = () => {
   return (
     <>
       {/* banner  for product 1*/}
-      <div className="product-1 bg-black rounded-md flex space-x-1 px-3 py-5">
+      <div className="product-1 bg-custom-black rounded-md flex space-x-1 px-3 py-5">
         <div className="col-span-6 mt-12">
           <h4 className="text-yellow font-semibold mb-1 text-sm">
             summer sells

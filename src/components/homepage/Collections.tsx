@@ -31,7 +31,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             >
               {hoveredProduct === product?._id && (
                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-black opacity-75"></div>
+                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
                   <div className="z-10 relative flex items-center justify-center w-full h-full">
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
                       <CiHeart />
@@ -75,7 +75,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             >
               {hoveredProduct === product?._id && (
                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-black opacity-75"></div>
+                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
                   <div className="z-10 relative flex items-center justify-center w-full h-full">
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
                       <CiHeart />
@@ -119,7 +119,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             >
               {hoveredProduct === product?._id && (
                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-black opacity-75"></div>
+                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
                   <div className="z-10 relative flex items-center justify-center w-full h-full">
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
                       <CiHeart />
@@ -163,7 +163,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             >
               {hoveredProduct === product?._id && (
                 <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-black opacity-75"></div>
+                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
                   <div className="z-10 relative flex items-center justify-center w-full h-full">
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
                       <CiHeart />

@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.png';
 
 const Footer = () => {
   return (
-    <div className="bg-black pt-20 pb-4">
+    <div className="bg-custom-black pt-20 pb-4">
       <div className="main-container text-white flex justify-between items-start">
         {/* logo */}
         <div>

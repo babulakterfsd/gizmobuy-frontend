@@ -305,7 +305,7 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-black transition-all duration-300"></div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-custom-black transition-all duration-300"></div>
             </>
           ) : null}
         </div>
