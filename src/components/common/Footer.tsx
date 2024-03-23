@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         {/* quick links */}
-        <div className="col-sapn-12 lg:col-span-3">
+        <div className="col-sapn-12 lg:col-span-3 -ml-5 md:-ml-20 lg:ml-0">
           <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
             quick links
           </p>
