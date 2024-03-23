@@ -5,27 +5,35 @@ import logo from '../../assets/images/logo.png';
 
 const Footer = () => {
   return (
-    <div className="bg-custom-black pt-20 pb-4">
-      <div className="main-container text-white flex justify-between items-start">
+    <div className="bg-custom-black pt-10 lg:pt-16 pb-4">
+      <div className="main-container text-white grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 lg:gap-x-28 lg:gap-y-0 justify-items-center">
         {/* logo */}
-        <div>
-          <Link className="flex gap-x-2 items-center w-24" to="/">
-            <img src={logo} alt="GizmoBuy" className="w-8 h-8 object-cover" />
-            <span className="font-bold text-xl">GizmoBuy</span>
+        <div className="col-sapn-12 lg:col-span-3 ml-10 lg:ml-0">
+          <Link className="flex gap-x-1 lg:gap-x-2 items-center lg:w-24" to="/">
+            <img
+              src={logo}
+              alt="GizmoBuy"
+              className="w-6 lg:w-8 h-6 lg:h-8 object-cover"
+            />
+            <span className="font-bold text-base lg:text-xl">GizmoBuy</span>
           </Link>
           <div>
-            <p className="text-offgray text-sm mt-6">Customer Support:</p>
-            <p className="">+880-1740-020464</p>
+            <p className="text-offgray text-sm mt-4 lg:mt-6">
+              Customer Support:
+            </p>
+            <p className="text-sm lg:text-base">+880-1740-020464</p>
           </div>
-          <div className="my-6 text-sm text-offgray">
+          <div className="my-4 lg:my-5 text-sm text-offgray">
             Jinjirtala, Dhunat Pouroshava <br />
             Dhunat 5850, Bogura, Bangladesh
           </div>
-          <div>babulakterfsd@gmail.com</div>
+          <div className="text-sm lg:text-base">babulakterfsd@gmail.com</div>
         </div>
         {/* top categories */}
-        <div>
-          <p className="uppercase font-semibold mb-4">top categoris</p>
+        <div className="col-sapn-12 lg:col-span-3 ">
+          <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
+            top categoris
+          </p>
           <div className="links flex flex-col gap-y-3">
             <Link
               to="/shop"
@@ -66,8 +74,10 @@ const Footer = () => {
           </div>
         </div>
         {/* quick links */}
-        <div>
-          <p className="uppercase font-semibold mb-4">quick links</p>
+        <div className="col-sapn-12 lg:col-span-3">
+          <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
+            quick links
+          </p>
           <div className="links flex flex-col gap-y-3">
             <Link
               to="/login"
@@ -108,8 +118,10 @@ const Footer = () => {
           </div>
         </div>
         {/* downlaod */}
-        <div>
-          <p className="uppercase font-semibold mb-4">download app</p>
+        <div className="col-sapn-12 lg:col-span-3">
+          <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
+            download app
+          </p>
           <div className="links flex flex-col gap-y-3">
             <a href="https://babulakter.com" target="_blank">
               <img
@@ -129,12 +141,14 @@ const Footer = () => {
         </div>
       </div>
       <div className="h-[1px] bg-gray mt-16"></div>
-      <div className="flex gap-x-8 justify-center items-center mt-6">
-        <p className="text-offgray text-[12px] font-semibold">
+      <div className="flex gap-x-8 justify-center items-center mt-2 lg:mt-6 flex-col lg:flex-row gap-y-2">
+        <p className="text-offgray text-sm font-semibold mt-2 lg:mt-0">
           All rights reserved by GizmoBuy &copy;2024
         </p>
-        <p className="text-offgray text-[12px] font-semibold">|</p>
-        <p className="text-offgray text-[12px] font-semibold">
+        <p className="text-offgray text-sm font-semibold hidden lg:inline-block">
+          |
+        </p>
+        <p className="text-offgray text-sm font-semibold">
           Developed with love by{' '}
           <a
             href="https://babulakter.com"
