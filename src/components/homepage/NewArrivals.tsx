@@ -34,7 +34,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
       {/* product cards */}
       <div className="grid grid-cols-1 md:grid-cols-12">
         {/* small products */}
-        <div className="col-span-12 lg:col-span-10 grid grid-cols-2 lg:grid-cols-4">
+        <div className="col-span-12 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-4">
           {newArrivalProducts?.slice(1, 9)?.map((product: TProduct) => (
             <div
               key={product?._id}
@@ -71,7 +71,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           ))}
         </div>
         {/* big product */}
-        <div className="cols-span-12 lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3">
+        <div className="cols-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3">
           <h3 className="text-center font-semibold text-sm mb-2">
             Buy today's hot deal <br /> with the best price in the market
           </h3>

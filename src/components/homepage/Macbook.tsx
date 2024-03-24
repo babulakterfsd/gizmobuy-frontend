@@ -21,7 +21,7 @@ const macbook = {
 const Macbook = () => {
   const navigate = useNavigate();
   return (
-    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:pt-8 lg:pb-4 lg:px-16 flex flex-col lg:flex-row justify-between items-center space-y-4 rounded-md">
+    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pt-8 pb-0 md:py-8 lg:pt-2 lg:pb-1 lg:px-16 flex flex-col md:flex-row justify-between items-center space-y-4 rounded-md">
       {/* description */}
       <div>
         <button className="bg-deep-bluish text-white py-1 px-3 rounded-sm text-center text-sm">
@@ -30,7 +30,7 @@ const Macbook = () => {
         <p className="my-4 text-custom-black text-2xl lg:text-5xl font-bold">
           {macbook?.title}
         </p>
-        <p className="my-4 text-custom-black lg:text-lg font-thin w-full lg:w-8/12">
+        <p className="my-4 text-custom-black lg:text-lg font-thin w-full md:w-10/12 lg:w-8/12">
           {macbook?.description.slice(0, 150)}
         </p>
         <button
@@ -45,7 +45,7 @@ const Macbook = () => {
         <img
           src={macbook?.displayImage}
           alt={macbook?.title}
-          className="object-contain h-56 w-56 lg:h-80 lg:w-80"
+          className="object-contain h-56 w-56 lg:h-80 lg:w-80 md:scale-150 lg:scale-100 md:-ml-10 lg:ml-0"
         />
       </div>
     </div>
