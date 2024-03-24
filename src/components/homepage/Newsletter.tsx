@@ -42,22 +42,30 @@ const Newsletter = () => {
       </div>
       <div className="h-[.1px] w-1/4 bg-[#2878ae] mt-8"></div>
       <div className="flex justify-between items-center space-x-4 lg:space-x-8">
-        <img src={amazon} alt="Amazon" className="w-16 h-auto object-contain" />
-        <img src={google} alt="Google" className="w-16 h-auto object-contain" />
+        <img
+          src={amazon}
+          alt="Amazon"
+          className="w-14 lg:w-16 h-auto object-contain"
+        />
+        <img
+          src={google}
+          alt="Google"
+          className="w-14 lg:w-16 h-auto object-contain"
+        />
         <img
           src={philips}
           alt="Philips"
-          className="w-16 h-auto object-contain"
+          className="w-14 lg:w-16 h-auto object-contain"
         />
         <img
           src={samsung}
           alt="Samsung"
-          className="w-16 h-auto object-contain hidden lg:inline-block"
+          className="w-14 lg:w-16 h-auto object-contain hidden lg:inline-block"
         />
         <img
           src={toshiba}
           alt="Toshiba"
-          className="w-16 h-auto object-contain"
+          className="w-14 lg:w-16 h-auto object-contain"
         />
       </div>
     </div>
