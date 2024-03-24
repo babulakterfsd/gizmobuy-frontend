@@ -125,7 +125,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="py-4 shadow-sm mb-6">
+      <div className="py-4 shadow-sm mb-6 hidden lg:block">
         <div className="main-container items-center hidden lg:flex">
           {/* shop button*/}
           <div className="">

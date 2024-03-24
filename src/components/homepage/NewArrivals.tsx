@@ -88,7 +88,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
             <FaStar className="text-orange text-xs" />
             <span className="text-graish text-xs">(5)</span>
           </div>
-          <h4 className="text-custom-black mb-4">
+          <h4 className="text-custom-black mb-4 text-xl">
             {newArrivalProducts[0]?.title}
           </h4>
           <h5 className="text-bluish font-semibold text-md mt-2 mb-4">

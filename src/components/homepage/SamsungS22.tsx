@@ -27,7 +27,7 @@ const SamsungS22 = () => {
         <img
           src={s22?.displayImage}
           alt={s22?.title}
-          className="object-contain h-44 lg:h-60 w-44 lg:w-60 mb-10"
+          className="object-contain h-44 lg:h-60 w-44 lg:w-60 mb-10 mx-auto lg:mx-0"
         />
       </div>
       {/* description */}
@@ -42,7 +42,7 @@ const SamsungS22 = () => {
           {s22?.description.slice(0, 120)}
         </p>
         <button
-          className="bg-orange py-2.5 px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
+          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
           onClick={() => navigate('/shop')}
         >
           Shop Now <FaArrowRightLong />

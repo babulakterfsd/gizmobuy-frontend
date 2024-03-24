@@ -15,10 +15,10 @@ const Newsletter = () => {
 
   return (
     <div className="bg-bluish pt-16 pb-10 flex justify-center items-center flex-col">
-      <h4 className="text-3xl font-semibold text-white">
+      <h4 className="text-xl lg:text-3xl font-semibold text-white text-center lg:text-left">
         Subscribe to our newsletter
       </h4>
-      <p className="text-gray-400 text-sm w-1/3 text-center my-3">
+      <p className="text-gray-400 text-sm w-full lg:w-1/3 text-center my-3">
         Praesent fringilla erat a lacinia egestas. Donec vehicula tempor libero
         et cursus. Donec non quam urna. Quisque vitae porta ipsum.
       </p>
@@ -26,7 +26,7 @@ const Newsletter = () => {
         <form className="relative" onSubmit={handleEmailSubscription}>
           <input
             type="email"
-            className="bg-white py-4 px-3 rounded-sm w-full md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-custom-black relative"
+            className="bg-white py-2 lg:py-4 px-2 lg:px-3 rounded-sm w-[300px] md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-custom-black relative"
             placeholder="e.g. babulakterfsd@gmail.com"
             required
             value={emailToBeSubscribed}
@@ -34,19 +34,31 @@ const Newsletter = () => {
           />
           <button
             type="submit"
-            className="bg-deep-yellow text-white absolute right-0 py-4  px-5 rounded font-bold"
+            className="bg-deep-yellow text-white absolute right-0 py-2 lg:py-4 px-2 lg:px-3 font-semibold lg:font-bold"
           >
             Subscribe
           </button>
         </form>
       </div>
       <div className="h-[.1px] w-1/4 bg-[#2878ae] mt-8"></div>
-      <div className="flex justify-between items-center space-x-8">
-        <img src={amazon} alt="Amazon" className="w-16 h-auto object-cover" />
-        <img src={google} alt="Google" className="w-16 h-auto object-cover" />
-        <img src={philips} alt="Philips" className="w-16 h-auto object-cover" />
-        <img src={samsung} alt="Samsung" className="w-16 h-auto object-cover" />
-        <img src={toshiba} alt="Toshiba" className="w-16 h-auto object-cover" />
+      <div className="flex justify-between items-center space-x-4 lg:space-x-8">
+        <img src={amazon} alt="Amazon" className="w-16 h-auto object-contain" />
+        <img src={google} alt="Google" className="w-16 h-auto object-contain" />
+        <img
+          src={philips}
+          alt="Philips"
+          className="w-16 h-auto object-contain"
+        />
+        <img
+          src={samsung}
+          alt="Samsung"
+          className="w-16 h-auto object-contain hidden lg:inline-block"
+        />
+        <img
+          src={toshiba}
+          alt="Toshiba"
+          className="w-16 h-auto object-contain"
+        />
       </div>
     </div>
   );

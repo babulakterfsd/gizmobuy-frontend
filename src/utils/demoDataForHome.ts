@@ -12,7 +12,7 @@ export const sliderData = [
     displayImage:
       'https://res.cloudinary.com/dzqkcbgew/image/upload/v1710831265/galaxy_irbdnu.png',
     description:
-      "The Samsung Galaxy S22 Ultra is a premium smartphone that offers the perfect combination of power, performance, and versatility. With its stunning Infinity-O display and advanced camera system, this phone lets you capture every moment with stunning clarity and detail. The powerful Exynos processor and ample RAM ensure smooth multitasking and responsive performance, while the long-lasting battery keeps you connected all day long. Whether you're gaming, streaming, or just browsing the web, the Samsung Galaxy S22 Ultra is the perfect companion for your digital lifestyle.",
+      "The Samsung Galaxy S22 Ultra is a premium smartphone that offers the perfect combination of power, performance, and versatility. advanced camera system, this phone lets you capture every moment with stunning clarity and detail. The powerful Exynos processor and ample RAM ensure smooth multitasking and responsive performance, while the long-lasting battery keeps you connected all day long. Whether you're gaming, streaming, or just browsing the web, the Samsung Galaxy S22 Ultra is the perfect companion for your digital lifestyle.",
     vendor: '65def92c87236f3b5c762222',
     runningDiscount: 0,
     releaseDate: '2024-03-10',
@@ -20,7 +20,7 @@ export const sliderData = [
   {
     _id: '65def92c87236f3b5c762223',
     intro: 'Capture the moment',
-    title: 'GoPro HERO 10 Black',
+    title: 'GoPro HERO 10 Black 2nd Edition',
     price: 499,
     stock: 30,
     reviews: [],
@@ -30,7 +30,7 @@ export const sliderData = [
     displayImage:
       'https://res.cloudinary.com/dzqkcbgew/image/upload/v1710831267/gopro_vnykpm.png',
     description:
-      "The GoPro HERO 10 Black is the ultimate action camera for capturing epic adventures and adrenaline-fueled moments. With its stunning 5.3K video resolution and advanced HyperSmooth 4.0 stabilization, this camera delivers silky-smooth footage that's sure to impress. The powerful GP2 processor ensures fast and responsive performance, allowing you to capture every detail with clarity and precision. With built-in Wi-Fi and Bluetooth connectivity, you can easily share your photos and videos with friends and family, while the rugged and waterproof design lets you take it anywhere your adventures take you. Whether you're surfing, skiing, or skydiving, the GoPro HERO 10 Black is the perfect companion for your next adventure.",
+      "The GoPro HERO 10 Black is the ultimate action camera for capturing epic adventures and adrenaline-fueled moments.With its stunning With its stunning 5.3K video resolution and advanced HyperSmooth 4.0 stabilization, this camera delivers silky-smooth footage that's sure to impress. The powerful GP2 processor ensures fast and responsive performance, allowing you to capture every detail with clarity and precision. With built-in Wi-Fi and Bluetooth connectivity, you can easily share your photos and videos with friends and family, while the rugged and waterproof design lets you take it anywhere your adventures take you. Whether you're surfing, skiing, or skydiving, the GoPro HERO 10 Black is the perfect companion for your next adventure.",
     vendor: '65def92c87236f3b5c762222',
     runningDiscount: 0,
     releaseDate: '2023-03-10',
@@ -38,20 +38,20 @@ export const sliderData = [
   {
     _id: '65def92c87236f3b5c762224',
     intro: 'Unleash your creativity',
-    title: 'Nike Air Jordan 1 High OG Bred Toe 2024',
-    price: 170,
-    stock: 40,
+    title: 'DJI Mavic Air 2 Drone 2024 Version',
+    price: 799,
+    stock: 25,
     reviews: [],
-    brand: 'Nike',
-    category: 'fashion',
+    brand: 'DJI',
+    category: 'electronics',
     photos: [],
     displayImage:
-      'https://res.cloudinary.com/dzqkcbgew/image/upload/v1710831266/nike_zmyce6.png',
+      'https://res.cloudinary.com/dzqkcbgew/image/upload/v1711219293/c323a1ef546e5e8b8e15bac5974dc217_374_374-removebg-preview_zw6lmc.png',
     description:
-      "The Nike Air Jordan 1 is a legendary basketball shoe that has transcended the court to become a cultural icon. With its iconic high-top silhouette and classic Air Jordan branding, this sneaker is a must-have for sneakerheads and collectors alike. The premium leather upper provides durability and support, while the Air-Sole unit in the heel delivers lightweight cushioning for all-day comfort. Whether you're rocking them on the court or the streets, the Nike Air Jordan 1 is sure to turn heads and make a statement wherever you go.",
+      "The DJI Mavic Air 2 Drone is a compact and powerful quadcopter that offers stunning 4K video recording With its stunning Infinity and 48MP photos in a portable and foldable design. With its advanced obstacle sensing technology and intelligent flight modes, this drone is perfect for capturing breathtaking aerial footage and exploring the world from a new perspective. Whether you're a beginner or an experienced pilot, the DJI Mavic Air 2 Drone is the ultimate tool for capturing your adventures and creating cinematic masterpieces.",
     vendor: '65def92c87236f3b5c762222',
     runningDiscount: 0,
-    releaseDate: '2024-05-10',
+    releaseDate: '2024-03-10',
   },
 ];
 

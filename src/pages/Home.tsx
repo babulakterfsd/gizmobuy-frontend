@@ -1,7 +1,6 @@
 import Loader from '@/components/common/Loader';
 import BestDeals from '@/components/homepage/BestDeals';
 import Blog from '@/components/homepage/Blog';
-import CarouselSideProducts from '@/components/homepage/CarouselSideProducts';
 import Collections from '@/components/homepage/Collections';
 import FeatureSummary from '@/components/homepage/FeatureSummary';
 import Macbook from '@/components/homepage/Macbook';
@@ -23,15 +22,8 @@ const Home = () => {
     <div>
       <ScrollToTop />
       <div className="main-container min-h-screen">
-        <div className="banner grid grid-cols-12 gap-x-4">
-          {/* carousel */}
-          <div className="col-span-12 lg:col-span-8 bg-offwhite rounded-md">
-            <Carousel />
-          </div>
-          <div className="col-span-12 lg:col-span-4 flex flex-col gap-y-4">
-            <CarouselSideProducts />
-          </div>
-        </div>
+        {/* banner */}
+        <Carousel />
         {/* features */}
         <FeatureSummary />
         {/* best deals */}
