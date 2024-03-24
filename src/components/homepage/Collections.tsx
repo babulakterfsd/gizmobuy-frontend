@@ -21,11 +21,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Flash Sale Today
         </h4>
-        <div className="flex flex-col space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {flashSaleToday?.map((product: TProduct) => (
             <div
               key={product?._id}
-              className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
@@ -65,11 +65,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Best Sellers
         </h4>
-        <div className="flex flex-col space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {bestSellers?.map((product: TProduct) => (
             <div
               key={product?._id}
-              className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
@@ -109,11 +109,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Top Rated
         </h4>
-        <div className="flex flex-col space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {topRated?.map((product: TProduct) => (
             <div
               key={product?._id}
-              className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
@@ -153,11 +153,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           New Arrival
         </h4>
-        <div className="flex flex-col space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {newArrival?.map((product: TProduct) => (
             <div
               key={product?._id}
-              className="flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
               onMouseEnter={() => setHoveredProduct(product?._id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
