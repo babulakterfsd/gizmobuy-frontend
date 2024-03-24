@@ -30,8 +30,8 @@ const Carousel = () => {
           pagination={{
             clickable: true,
           }}
-          // autoplay={{ delay: 4000, disableOnInteraction: false }}
-          // loop={true}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
         >
           {products?.map((product: TProduct) => (
             <SwiperSlide
