@@ -21,20 +21,20 @@ const macbook = {
 const Macbook = () => {
   const navigate = useNavigate();
   return (
-    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:p-16 flex flex-col lg:flex-row justify-between items-center space-y-4 rounded-md">
+    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:pt-8 lg:pb-4 lg:px-16 flex flex-col lg:flex-row justify-between items-center space-y-4 rounded-md">
       {/* description */}
       <div>
         <button className="bg-deep-bluish text-white py-1 px-3 rounded-sm text-center text-sm">
           save upto $230
         </button>
-        <p className="my-4 text-custom-black text-3xl lg:text-5xl font-bold">
+        <p className="my-4 text-custom-black text-2xl lg:text-5xl font-bold">
           {macbook?.title}
         </p>
         <p className="my-4 text-custom-black lg:text-lg font-thin w-full lg:w-8/12">
           {macbook?.description.slice(0, 150)}
         </p>
         <button
-          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
+          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-normal lg:font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
           onClick={() => navigate('/shop')}
         >
           Shop Now <FaArrowRightLong />

@@ -21,7 +21,7 @@ const s22 = {
 const SamsungS22 = () => {
   const navigate = useNavigate();
   return (
-    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:p-16 grid grid-cols-1 lg:grid-cols-12 space-y-4 rounded-md">
+    <div className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:px-16 lg:pt-12 lg:pb-6 grid grid-cols-1 lg:grid-cols-12 space-y-4 rounded-md">
       {/* image */}
       <div className="cols-span-12 lg:col-span-6">
         <img
@@ -35,14 +35,14 @@ const SamsungS22 = () => {
         <button className="bg-deep-bluish text-white py-1 px-3 rounded-sm text-center text-sm">
           save upto $99
         </button>
-        <p className="my-4 text-custom-black text-3xl lg:text-5xl font-bold">
+        <p className="my-4 text-custom-black text-2xl lg:text-5xl font-bold">
           {s22?.title}
         </p>
         <p className="my-4 text-custom-black lg:text-lg font-thin w-full">
           {s22?.description.slice(0, 120)}
         </p>
         <button
-          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
+          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-normal lg:font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
           onClick={() => navigate('/shop')}
         >
           Shop Now <FaArrowRightLong />
