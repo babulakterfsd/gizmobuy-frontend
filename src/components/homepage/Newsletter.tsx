@@ -18,7 +18,7 @@ const Newsletter = () => {
       <h4 className="text-xl lg:text-3xl font-semibold text-white text-center lg:text-left">
         Subscribe to our newsletter
       </h4>
-      <p className="text-gray-400 text-sm w-full lg:w-1/3 text-center my-3">
+      <p className="text-gray-400 text-sm w-full md:w-3/4 lg:w-1/3 text-center my-3">
         Praesent fringilla erat a lacinia egestas. Donec vehicula tempor libero
         et cursus. Donec non quam urna. Quisque vitae porta ipsum.
       </p>

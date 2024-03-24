@@ -49,9 +49,12 @@ const Blog = () => {
       <h3 className="text-2xl lg:text-3xl font-semibold text-center text-custom-black mb-6 lg:mb-10">
         Latest News
       </h3>
-      <div className="main-container grid grid-cols-1 md:grid-cols-3 gap-y-4 lg:gap-6 justify-items-center">
+      <div className="main-container grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 justify-items-center">
         {blogs.map((blog) => (
-          <div className="bg-white p-6 rounded-sm" key={blog.id}>
+          <div
+            className="bg-white p-6 md:py-3 md:px-2 lg:p-6 rounded-sm"
+            key={blog.id}
+          >
             <img
               src={blog.image}
               alt="blog1"
@@ -75,7 +78,7 @@ const Blog = () => {
                 />
                 <p className="text-graish text-sm">{blog.date}</p>
               </div>
-              <div className="flex items-center space-x-1">
+              <div className="flex md:hidden lg:flex items-center space-x-1 ">
                 <img
                   src={comment}
                   alt="chat"
@@ -90,7 +93,7 @@ const Blog = () => {
             </h4>
             <p className="text-sm text-offgray my-3">{blog.content}</p>
             <button
-              className="border-2 border-orange-400 py-2 lg:py-2.5 px-3 lg:px-6 rounded text-orange font-semibold flex items-center gap-x-2 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out"
+              className="border-2 border-orange-400 py-2 lg:py-2.5 px-3 lg:px-6 rounded text-orange lg:font-semibold flex items-center gap-x-2 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out"
               onClick={() => toast.error('This feature is not available yet.')}
             >
               Read More <FaArrowRightLong />
