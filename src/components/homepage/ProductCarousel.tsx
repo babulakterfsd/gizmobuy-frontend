@@ -19,10 +19,7 @@ const Carousel = () => {
   return (
     <div className="banner grid grid-cols-1 lg:grid-cols-12 justify-items-center mt-6 lg:mt-10 gap-4">
       {/* carousel */}
-      <div
-        className="swipercontainer col-span-12 lg:col-span-8  main-container"
-        style={{ width: '100vw', marginLeft: '-15px' }}
-      >
+      <div className="swipercontainer col-span-12 lg:col-span-8  main-container">
         <Swiper
           scrollbar
           navigation
@@ -33,8 +30,8 @@ const Carousel = () => {
           pagination={{
             clickable: true,
           }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop={true}
+          // autoplay={{ delay: 4000, disableOnInteraction: false }}
+          // loop={true}
         >
           {products?.map((product: TProduct) => (
             <SwiperSlide
@@ -42,7 +39,7 @@ const Carousel = () => {
               className="grid grid-cols-1 lg:grid-cols-12 bg-offwhite rounded-md py-6 lg:py-16 px-4 lg:px-10 h-full lg:h-[450px]"
             >
               {/*product description*/}
-              <div className="cols-span-12 lg:col-span-6 order-last">
+              <div className="cols-span-12 lg:col-span-6 order-last lg:order-1">
                 <h4 className="text-bluish font-semibold mb-1 text-sm">{`- ${product?.intro}`}</h4>
                 <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 text-custom-black">
                   {product?.title}
@@ -60,7 +57,7 @@ const Carousel = () => {
                 </div>
               </div>
               {/*product image*/}
-              <div className="cols-span-12 lg:col-span-4 order-2">
+              <div className="cols-span-12 lg:col-span-4 order-2 lg:order-2">
                 <img
                   src={product?.displayImage}
                   alt={product?.title}
@@ -68,7 +65,7 @@ const Carousel = () => {
                 />
               </div>
               {/*product price*/}
-              <div className="cols-span-12 lg:col-span-2 order-first ml-auto mb-4">
+              <div className="cols-span-12 lg:col-span-2 order-first lg:order-3 ml-auto mb-4">
                 <div className="h-10 md:h-16 w-10 md:w-16 p-6 rounded-full bg-deep-bluish flex justify-center items-center ml-8">
                   <p className="text-white font-bold text-sm md:text-base">{`$${product?.price}`}</p>
                 </div>
