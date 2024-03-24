@@ -14,7 +14,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="bg-bluish pt-16 pb-10 flex justify-center items-center flex-col">
+    <div className="bg-bluish pt-10 lg:pt-16 pb-5 lg:pb-10 flex justify-center items-center flex-col">
       <h4 className="text-xl lg:text-3xl font-semibold text-white text-center lg:text-left">
         Subscribe to our newsletter
       </h4>
