@@ -75,7 +75,7 @@ const Carousel = () => {
         </Swiper>
       </div>
       {/* side products */}
-      <div className="col-span-12 lg:col-span-4 flex flex-col gap-y-4">
+      <div className="col-span-12 lg:col-span-4 flex flex-col md:flex-row lg:flex-col gap-y-4 gap-x-4">
         <div className="product-1 bg-custom-black rounded-md flex space-x-1 px-3 py-5">
           <div className="col-span-6 mt-4 lg:mt-9">
             <h4 className="text-yellow font-semibold mb-1 text-sm">
