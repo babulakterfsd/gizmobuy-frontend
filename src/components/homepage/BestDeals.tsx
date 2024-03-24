@@ -40,7 +40,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
       {/* product cards */}
       <div className="grid grid-cols-1 md:grid-cols-12">
         {/* big product */}
-        <div className="col-span-1 md:col-span-2 border border-gray-100 px-10 lg:px-3 py-4">
+        <div className="col-span-1 md:hidden lg:block lg:col-span-2 border border-gray-100 px-10 lg:px-3 py-4">
           <img
             src={bestDealProducts[0]?.displayImage}
             alt={bestDealProducts[0]?.title}
@@ -76,7 +76,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
           </div>
         </div>
         {/* small products */}
-        <div className="col-span-1 md:col-span-10 grid grid-cols-2 md:grid-cols-12">
+        <div className="col-span-1 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-12">
           {bestDealProducts?.slice(1, 9)?.map((product: TProduct) => (
             <div
               key={product?._id}
