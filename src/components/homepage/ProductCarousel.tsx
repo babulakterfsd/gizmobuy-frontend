@@ -103,7 +103,7 @@ const Carousel = () => {
           </div>
         </div>
         {/* banner  for product 2*/}
-        <div className="product-2 bg-offwhite rounded-md flex space-x-8 px-3 py-5">
+        <div className="product-2 bg-offwhite rounded-md flex space-x-8 px-3 py-5 md:w-3/5 lg:w-full">
           <div className="col-span-6">
             <img
               src={samsungWatch4?.displayImage}
