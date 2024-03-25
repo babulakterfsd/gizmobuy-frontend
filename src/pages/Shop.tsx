@@ -148,278 +148,284 @@ const Shop = () => {
     <div>
       <ScrollToTop />
       <div className="main-container">
-        <div className="grid grid-cols-12 gap-y-6 lg:mt-10 mb-16">
+        <div className="grid grid-cols-12 gap-y-6 mt-6 lg:mt-10 mb-16">
           {/* shop sidebar */}
-          <div className="col-span-12 md:col-span-3 w-full h-full">
+          <div className="col-span-12 md:col-span-3 w-full h-full md:max-h-0 grid grid-cols-12 md:gap-y-12 lg:gap-y-8">
             {/* product category filter */}
-            <h3 className="text-custom-black font-semibold mb-4">Category</h3>
-            <form className="flex gap-y-2 flex-col">
-              <div className="flex items-center">
-                <input
-                  id="all"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('all')}
-                  checked={selectedCategory === 'all'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  All
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="desktop"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('desktop')}
-                  checked={selectedCategory === 'desktop'}
-                />
-                <label
-                  htmlFor="desktop"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Desktop
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="laptop"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('laptop')}
-                  checked={selectedCategory === 'laptop'}
-                />
-                <label
-                  htmlFor="laptop"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Laptop
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="smartphone"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('smartphone')}
-                  checked={selectedCategory === 'smartphone'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Smartphone
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="watch"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('watch')}
-                  checked={selectedCategory === 'watch'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Watch
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="headphone"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('headphone')}
-                  checked={selectedCategory === 'headphone'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Headphone
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="fashion"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('fashion')}
-                  checked={selectedCategory === 'fashion'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Fashion
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="accessories"
-                  type="radio"
-                  value={selectedCategory}
-                  name="category"
-                  className="w-4 h-4 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleCategoryChange('accessories')}
-                  checked={selectedCategory === 'accessories'}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ms-2 text-sm font-medium text-graish"
-                >
-                  Accessories
-                </label>
-              </div>
-            </form>
+            <div className="col-span-6 md:col-span-12 order-first md:order-none">
+              <h3 className="text-custom-black font-semibold mb-4">Category</h3>
+              <form className="flex gap-y-2 flex-col">
+                <div className="flex items-center">
+                  <input
+                    id="all"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('all')}
+                    checked={selectedCategory === 'all'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    All
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="desktop"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('desktop')}
+                    checked={selectedCategory === 'desktop'}
+                  />
+                  <label
+                    htmlFor="desktop"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Desktop
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="laptop"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('laptop')}
+                    checked={selectedCategory === 'laptop'}
+                  />
+                  <label
+                    htmlFor="laptop"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Laptop
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="smartphone"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('smartphone')}
+                    checked={selectedCategory === 'smartphone'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Smartphone
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="watch"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('watch')}
+                    checked={selectedCategory === 'watch'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Watch
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="headphone"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('headphone')}
+                    checked={selectedCategory === 'headphone'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Headphone
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="fashion"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('fashion')}
+                    checked={selectedCategory === 'fashion'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Fashion
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="accessories"
+                    type="radio"
+                    value={selectedCategory}
+                    name="category"
+                    className="w-4 h-4 focus:outline-none border-none cursor-pointer"
+                    onChange={() => handleCategoryChange('accessories')}
+                    checked={selectedCategory === 'accessories'}
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium text-graish"
+                  >
+                    Accessories
+                  </label>
+                </div>
+              </form>
+            </div>
             {/* price filter */}
-            <h3 className="text-custom-black font-semibold mt-8 mb-4">
-              Price Range
-            </h3>
-            <div className="flex flex-col gap-y-3">
-              <div className="w-2/3">
-                <label
-                  htmlFor="minPrice"
-                  className="block mb-2 text-xs font-semibold "
-                >
-                  Min Price
-                </label>
+            <div className="order-last md:order-none col-span-12 md:col-span-12 mt-6 md:mt-0">
+              <h3 className="text-custom-black font-semibold mb-4">
+                Price Range
+              </h3>
+              <div className="flex flex-row md:flex-col gap-x-2 gap-y-3">
+                <div className="w-4/5 lg:w-2/3">
+                  <label
+                    htmlFor="minPrice"
+                    className="block mb-2 text-xs font-semibold "
+                  >
+                    Min Price
+                  </label>
 
-                <input
-                  type="number"
-                  name="minPrice"
-                  id="minPrice"
-                  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 focus:outline-none"
-                  placeholder="e.g. 5"
-                  value={filterPriceFrom}
-                  onChange={(e) => handleMinPriceChange(e.target.value)}
-                />
-              </div>
-              <div className="w-2/3">
-                <label
-                  htmlFor="maxPrice"
-                  className="block mb-2 text-xs font-semibold"
-                >
-                  Max Price
-                </label>
+                  <input
+                    type="number"
+                    name="minPrice"
+                    id="minPrice"
+                    className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 focus:outline-none"
+                    placeholder="e.g. 5"
+                    value={filterPriceFrom}
+                    onChange={(e) => handleMinPriceChange(e.target.value)}
+                  />
+                </div>
+                <div className="w-4/5 lg:w-2/3">
+                  <label
+                    htmlFor="maxPrice"
+                    className="block mb-2 text-xs font-semibold"
+                  >
+                    Max Price
+                  </label>
 
-                <input
-                  type="number"
-                  name="maxPrice"
-                  id="maxPrice"
-                  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 border-gray-600  focus:outline-none"
-                  placeholder="e.g. 100"
-                  value={filterPriceTo}
-                  onChange={(e) => handleMaxPriceChange(e.target.value)}
-                />
+                  <input
+                    type="number"
+                    name="maxPrice"
+                    id="maxPrice"
+                    className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 border-gray-600  focus:outline-none"
+                    placeholder="e.g. 100"
+                    value={filterPriceTo}
+                    onChange={(e) => handleMaxPriceChange(e.target.value)}
+                  />
+                </div>
               </div>
             </div>
             {/* brand filter */}
-            <h3 className="text-custom-black font-semibold mt-8 mb-4">
-              Popular Brands
-            </h3>
-            <div className="flex gap-x-4 gap-y-3 flex-col">
-              <div className="flex gap-x-4">
-                <div className="flex items-center ">
-                  <input
-                    id="inline-radio"
-                    type="radio"
-                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                    onChange={() => handleBrandChange('Apple')}
-                    checked={selectedBrand.includes('Apple')}
-                  />
-                  <label
-                    htmlFor="inline-radio"
-                    className="ms-1.5 text-sm font-medium text-graish"
-                  >
-                    Apple
-                  </label>
+            <div className="order-2 md:order-none col-span-6 md:col-span-12">
+              <h3 className="text-custom-black font-semibold mb-4">
+                Popular Brands
+              </h3>
+              <div className="flex gap-x-4 gap-y-3 flex-col">
+                <div className="flex gap-x-4">
+                  <div className="flex items-center ">
+                    <input
+                      id="inline-radio"
+                      type="radio"
+                      className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                      onChange={() => handleBrandChange('Apple')}
+                      checked={selectedBrand.includes('Apple')}
+                    />
+                    <label
+                      htmlFor="inline-radio"
+                      className="ms-1.5 text-sm font-medium text-graish"
+                    >
+                      Apple
+                    </label>
+                  </div>
+                  <div className="flex items-center ">
+                    <input
+                      id="inline-radio"
+                      type="radio"
+                      className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                      onChange={() => handleBrandChange('Microsoft')}
+                      checked={selectedBrand.includes('Microsoft')}
+                    />
+                    <label
+                      htmlFor="inline-radio"
+                      className="ms-1.5 text-sm font-medium text-graish"
+                    >
+                      Microsoft
+                    </label>
+                  </div>
+                </div>
+                <div className="flex gap-x-4">
+                  <div className="flex items-center ">
+                    <input
+                      id="inline-radio"
+                      type="radio"
+                      className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                      onChange={() => handleBrandChange('Dell')}
+                      checked={selectedBrand.includes('Dell')}
+                    />
+                    <label
+                      htmlFor="inline-radio"
+                      className="ms-1.5 text-sm font-medium text-graish"
+                    >
+                      Dell
+                    </label>
+                  </div>
+                  <div className="flex items-center ">
+                    <input
+                      id="inline-radio"
+                      type="radio"
+                      className="w-3 h-3 focus:outline-none border-none cursor-pointer"
+                      onChange={() => handleBrandChange('Nike')}
+                      checked={selectedBrand.includes('Nike')}
+                    />
+                    <label
+                      htmlFor="inline-radio"
+                      className="ms-1.5 text-sm font-medium text-graish"
+                    >
+                      Nike
+                    </label>
+                  </div>
                 </div>
                 <div className="flex items-center ">
                   <input
                     id="inline-radio"
                     type="radio"
                     className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                    onChange={() => handleBrandChange('Microsoft')}
-                    checked={selectedBrand.includes('Microsoft')}
+                    onChange={() => handleBrandChange('Samsung')}
+                    checked={selectedBrand.includes('Samsung')}
                   />
                   <label
                     htmlFor="inline-radio"
                     className="ms-1.5 text-sm font-medium text-graish"
                   >
-                    Microsoft
+                    Samsung
                   </label>
                 </div>
-              </div>
-              <div className="flex gap-x-4">
-                <div className="flex items-center ">
-                  <input
-                    id="inline-radio"
-                    type="radio"
-                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                    onChange={() => handleBrandChange('Dell')}
-                    checked={selectedBrand.includes('Dell')}
-                  />
-                  <label
-                    htmlFor="inline-radio"
-                    className="ms-1.5 text-sm font-medium text-graish"
-                  >
-                    Dell
-                  </label>
-                </div>
-                <div className="flex items-center ">
-                  <input
-                    id="inline-radio"
-                    type="radio"
-                    className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                    onChange={() => handleBrandChange('Nike')}
-                    checked={selectedBrand.includes('Nike')}
-                  />
-                  <label
-                    htmlFor="inline-radio"
-                    className="ms-1.5 text-sm font-medium text-graish"
-                  >
-                    Nike
-                  </label>
-                </div>
-              </div>
-              <div className="flex items-center ">
-                <input
-                  id="inline-radio"
-                  type="radio"
-                  className="w-3 h-3 focus:outline-none border-none cursor-pointer"
-                  onChange={() => handleBrandChange('Samsung')}
-                  checked={selectedBrand.includes('Samsung')}
-                />
-                <label
-                  htmlFor="inline-radio"
-                  className="ms-1.5 text-sm font-medium text-graish"
-                >
-                  Samsung
-                </label>
               </div>
             </div>
             {/* banner ad */}
-            <div className="border-2 border-orange-300 px-2 py-8 w-4/5 hidden lg:flex flex-col mt-8 justify-center items-center">
+            <div className="border-2 border-orange-300 px-2 py-8 w-4/5 hidden lg:flex flex-col justify-center items-center md:col-span-12">
               <img
                 src={bannerWatch}
                 alt="banner"
