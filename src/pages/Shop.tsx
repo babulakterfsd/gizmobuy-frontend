@@ -513,7 +513,7 @@ const Shop = () => {
               </div>
             </div>
             {/* product cards */}
-            <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-3 lg:gap-x-6 lg:gap-y-8">
+            <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-6 lg:gap-x-6 lg:gap-y-8">
               {isLoading ? (
                 <div className="mt-16 col-span-12 flex justify-center">
                   <div className="animate-spin rounded-full h-16 lg:h-32 w-16 lg:w-32 border-t-2 border-b-2 border-red-300 mx-auto"></div>
@@ -536,7 +536,7 @@ const Shop = () => {
                 products.map((product: TProduct) => (
                   <div
                     key={product?._id}
-                    className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-2 px-4 relative rounded-md flex flex-row md:flex-col"
+                    className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-4 md:py-2 px-4 relative rounded-md flex flex-col"
                     onMouseEnter={() => setHoveredProduct(product?._id)}
                     onMouseLeave={() => setHoveredProduct(null)}
                   >
@@ -563,19 +563,23 @@ const Shop = () => {
                           : headphoneImage
                       }
                       alt="product"
-                      className="w-full h-40 object-contain"
+                      className="w-full h-32 lg:h-40 object-contain"
                     />
                     {/* show star depending on rating */}
-                    <div className="flex items-center space-x-1 mt-4">
-                      <FaStar className="text-orange text-xs" />
-                      <FaStar className="text-orange text-xs" />
-                      <FaStar className="text-orange text-xs" />
-                      <FaStar className="text-orange text-xs" />
-                      <FaStar className="text-orange text-xs" />
-                      <span className="text-graish text-xs">(5)</span>
+                    <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start">
+                      <div className="flex flex-col">
+                        <div className="flex items-center space-x-1 mt-4">
+                          <FaStar className="text-orange text-xs" />
+                          <FaStar className="text-orange text-xs" />
+                          <FaStar className="text-orange text-xs" />
+                          <FaStar className="text-orange text-xs" />
+                          <FaStar className="text-orange text-xs" />
+                          <span className="text-graish text-xs">(5)</span>
+                        </div>
+                        <h5 className="mt-1 mb-1 font-semibold text-sm">{`${product?.title}`}</h5>
+                      </div>
+                      <p className="text-bluish text-md">{`$${product?.price}`}</p>
                     </div>
-                    <h5 className="mt-1 mb-1 text-sm">{`${product?.title}`}</h5>
-                    <p className="text-bluish font-semibold text-md">{`$${product?.price}`}</p>
                   </div>
                 ))
               )}
