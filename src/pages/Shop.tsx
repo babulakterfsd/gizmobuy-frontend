@@ -136,7 +136,11 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.innerWidth < 642) {
+      window.scrollTo({ top: 700, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     if (sortOrder === 'default') {
       setSortBy('');
@@ -451,48 +455,58 @@ const Shop = () => {
           {/* product list */}
           <div className="col-span-12 md:col-span-9 w-full h-full">
             {/* search and sort */}
-            <div className="flex justify-between items-center flex-col md:flex-row">
+            <div className="flex justify-between items-center flex-col lg:flex-row">
               {/* search */}
-
-              <input
-                type="search"
-                className="bg-offwhite py-2 px-3 rounded-sm w-full md:w-96 focus:outline-none focus:border-none text-custom-black relative"
-                placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
-                required
-                value={searchKeyword}
-                onChange={(e) => handleSearchEverything(e.target.value)}
-              />
-
-              {/* sort */}
-              <div>
+              <div className="w-full">
                 <label
                   htmlFor="sort"
-                  className="text-sm font-medium mr-2 text-graish"
+                  className="text-base font-semibold mr-2 text-graish"
                 >
-                  Sort By
+                  Search
                 </label>
-                <select
-                  name="sort"
-                  id="sort"
-                  className="bg-offwhite py-2 px-3 rounded-sm focus:outline-none focus:border-none text-graish text-sm"
-                  value={sortOrder}
-                  onChange={(e) => handleSort(e.target.value)}
-                >
-                  <option value="default">Default</option>
-                  <option value="asc">Price: Low to High</option>
-                  <option value="desc">Price: High to Low</option>
-                </select>
+                <input
+                  type="search"
+                  className="bg-offwhite mt-2 mb-4 py-2 px-3 rounded-md w-full lg:w-96 focus:outline-none focus:border-none text-custom-black relative"
+                  placeholder="e.g. iphone 13, samsung galaxy s21 ultra, etc."
+                  required
+                  value={searchKeyword}
+                  onChange={(e) => handleSearchEverything(e.target.value)}
+                />
               </div>
-              {/* reset all filters */}
-              <button
-                onClick={resetAllFiter}
-                className="bg-offwhite py-2 px-3 lg:px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold hover:bg-orange-400 hover:text-white"
-              >
-                Reset All Filters
-              </button>
+
+              {/* sort */}
+              <div className="flex flex-row gap-x-3 justify-between items-center w-full">
+                <div className="flex flex-col md:flex-row md:items-center gap-y-1">
+                  <label
+                    htmlFor="sort"
+                    className="text-sm font-semibold mr-2 text-graish"
+                  >
+                    Sort By
+                  </label>
+                  <select
+                    name="sort"
+                    id="sort"
+                    className="bg-offwhite py-2 md:py-3 px-3 rounded-md focus:outline-none focus:border-none text-graish text-sm"
+                    value={sortOrder}
+                    onChange={(e) => handleSort(e.target.value)}
+                  >
+                    <option value="default">Default</option>
+                    <option value="asc">Price: Low to High</option>
+                    <option value="desc">Price: High to Low</option>
+                  </select>
+                </div>
+
+                {/* reset all filters */}
+                <button
+                  onClick={resetAllFiter}
+                  className="bg-offwhite mt-6 py-2 md:py-3 px-3 lg:px-4 rounded-md text-graish text-sm  md:mt-0 font-semibold hover:bg-orange-400 hover:text-white"
+                >
+                  Reset All Filters
+                </button>
+              </div>
             </div>
             {/* active filters */}
-            <div className="bg-offwhite my-6 py-1  px-4 w-full">
+            <div className="bg-offwhite my-6 py-1 rounded-md  px-4 w-full hidden md:block">
               <div className="flex items-center h-12">
                 <p className="text-custom-black font-semibold text-sm mr-2">
                   Active Filters:
@@ -519,7 +533,7 @@ const Shop = () => {
               </div>
             </div>
             {/* product cards */}
-            <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-6 lg:gap-x-6 lg:gap-y-8">
+            <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-6 lg:gap-x-6 lg:gap-y-8 mt-8 md:mt-0">
               {isLoading ? (
                 <div className="mt-16 col-span-12 flex justify-center">
                   <div className="animate-spin rounded-full h-16 lg:h-32 w-16 lg:w-32 border-t-2 border-b-2 border-red-300 mx-auto"></div>
