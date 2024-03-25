@@ -23,7 +23,7 @@ const Shop = () => {
   const [page, setPage] = useState<string>('1');
   const [sortBy, setSortBy] = useState<string>('');
   const [sortOrder, setSortOrder] = useState<string>('');
-  const limit = '16';
+  const limit = '12';
 
   let allFilters = {
     page: page,
@@ -480,7 +480,7 @@ const Shop = () => {
               {/* reset all filters */}
               <button
                 onClick={resetAllFiter}
-                className="bg-offwhite py-2 px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold hover:bg-orange-400 hover:text-white"
+                className="bg-offwhite py-2 px-3 lg:px-4 rounded-sm text-graish text-sm  mt-4 md:mt-0 font-semibold hover:bg-orange-400 hover:text-white"
               >
                 Reset All Filters
               </button>
@@ -513,7 +513,7 @@ const Shop = () => {
               </div>
             </div>
             {/* product cards */}
-            <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+            <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-3 lg:gap-x-6 lg:gap-y-8">
               {isLoading ? (
                 <div className="mt-16 col-span-12 flex justify-center">
                   <div className="animate-spin rounded-full h-16 lg:h-32 w-16 lg:w-32 border-t-2 border-b-2 border-red-300 mx-auto"></div>
@@ -536,7 +536,7 @@ const Shop = () => {
                 products.map((product: TProduct) => (
                   <div
                     key={product?._id}
-                    className="col-span-3 shadow border-2 border-gray-300 py-2 px-4 relative rounded-md"
+                    className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-2 px-4 relative rounded-md flex flex-row md:flex-col"
                     onMouseEnter={() => setHoveredProduct(product?._id)}
                     onMouseLeave={() => setHoveredProduct(null)}
                   >
