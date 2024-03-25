@@ -85,19 +85,19 @@ const Navbar = () => {
               </span>
             </Link>
             {/* menubar */}
-            <div className="hidden md:block md:ml-20 lg:ml-0">
+            <div className="ml-6 md:ml-20 lg:ml-0">
               <ul className="flex space-x-5 items-center justify-center">
                 <Link to="/shop">
                   <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     Shop
                   </li>
                 </Link>
-                <Link to="/about-us">
+                <Link to="/about-us" className="hidden md:inline-block">
                   <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     About Us
                   </li>
                 </Link>
-                <Link to="/support">
+                <Link to="/support" className="hidden md:inline-block">
                   <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     Support
                   </li>

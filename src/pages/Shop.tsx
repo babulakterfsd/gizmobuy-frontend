@@ -419,7 +419,7 @@ const Shop = () => {
               </div>
             </div>
             {/* banner ad */}
-            <div className="border-2 border-orange-300 px-2 py-8 w-4/5 flex flex-col mt-8 justify-center items-center">
+            <div className="border-2 border-orange-300 px-2 py-8 w-4/5 hidden lg:flex flex-col mt-8 justify-center items-center">
               <img
                 src={bannerWatch}
                 alt="banner"
