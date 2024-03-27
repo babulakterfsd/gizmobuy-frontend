@@ -4,7 +4,9 @@ const Faq = () => {
   return (
     <div>
       <ScrollToTop />
-      <h1>This is FAQ page</h1>
+      <div className="main-container mt-14 lg:mt-20 pb-6 lg:pb-10">
+        <p>FAQ page</p>
+      </div>
     </div>
   );
 };
