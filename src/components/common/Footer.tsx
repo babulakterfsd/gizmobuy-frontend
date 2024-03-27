@@ -80,6 +80,12 @@ const Footer = () => {
           </p>
           <div className="links flex flex-col gap-y-3">
             <Link
+              to="/"
+              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+            >
+              Home
+            </Link>
+            <Link
               to="/login"
               className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
             >
@@ -108,12 +114,6 @@ const Footer = () => {
               className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
             >
               Support
-            </Link>
-            <Link
-              to="/terms-and-conditions"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
-            >
-              Terms & Policy
             </Link>
           </div>
         </div>
