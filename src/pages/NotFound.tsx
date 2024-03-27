@@ -7,7 +7,7 @@ const NotFound = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="h-screen flex flex-col justify-center items-center">
+      <div className="h-screen flex flex-col items-center mt-8 md:mt-10 lg:mt-16">
         <img
           src={notFoundImg}
           alt="Not Found"
