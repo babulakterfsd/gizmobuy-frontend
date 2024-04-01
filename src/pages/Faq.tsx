@@ -140,7 +140,7 @@ const Faq = () => {
                 onChange={(e) => setMessage(e.target.value)}
               />
               <button
-                className="bg-orange py-2 lg:py-4 px-4 lg:px-6 mt-4 rounded-sm text-white text-md uppercase flex items-center gap-x-2 hover:bg-orange-500"
+                className="bg-orange py-2 lg:py-3 px-4  mt-4 rounded-sm text-white text-md uppercase flex items-center gap-x-2 hover:bg-orange-500"
                 onClick={() => handleQuestionSubmission}
               >
                 Send Message <FaArrowRightLong />
