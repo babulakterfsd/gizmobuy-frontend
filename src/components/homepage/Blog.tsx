@@ -43,6 +43,14 @@ const blogs = [
   },
 ];
 
+const handleBlogClick = () => {
+  toast.error('This feature is not available yet.', {
+    position: 'top-right',
+    duration: 1500,
+    icon: '🚫',
+  });
+};
+
 const Blog = () => {
   return (
     <div className="mt-14 lg:mt-20 py-8 lg:py-20 bg-offwhite">
@@ -94,7 +102,7 @@ const Blog = () => {
             <p className="text-sm text-offgray my-3">{blog.content}</p>
             <button
               className="border-2 border-orange-400 py-2 lg:py-2.5 px-3 lg:px-6 rounded text-orange lg:font-semibold flex items-center gap-x-2 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out"
-              onClick={() => toast.error('This feature is not available yet.')}
+              onClick={() => handleBlogClick()}
             >
               Read More <FaArrowRightLong />
             </button>

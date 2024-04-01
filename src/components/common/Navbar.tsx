@@ -97,6 +97,11 @@ const Navbar = () => {
                     About Us
                   </li>
                 </Link>
+                <Link to="/faq" className="hidden lg:inline-block">
+                  <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
+                    FAQ
+                  </li>
+                </Link>
                 <Link to="/support" className="hidden md:inline-block">
                   <li className="text-white cursor-pointer hover:text-yellow-500 transition-all duration-300 hover:transition-all text-base">
                     Support
