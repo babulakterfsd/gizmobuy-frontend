@@ -183,10 +183,10 @@ const Support = () => {
             {/* chat */}
             <div className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
               <div className="col-span-12 md:col-span-3">
-                <div className="bg-[rgba(45,178,36,.3)] p-3 md:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
+                <div className="bg-[rgba(45,178,36,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
                   <img
                     src={emailus}
-                    alt="email"
+                    alt="call"
                     className="w-10 h-10 object-contain"
                   />
                 </div>
