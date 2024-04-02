@@ -77,16 +77,16 @@ const Support = () => {
         <div className="main-container">
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-12 md:col-span-6">
-              <button className="bg-deep-yellow py-2 px-4 lg:px-4 rounded-sm text-custom-black font-medium text-sm">
+              <button className="bg-deep-yellow py-2 px-4 lg:px-4 rounded-sm text-custom-black font-medium text-sm mt-8 md:mt-0">
                 Help Center
               </button>
-              <h3 className="text-custom-black font-semibold text-3xl mt-5">
+              <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-2 lg:mt-5">
                 How we can help you?
               </h3>
               <form className="relative mt-5" onSubmit={handleSearch}>
                 <input
                   type="text"
-                  className="py-2 lg:py-6 px-2 lg:px-3 rounded-sm w-9/12 border border-gray-200 focus:outline-none text-custom-black relative"
+                  className="py-4 lg:py-6 px-2 lg:px-3 rounded-sm w-full lg:w-9/12 border border-gray-200 focus:outline-none text-custom-black relative"
                   placeholder="Enter your question or keyword"
                   required
                   value={search}
@@ -94,7 +94,7 @@ const Support = () => {
                 />
                 <button
                   type="submit"
-                  className="bg-orange text-white absolute py-2 lg:py-3 px-4 lg:px-3 font-medium top-3 right-44 shadow-none min-w-28 rounded-sm"
+                  className="bg-orange text-white absolute py-2 lg:py-3 px-2 lg:px-3 font-medium top-2 lg:top-3 right-2 lg:right-44 shadow-none min-w-20 lg:min-w-28 rounded-sm"
                 >
                   Search
                 </button>
@@ -113,15 +113,15 @@ const Support = () => {
       {/* support category section */}
       <div className=" mt-8 lg:mt-20">
         <div className="main-container">
-          <h3 className="text-custom-black font-semibold text-3xl mt-5 text-center">
+          <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 text-center">
             What can we assist you with today?
           </h3>
-          <div className="lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-8">
+          <div className="mt-5 lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-8">
             {supportOptions.map(
               (option: { id: number; img: string; title: string }) => (
                 <div
                   key={option.id}
-                  className="col-span-12 md:col-span-4 lg:col-span-3 border border-orange-200 p-6 rounded-md"
+                  className="col-span-12 md:col-span-4 lg:col-span-3 border border-orange-200 p-5 lg:p-6 rounded-md"
                 >
                   <div className="flex justify-start items-center space-x-3">
                     <img
@@ -140,21 +140,21 @@ const Support = () => {
         </div>
       </div>
       {/* contact us section */}
-      <div className="mt-8 lg:mt-20 py-20 bg-offwhite">
+      <div className="mt-8 lg:mt-20 py-10 lg:py-20 bg-offwhite">
         <div className="main-container">
           <div className="text-center">
             <button className="bg-deep-bluish text-white py-2 px-4 lg:px-4 rounded-sm font-medium text-sm">
               Contact Us
             </button>
-            <h3 className="text-custom-black font-semibold text-3xl mt-3 text-center">
+            <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-3 text-center">
               Didn't find your answer. <br />
               Contact with us
             </h3>
           </div>
           {/* cards */}
-          <div className="grid grid-cols-1 md:grid-cols-12 justify-items-center mt-10 items-center space-x-6 lg:px-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 justify-items-center mt-5 lg:mt-10 items-center space-x-6 lg:px-32">
             {/* call */}
-            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start">
+            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
               <div className="col-span-3">
                 <div className="bg-[rgba(45,165,243,.3)] p-6 flex justify-start items-center rounded">
                   <img
@@ -169,7 +169,7 @@ const Support = () => {
                   Call Us Now
                 </h5>
                 <p className="text-pure-gray text-sm ">
-                  we are available online from 9:00 AM to 5:00 PM (GMT95:45)
+                  we are available online from 9:00 AM to 5:00 PM (GMT +6hrs)
                   Talk with use now
                 </p>
                 <h6 className="text-gray-500 font-semibold mt-4">
@@ -181,7 +181,7 @@ const Support = () => {
               </div>
             </div>
             {/* chat */}
-            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start">
+            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
               <div className="col-span-3">
                 <div className="bg-[rgba(45,178,36,.3)] p-6 flex justify-start items-center rounded">
                   <img
@@ -196,7 +196,7 @@ const Support = () => {
                   Call Us Now
                 </h5>
                 <p className="text-pure-gray text-sm ">
-                  we are available online from 9:00 AM to 5:00 PM (GMT95:45)
+                  we are available online from 9:00 AM to 5:00 PM (GMT +6hrs)
                   Talk with use now
                 </p>
                 <h6 className="text-gray-500 font-semibold mt-4">
