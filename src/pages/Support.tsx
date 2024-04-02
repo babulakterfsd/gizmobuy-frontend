@@ -152,11 +152,11 @@ const Support = () => {
             </h3>
           </div>
           {/* cards */}
-          <div className="grid grid-cols-1 md:grid-cols-12 justify-items-center mt-5 lg:mt-10 items-center space-x-6 lg:px-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 mt-5 lg:mt-10 md:space-x-6 space-y-4 md:space-y-0 lg:px-32">
             {/* call */}
-            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
-              <div className="col-span-3">
-                <div className="bg-[rgba(45,165,243,.3)] p-6 flex justify-start items-center rounded">
+            <div className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
+              <div className="col-span-12 md:col-span-3">
+                <div className="bg-[rgba(45,165,243,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
                   <img
                     src={callus}
                     alt="call"
@@ -164,7 +164,7 @@ const Support = () => {
                   />
                 </div>
               </div>
-              <div className="col-span-9">
+              <div className="col-span-12 md:col-span-9">
                 <h5 className="text-custom-black font-semibold text-lg mb-2">
                   Call Us Now
                 </h5>
@@ -181,9 +181,9 @@ const Support = () => {
               </div>
             </div>
             {/* chat */}
-            <div className="bg-white p-8 rounded-sm cols-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
-              <div className="col-span-3">
-                <div className="bg-[rgba(45,178,36,.3)] p-6 flex justify-start items-center rounded">
+            <div className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
+              <div className="col-span-12 md:col-span-3">
+                <div className="bg-[rgba(45,178,36,.3)] p-3 md:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
                   <img
                     src={emailus}
                     alt="email"
@@ -191,9 +191,9 @@ const Support = () => {
                   />
                 </div>
               </div>
-              <div className="col-span-9">
+              <div className="col-span-12 md:col-span-9">
                 <h5 className="text-custom-black font-semibold text-lg mb-2">
-                  Call Us Now
+                  Chat With Us
                 </h5>
                 <p className="text-pure-gray text-sm ">
                   we are available online from 9:00 AM to 5:00 PM (GMT +6hrs)
