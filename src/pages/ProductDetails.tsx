@@ -43,23 +43,23 @@ const ProductDetails = () => {
       {/* product details */}
       <div className="main-container mt-8 grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-6 md:gap-y-0">
         <div className="col-span-12 md:col-span-6">
-          <div className="border border-gray-200 rounded p-6">
+          <div className="border border-gray-200 rounded p-2 md:p-6">
             <img
               src={product?.displayImage}
               alt={product?.title}
-              className="w-full h-96 object-contain"
+              className="w-full h-52 md:h-96 object-contain"
             />
           </div>
           {/* add to wishlist and share */}
-          <div className="flex justify-between items-center mt-6">
+          <div className="flex justify-between items-center mt-4 md:mt-6">
             <div>
-              <button className=" text-gray-600 flex space-x-3 items-center hover:text-orange-400 transition-all duration-300">
+              <button className=" text-gray-600 flex space-x-1 md:space-x-3 items-center hover:text-orange-400 transition-all duration-300">
                 <BsHeart /> <span>Add to Wishlist</span>
               </button>
             </div>
-            <div className="flex items-center space-x-2 pr-24">
+            <div className="flex items-center space-x-2 md:pr-24">
               <span className="text-gray-500">share product: </span>{' '}
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 md:space-x-3">
                 <FaFacebook className="text-blue-600 cursor-pointer" />
                 <FaTwitter className="text-blue-400 cursor-pointer" />
                 <FaWhatsapp className="text-green-400 cursor-pointer" />
@@ -72,19 +72,19 @@ const ProductDetails = () => {
             {/* user feedback */}
             <div className="flex items-center space-x-2">
               <div className="flex space-x-1 items-center">
-                <FaStar className="text-orange" />
-                <FaStar className="text-orange" />
-                <FaStar className="text-orange" />
-                <FaStar className="text-orange" />
-                <FaStar className="text-orange" />
+                <FaStar className="text-orange text-sm md:text-[16px]" />
+                <FaStar className="text-orange text-sm md:text-[16px]" />
+                <FaStar className="text-orange text-sm md:text-[16px]" />
+                <FaStar className="text-orange text-sm md:text-[16px]" />
+                <FaStar className="text-orange text-sm md:text-[16px]" />
               </div>
-              <p className="text-custom-black text-sm font-semibold">{`${4.7} Star Rating`}</p>
-              <p className="text-gray-500 text-sm font-semibold">{`(${21741} User Feedback)`}</p>
+              <p className="text-custom-black text-sm md:font-semibold">{`${4.7} Star Rating`}</p>
+              <p className="text-gray-500 text-sm md:font-semibold">{`(${21741} User Feedback)`}</p>
             </div>
             <h3 className="text-custom-black text-2xl mt-1">
               {product?.title}
             </h3>
-            <div className="flex justify-between items-center mt-5 pr-24">
+            <div className="flex justify-between items-center mt-5 md:pr-24">
               <div>
                 <span className="text-gray-500">brand: </span>{' '}
                 <span className="font-semibold text-sm">{product?.brand}</span>
@@ -96,7 +96,7 @@ const ProductDetails = () => {
                 </span>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-2 pr-24">
+            <div className="flex justify-between items-center mt-2 md:pr-24">
               <div>
                 <span className="text-gray-500">category: </span>{' '}
                 <span className="font-semibold text-sm">
@@ -137,9 +137,9 @@ const ProductDetails = () => {
             </div>
           </div>
           {/* action buttons */}
-          <div className="flex justify-start items-center space-x-4 mt-12">
+          <div className="flex justify-start items-center space-x-4 mt-3 md:mt-12">
             {/* quantity control */}
-            <div className="flex justify-around items-center border border-gray-200 py-2 px-2 w-28 rounded-md">
+            <div className="flex justify-around items-center border border-gray-200 py-2 px-2 w-20 md:w-28 rounded-md">
               <button
                 onClick={() =>
                   buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
@@ -157,8 +157,9 @@ const ProductDetails = () => {
               </button>
             </div>
             <div>
-              <button className="bg-orange py-2 px-4 md:w-72 rounded text-white font-semibold flex items-center justify-center space-x-4">
-                <BsCart2 /> <span>Add to Cart</span>
+              <button className="bg-orange py-2 px-4 w-32 md:w-72 rounded text-white font-semibold flex items-center justify-center space-x-4">
+                <BsCart2 />
+                <span className="md:text-[16px] text-nowrap">Add to Cart</span>
               </button>
             </div>
             <div>
@@ -168,7 +169,7 @@ const ProductDetails = () => {
             </div>
           </div>
           {/* 100% safe checkout cards */}
-          <div className="mt-12 border border-gray-200 rounded py-5 px-6">
+          <div className="mt-7 md:mt-12 border border-gray-200 rounded py-5 px-6">
             <p className="text-sm text-custom-black font-semibold mb-2">
               100% Guarantee Safe Checkout
             </p>
@@ -181,101 +182,105 @@ const ProductDetails = () => {
         </div>
       </div>
       {/* product description and reviews */}
-      <div className="my-8 md:mt-20 main-container border border-gray-200 rounded-md py-6 h-[425px]">
-        <div className="flex justify-center items-center space-x-10 mb-20">
-          <p
-            className={`font-semibold text-custom-black cursor-pointer pb-1  ${
-              activeTab === 'description'
-                ? 'border-b-2 border-orange-400 '
-                : 'text-pure-gray'
-            }`}
-            onClick={() => setActiveTab('description')}
-          >
-            Description
-          </p>
-          <p
-            className={`font-semibold text-custom-black cursor-pointer pb-1 ${
-              activeTab !== 'description'
-                ? 'border-b-2 border-orange-400 '
-                : 'text-pure-gray'
-            }`}
-            onClick={() => setActiveTab('reviews')}
-          >
-            Reviews
-          </p>
+      <div className="main-container">
+        <div className="my-8 md:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[800px] md:h-[425px]">
+          <div className="flex justify-center items-center space-x-10 mb-6 md:mb-20">
+            <p
+              className={`font-semibold text-custom-black cursor-pointer pb-1  ${
+                activeTab === 'description'
+                  ? 'border-b-2 border-orange-400 '
+                  : 'text-pure-gray'
+              }`}
+              onClick={() => setActiveTab('description')}
+            >
+              Description
+            </p>
+            <p
+              className={`font-semibold text-custom-black cursor-pointer pb-1 ${
+                activeTab !== 'description'
+                  ? 'border-b-2 border-orange-400 '
+                  : 'text-pure-gray'
+              }`}
+              onClick={() => setActiveTab('reviews')}
+            >
+              Reviews
+            </p>
+          </div>
+          {/* tab details */}
+          {activeTab === 'description' ? (
+            <div className="grid grid-cols-1 md:grid-cols-12 md:space-x-24 px-6 md:px-10">
+              {/* description */}
+              <div className="col-span-12 md:col-span-4">
+                <h4 className="text-custom-black font-semibold mb-2">
+                  Description
+                </h4>
+                <p className="text-pure-gray text-sm">
+                  {product?.description.slice(0, 700)}
+                </p>
+              </div>
+              {/* features */}
+              <div className="col-span-12 md:col-span-4">
+                <h4 className="text-custom-black font-semibold mb-2 md:mb-4 mt-6 md:mt-0">
+                  Features
+                </h4>
+                <div className="flex flex-col space-y-2 md:space-y-3">
+                  <div className="flex items-center space-x-1 font-semibold text-sm">
+                    <PiWarningDiamondThin className="text-orange-600" />
+                    <p className="text-pure-gray">Free 1 Year Warranty</p>
+                  </div>
+                  <div className="flex items-center space-x-1 font-semibold text-sm">
+                    <PiWarningDiamondThin className="text-orange-600" />
+                    <p className="text-pure-gray">
+                      Free Shipping &amp; Fasted Delivery
+                    </p>
+                  </div>
+                  <div className="flex items-center space-x-1 font-semibold text-sm">
+                    <PiWarningDiamondThin className="text-orange-600" />
+                    <p className="text-pure-gray">100% Money-back guarantee</p>
+                  </div>
+                  <div className="flex items-center space-x-1 font-semibold text-sm">
+                    <PiWarningDiamondThin className="text-orange-600" />
+                    <p className="text-pure-gray">24/7 Customer support</p>
+                  </div>
+                  <div className="flex items-center space-x-1 font-semibold text-sm">
+                    <PiWarningDiamondThin className="text-orange-600" />
+                    <p className="text-pure-gray">Secure payment method</p>
+                  </div>
+                </div>
+              </div>
+              {/* shipping infos */}
+              <div className="col-span-12 md:col-span-4 md:border-l md:pl-6 border-orange-400">
+                <h4 className="text-custom-black font-semibold mb-2 md:mb-4 mt-6 md:mt-0">
+                  Shipping Information
+                </h4>
+                <div className="flex flex-col space-y-2 md:space-y-3">
+                  <div className="flex items-center space-x-2 text-sm">
+                    <p>courier: </p>
+                    <p className="text-pure-gray">2-4 days, free shipping</p>
+                  </div>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <p>local shipping: </p>
+                    <p className="text-pure-gray">
+                      upto one week, additional $19
+                    </p>
+                  </div>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <p>ups ground: </p>
+                    <p className="text-pure-gray">6-7 days, free shipping</p>
+                  </div>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <p>ups fallback: </p>
+                    <p className="text-pure-gray">10-12 days, $29</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <p className="px-12">This feature will be available soon !</p>
+            </div>
+          )}
         </div>
-        {/* tab details */}
-        {activeTab === 'description' ? (
-          <div className="grid grid-cols-1 md:grid-cols-12 space-x-24 px-10">
-            {/* description */}
-            <div className="col-span-12 md:col-span-4">
-              <h4 className="text-custom-black font-semibold mb-2">
-                Description
-              </h4>
-              <p className="text-pure-gray text-sm">
-                {product?.description.slice(0, 700)}
-              </p>
-            </div>
-            {/* features */}
-            <div className="col-span-12 md:col-span-4">
-              <h4 className="text-custom-black font-semibold mb-4">Features</h4>
-              <div className="flex flex-col space-y-3">
-                <div className="flex items-center space-x-1 font-semibold text-sm">
-                  <PiWarningDiamondThin className="text-orange-600" />
-                  <p className="text-pure-gray">Free 1 Year Warranty</p>
-                </div>
-                <div className="flex items-center space-x-1 font-semibold text-sm">
-                  <PiWarningDiamondThin className="text-orange-600" />
-                  <p className="text-pure-gray">
-                    Free Shipping &amp; Fasted Delivery
-                  </p>
-                </div>
-                <div className="flex items-center space-x-1 font-semibold text-sm">
-                  <PiWarningDiamondThin className="text-orange-600" />
-                  <p className="text-pure-gray">100% Money-back guarantee</p>
-                </div>
-                <div className="flex items-center space-x-1 font-semibold text-sm">
-                  <PiWarningDiamondThin className="text-orange-600" />
-                  <p className="text-pure-gray">24/7 Customer support</p>
-                </div>
-                <div className="flex items-center space-x-1 font-semibold text-sm">
-                  <PiWarningDiamondThin className="text-orange-600" />
-                  <p className="text-pure-gray">Secure payment method</p>
-                </div>
-              </div>
-            </div>
-            {/* shipping infos */}
-            <div className="col-span-12 md:col-span-4 md:border-l pl-6 border-orange-400">
-              <h4 className="text-custom-black font-semibold mb-4">
-                Shipping Information
-              </h4>
-              <div className="flex flex-col space-y-3">
-                <div className="flex items-center space-x-2 text-sm">
-                  <p>courier: </p>
-                  <p className="text-pure-gray">2-4 days, free shipping</p>
-                </div>
-                <div className="flex items-center space-x-2 text-sm">
-                  <p>local shipping: </p>
-                  <p className="text-pure-gray">
-                    upto one week, additional $19
-                  </p>
-                </div>
-                <div className="flex items-center space-x-2 text-sm">
-                  <p>ups ground: </p>
-                  <p className="text-pure-gray">6-7 days, free shipping</p>
-                </div>
-                <div className="flex items-center space-x-2 text-sm">
-                  <p>ups fallback: </p>
-                  <p className="text-pure-gray">10-12 days, $29</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <p className="px-12">This feature will be available soon !</p>
-          </div>
-        )}
       </div>
       {!isAllProductLoading && (
         <div className="my-8 md:my-20 main-container">
