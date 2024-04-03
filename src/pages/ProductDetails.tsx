@@ -42,7 +42,7 @@ const ProductDetails = () => {
       <ScrollToTop />
       {/* product details */}
       <div className="main-container mt-8 grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-6 md:gap-y-0">
-        <div className="col-span-12 md:col-span-6">
+        <div className="col-span-12 lg:col-span-6">
           <div className="border border-gray-200 rounded p-2 md:p-6">
             <img
               src={product?.displayImage}
@@ -67,10 +67,10 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 border-gray-200">
+        <div className="col-span-12 lg:col-span-6 border-gray-200">
           <div className="pb-8 border-b">
             {/* user feedback */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 md:mt-4 lg:mt-0">
               <div className="flex space-x-1 items-center">
                 <FaStar className="text-orange text-sm md:text-[16px]" />
                 <FaStar className="text-orange text-sm md:text-[16px]" />
@@ -169,7 +169,7 @@ const ProductDetails = () => {
             </div>
           </div>
           {/* 100% safe checkout cards */}
-          <div className="mt-7 md:mt-12 border border-gray-200 rounded py-5 px-6">
+          <div className="mt-7 md:mt-9 lg:mt-12 border border-gray-200 rounded py-5 px-6">
             <p className="text-sm text-custom-black font-semibold mb-2">
               100% Guarantee Safe Checkout
             </p>
@@ -183,8 +183,8 @@ const ProductDetails = () => {
       </div>
       {/* product description and reviews */}
       <div className="main-container">
-        <div className="my-8 md:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[800px] md:h-[425px]">
-          <div className="flex justify-center items-center space-x-10 mb-6 md:mb-20">
+        <div className="my-8 md:mt-14 lg:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[800px] md:h-[700px] lg:h-[425px]">
+          <div className="flex justify-center items-center space-x-10 mb-6 lg:mb-20">
             <p
               className={`font-semibold text-custom-black cursor-pointer pb-1  ${
                 activeTab === 'description'
@@ -208,9 +208,9 @@ const ProductDetails = () => {
           </div>
           {/* tab details */}
           {activeTab === 'description' ? (
-            <div className="grid grid-cols-1 md:grid-cols-12 md:space-x-24 px-6 md:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-12 lg:space-x-24 px-6 lg:px-10">
               {/* description */}
-              <div className="col-span-12 md:col-span-4">
+              <div className="col-span-12 lg:col-span-4">
                 <h4 className="text-custom-black font-semibold mb-2">
                   Description
                 </h4>
@@ -219,8 +219,8 @@ const ProductDetails = () => {
                 </p>
               </div>
               {/* features */}
-              <div className="col-span-12 md:col-span-4">
-                <h4 className="text-custom-black font-semibold mb-2 md:mb-4 mt-6 md:mt-0">
+              <div className="col-span-12 lg:col-span-4">
+                <h4 className="text-custom-black font-semibold mb-2 lg:mb-4 mt-6 lg:mt-0">
                   Features
                 </h4>
                 <div className="flex flex-col space-y-2 md:space-y-3">
@@ -249,8 +249,8 @@ const ProductDetails = () => {
                 </div>
               </div>
               {/* shipping infos */}
-              <div className="col-span-12 md:col-span-4 md:border-l md:pl-6 border-orange-400">
-                <h4 className="text-custom-black font-semibold mb-2 md:mb-4 mt-6 md:mt-0">
+              <div className="col-span-12 lg:col-span-4 lg:border-l lg:pl-6 border-orange-400">
+                <h4 className="text-custom-black font-semibold mb-2 lg:mb-4 mt-6 lg:mt-0">
                   Shipping Information
                 </h4>
                 <div className="flex flex-col space-y-2 md:space-y-3">
