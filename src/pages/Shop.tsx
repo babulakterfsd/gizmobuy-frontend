@@ -10,6 +10,7 @@ import {
   FaStar,
 } from 'react-icons/fa';
 import { PiEyeLight } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 import headphoneImage from '../assets/images/headphone.png';
 import bannerWatch from '../assets/images/watchbanner.png';
 
@@ -570,9 +571,11 @@ const Shop = () => {
                           <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                             <CiShoppingCart />
                           </button>
-                          <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                            <PiEyeLight />
-                          </button>
+                          <Link to={`/product/${product?._id}`}>
+                            <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                              <PiEyeLight />
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     )}

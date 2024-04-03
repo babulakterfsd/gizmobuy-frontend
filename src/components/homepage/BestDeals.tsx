@@ -14,8 +14,8 @@ interface BestDealsProps {
 
 const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  let bestDealProducts: TProduct[] = products?.slice(29, 38);
-  const targetDate = new Date('2024-06-27T23:59:59');
+  let bestDealProducts: TProduct[] = products?.slice(32, 41);
+  const targetDate = new Date('2024-07-27T23:59:59');
 
   return (
     <div className="mt-14 lg:mt-20">

@@ -40,6 +40,23 @@ export type TProduct = {
   releaseDate: string;
 };
 
+export type TProductWithVendorDetails = {
+  _id: string;
+  intro?: string;
+  title: string;
+  price: number;
+  stock: number;
+  reviews: string[];
+  brand: string;
+  category: string;
+  photos: string[];
+  displayImage: string;
+  description: string;
+  runningDiscount: number;
+  releaseDate: string;
+  vendor: TUser;
+};
+
 export type TOrder = {
   _id: string;
   productID: string;
