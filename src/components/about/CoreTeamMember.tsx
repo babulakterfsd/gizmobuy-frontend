@@ -61,10 +61,10 @@ const CoreTeamMember = () => {
   return (
     <div className=" mt-8 lg:mt-20">
       <div className="main-container">
-        <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 text-center">
+        <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 md:text-center">
           Our core team member
         </h3>
-        <div className="mt-5 lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-8">
+        <div className="mt-5 lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-5">
           {coreTeamMemberOptions.map(
             (option: {
               id: number;
@@ -74,7 +74,7 @@ const CoreTeamMember = () => {
             }) => (
               <div
                 key={option.id}
-                className="col-span-12 md:col-span-4 lg:col-span-3 border border-gray-200 p-5 lg:p-6 rounded-md"
+                className="col-span-12 md:col-span-4 lg:col-span-3 border border-gray-200 p-3 lg:p-6 rounded-md"
               >
                 <div className="flex justify-start items-center space-x-3">
                   <img
