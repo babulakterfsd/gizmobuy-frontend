@@ -53,8 +53,8 @@ const ProductDetails = () => {
           {/* add to wishlist and share */}
           <div className="flex justify-between items-center mt-4 md:mt-6">
             <div>
-              <button className=" text-gray-600 flex space-x-1 md:space-x-3 items-center hover:text-orange-400 transition-all duration-300">
-                <BsHeart /> <span>Add to Wishlist</span>
+              <button className=" text-gray-600 flex space-x-1 md:space-x-2 items-center hover:text-orange-400 transition-all duration-300">
+                <BsHeart /> <span className="text-sm">Add to Wishlist</span>
               </button>
             </div>
             <div className="flex items-center space-x-2 md:pr-24">
