@@ -70,9 +70,11 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
             <button className="bg-orange rounded-sm text-white py-2 text-sm px-3">
               Add to cart
             </button>
-            <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
-              <PiEyeLight />
-            </button>
+            <Link to={`/product/${bestDealProducts[0]?._id}`}>
+              <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
+                <PiEyeLight />
+              </button>
+            </Link>
           </div>
         </div>
         {/* small products */}
@@ -94,9 +96,11 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                       <CiShoppingCart />
                     </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <PiEyeLight />
-                    </button>
+                    <Link to={`/product/${product._id}`}>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                        <PiEyeLight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}

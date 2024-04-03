@@ -1,19 +1,29 @@
 import Loader from '@/components/common/Loader';
+import Collections from '@/components/homepage/Collections';
 import ScrollToTop from '@/components/ui/ToTop';
-import { useGetSingleProductQuery } from '@/redux/api/productApi';
+import {
+  useGetProductsQuery,
+  useGetSingleProductQuery,
+} from '@/redux/api/productApi';
 import { TProductWithVendorDetails } from '@/types/commonTypes';
 import { useState } from 'react';
 import { BsCart2, BsHeart } from 'react-icons/bs';
 import { FaFacebook, FaStar, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { PiWarningDiamondThin } from 'react-icons/pi';
 import { useParams } from 'react-router-dom';
 import paymentmethods from '../assets/images/Payment Method.png';
 import NotFound from './NotFound';
 
 const ProductDetails = () => {
   const [buyQuantity, setBuyQuantity] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState('description');
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useGetSingleProductQuery(id);
   const product: TProductWithVendorDetails = data?.data;
+
+  const { data: allData, isLoading: isAllProductLoading } =
+    useGetProductsQuery(undefined);
+  let products = allData?.data?.data;
 
   if (isLoading)
     return (
@@ -30,6 +40,7 @@ const ProductDetails = () => {
   return (
     <div>
       <ScrollToTop />
+      {/* product details */}
       <div className="main-container mt-8 grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-6 md:gap-y-0">
         <div className="col-span-12 md:col-span-6">
           <div className="border border-gray-200 rounded p-6">
@@ -169,6 +180,108 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      {/* product description and reviews */}
+      <div className="my-8 md:mt-20 main-container border border-gray-200 rounded-md py-6 h-[425px]">
+        <div className="flex justify-center items-center space-x-10 mb-20">
+          <p
+            className={`font-semibold text-custom-black cursor-pointer pb-1  ${
+              activeTab === 'description'
+                ? 'border-b-2 border-orange-400 '
+                : 'text-pure-gray'
+            }`}
+            onClick={() => setActiveTab('description')}
+          >
+            Description
+          </p>
+          <p
+            className={`font-semibold text-custom-black cursor-pointer pb-1 ${
+              activeTab !== 'description'
+                ? 'border-b-2 border-orange-400 '
+                : 'text-pure-gray'
+            }`}
+            onClick={() => setActiveTab('reviews')}
+          >
+            Reviews
+          </p>
+        </div>
+        {/* tab details */}
+        {activeTab === 'description' ? (
+          <div className="grid grid-cols-1 md:grid-cols-12 space-x-24 px-10">
+            {/* description */}
+            <div className="col-span-12 md:col-span-4">
+              <h4 className="text-custom-black font-semibold mb-2">
+                Description
+              </h4>
+              <p className="text-pure-gray text-sm">
+                {product?.description.slice(0, 700)}
+              </p>
+            </div>
+            {/* features */}
+            <div className="col-span-12 md:col-span-4">
+              <h4 className="text-custom-black font-semibold mb-4">Features</h4>
+              <div className="flex flex-col space-y-3">
+                <div className="flex items-center space-x-1 font-semibold text-sm">
+                  <PiWarningDiamondThin className="text-orange-600" />
+                  <p className="text-pure-gray">Free 1 Year Warranty</p>
+                </div>
+                <div className="flex items-center space-x-1 font-semibold text-sm">
+                  <PiWarningDiamondThin className="text-orange-600" />
+                  <p className="text-pure-gray">
+                    Free Shipping &amp; Fasted Delivery
+                  </p>
+                </div>
+                <div className="flex items-center space-x-1 font-semibold text-sm">
+                  <PiWarningDiamondThin className="text-orange-600" />
+                  <p className="text-pure-gray">100% Money-back guarantee</p>
+                </div>
+                <div className="flex items-center space-x-1 font-semibold text-sm">
+                  <PiWarningDiamondThin className="text-orange-600" />
+                  <p className="text-pure-gray">24/7 Customer support</p>
+                </div>
+                <div className="flex items-center space-x-1 font-semibold text-sm">
+                  <PiWarningDiamondThin className="text-orange-600" />
+                  <p className="text-pure-gray">Secure payment method</p>
+                </div>
+              </div>
+            </div>
+            {/* shipping infos */}
+            <div className="col-span-12 md:col-span-4 md:border-l pl-6 border-orange-400">
+              <h4 className="text-custom-black font-semibold mb-4">
+                Shipping Information
+              </h4>
+              <div className="flex flex-col space-y-3">
+                <div className="flex items-center space-x-2 text-sm">
+                  <p>courier: </p>
+                  <p className="text-pure-gray">2-4 days, free shipping</p>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <p>local shipping: </p>
+                  <p className="text-pure-gray">
+                    upto one week, additional $19
+                  </p>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <p>ups ground: </p>
+                  <p className="text-pure-gray">6-7 days, free shipping</p>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <p>ups fallback: </p>
+                  <p className="text-pure-gray">10-12 days, $29</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <p className="px-12">This feature will be available soon !</p>
+          </div>
+        )}
+      </div>
+      {!isAllProductLoading && (
+        <div className="my-8 md:my-20 main-container">
+          <Collections products={products} />
+        </div>
+      )}
     </div>
   );
 };

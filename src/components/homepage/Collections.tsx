@@ -2,6 +2,7 @@ import { TProduct } from '@/types/commonTypes';
 import { useState } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
 import { PiEyeLight } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 
 interface CollectionsProps {
   products: TProduct[];
@@ -39,9 +40,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                       <CiShoppingCart />
                     </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <PiEyeLight />
-                    </button>
+                    <Link to={`/product/${product?._id}`}>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                        <PiEyeLight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -83,9 +86,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                       <CiShoppingCart />
                     </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <PiEyeLight />
-                    </button>
+                    <Link to={`/product/${product?._id}`}>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                        <PiEyeLight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -127,9 +132,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                       <CiShoppingCart />
                     </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <PiEyeLight />
-                    </button>
+                    <Link to={`/product/${product?._id}`}>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                        <PiEyeLight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -171,9 +178,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                     <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
                       <CiShoppingCart />
                     </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <PiEyeLight />
-                    </button>
+                    <Link to={`/product/${product?._id}`}>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                        <PiEyeLight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
