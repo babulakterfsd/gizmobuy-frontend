@@ -1,4 +1,10 @@
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
   setUserInLocalState,
   useCurrentToken,
   useCurrentUser,
@@ -17,10 +23,12 @@ import {
   PiHeadphonesThin,
   PiPhoneDisconnectThin,
 } from 'react-icons/pi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import logo from '../../assets/images/logo-white.png';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
 
   const token = useAppSelector(useCurrentToken);
@@ -41,6 +49,16 @@ const Navbar = () => {
         }
       });
   }, [token]);
+
+  const logouthandlerfromnavbar = () => {
+    dispatch(setUserInLocalState({ user: null, token: null }));
+    toast.success('Logged out successfully.', {
+      position: 'top-right',
+      duration: 1500,
+      icon: '👋',
+    });
+    navigate('/');
+  };
 
   return (
     <div className="navbar">
@@ -110,22 +128,64 @@ const Navbar = () => {
               </ul>
             </div>
             {/* items */}
-            <div className="flex justify-center space-x-5 items-center">
-              <span className="text-xl md:text-2xl text-white cursor-pointer">
-                <BsCart2 />
-              </span>
-              <span className="text-base md:text-xl mt-1 text-white cursor-pointer">
-                <BsHeart />
-              </span>
+            <div className="flex justify-center space-x-3 md:space-x-5 items-center">
+              {/* cart */}
               <Link
-                to={
-                  token ? `/dashboard/${currentUser?.role}/overview` : '/login'
-                }
+                to={token ? `/${currentUser?._id}/shopping-cart` : '/login'}
               >
-                <span className="text-xl md:text-2xl text-white cursor-pointer">
-                  <AiOutlineUser />
+                <span
+                  className={`text-xl md:text-2xl text-white cursor-pointer ${
+                    currentUser?.email ? '' : 'hidden'
+                  }`}
+                >
+                  <BsCart2 />
                 </span>
               </Link>
+              {/* wishlist */}
+              <Link to={token ? `/${currentUser?._id}/wishlist` : '/login'}>
+                <span
+                  className={`text-base md:text-xl mt-1 text-white cursor-pointer ${
+                    currentUser?.email ? '' : 'hidden'
+                  }`}
+                >
+                  <BsHeart />
+                </span>
+              </Link>
+              {/* auth actions */}
+              {currentUser?.email ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <span className="text-xl md:text-2xl text-white cursor-pointer">
+                      <AiOutlineUser />
+                    </span>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-white mt-2 mr-2 py-3 px-2">
+                    <Link to={`/dashboard/${currentUser?.role}/profile`}>
+                      <DropdownMenuItem className="cursor-pointer hover:text-orange-400 transition-all duration-300">
+                        Profile
+                      </DropdownMenuItem>
+                    </Link>
+                    <Link to={`/dashboard/${currentUser?.role}/overview`}>
+                      <DropdownMenuItem className="cursor-pointer hover:text-orange-400 transition-all duration-300 -mt-1">
+                        Dashboard
+                      </DropdownMenuItem>
+                    </Link>
+
+                    <DropdownMenuItem
+                      className="cursor-pointer hover:text-orange-400 transition-all duration-300 mt-2 border-t pt-3 border-gray-300"
+                      onClick={logouthandlerfromnavbar}
+                    >
+                      LogOut
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link to="/login">
+                  <span className="text-xl md:text-2xl text-white cursor-pointer">
+                    <AiOutlineUser />
+                  </span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

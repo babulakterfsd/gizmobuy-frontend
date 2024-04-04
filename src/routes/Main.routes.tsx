@@ -2,22 +2,37 @@ import AboutUs from '@/pages/AboutUs';
 import Faq from '@/pages/Faq';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
-import ProductCompare from '@/pages/ProductCompare';
 import ProductDetails from '@/pages/ProductDetails';
 import Shop from '@/pages/Shop';
+import ShoppingCart from '@/pages/ShoppingCart';
 import Signup from '@/pages/Signup';
 import Support from '@/pages/Support';
-import TermsAndConditions from '@/pages/TermsAndConditions';
+import WishList from '@/pages/WishList';
+import ProtectedRoute from './ProtectedRoute';
 
 export const mainRoutePaths = [
   { index: true, element: <Home /> },
   { path: 'about-us', element: <AboutUs /> },
   { path: 'faq', element: <Faq /> },
-  { path: 'compare-product', element: <ProductCompare /> },
   { path: 'shop', element: <Shop /> },
-  { path: 'product/:id', element: <ProductDetails /> },
+  { path: '/product/:id', element: <ProductDetails /> },
   { path: 'support', element: <Support /> },
-  { path: 'terms-and-conditions', element: <TermsAndConditions /> },
   { path: 'login', element: <Login /> },
   { path: 'signup', element: <Signup /> },
+  {
+    path: '/:id/wishlist',
+    element: (
+      <ProtectedRoute>
+        <WishList />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/:id/shopping-cart',
+    element: (
+      <ProtectedRoute>
+        <ShoppingCart />
+      </ProtectedRoute>
+    ),
+  },
 ];
