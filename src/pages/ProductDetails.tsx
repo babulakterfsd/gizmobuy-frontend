@@ -70,7 +70,7 @@ const ProductDetails = () => {
         <div className="col-span-12 lg:col-span-6 border-gray-200">
           <div className="pb-8 border-b">
             {/* user feedback */}
-            <div className="flex items-center space-x-2 md:mt-4 lg:mt-0">
+            <div className="flex items-center justify-start space-x-5 md:mt-4 lg:mt-0">
               <div className="flex space-x-1 items-center">
                 <FaStar className="text-orange text-sm md:text-[16px]" />
                 <FaStar className="text-orange text-sm md:text-[16px]" />
@@ -78,8 +78,8 @@ const ProductDetails = () => {
                 <FaStar className="text-orange text-sm md:text-[16px]" />
                 <FaStar className="text-orange text-sm md:text-[16px]" />
               </div>
-              <p className="text-custom-black text-sm md:font-semibold">{`${4.7} Star Rating`}</p>
-              <p className="text-gray-500 text-sm md:font-semibold">{`(${21741} User Feedback)`}</p>
+              <p className="text-custom-black text-sm md:font-semibold">{`${4.7} out of 5`}</p>
+              <p className="text-gray-500 text-sm md:font-semibold">{`(${253} feedbacks)`}</p>
             </div>
             <h3 className="text-custom-black text-2xl mt-1">
               {product?.title}
@@ -137,9 +137,9 @@ const ProductDetails = () => {
             </div>
           </div>
           {/* action buttons */}
-          <div className="flex justify-start items-center space-x-4 mt-3 md:mt-12">
+          <div className="flex justify-start items-center space-x-1 md:space-x-4 mt-3 md:mt-12">
             {/* quantity control */}
-            <div className="flex justify-around items-center border border-gray-200 py-2 px-2 w-20 md:w-28 rounded-md">
+            <div className="flex justify-around items-center border border-gray-200 py-2 px-2 w-16 md:w-28 rounded-md">
               <button
                 onClick={() =>
                   buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
@@ -157,7 +157,7 @@ const ProductDetails = () => {
               </button>
             </div>
             <div>
-              <button className="bg-orange py-2 px-4 w-32 md:w-72 rounded text-white font-semibold flex items-center justify-center space-x-4">
+              <button className="bg-orange py-2 px-4 rounded text-white font-semibold flex items-center justify-center space-x-4">
                 <BsCart2 />
                 <span className="md:text-[16px] text-nowrap">Add to Cart</span>
               </button>
