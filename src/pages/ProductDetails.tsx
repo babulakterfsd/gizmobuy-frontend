@@ -5,12 +5,21 @@ import {
   useGetProductsQuery,
   useGetSingleProductQuery,
 } from '@/redux/api/productApi';
-import { TProductWithVendorDetails } from '@/types/commonTypes';
+import {
+  RemoveWishedProductFromLocalState,
+  setWishedProductsInLocalState,
+  useWishedProducts,
+} from '@/redux/features/wishListSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { TProduct, TProductWithVendorDetails } from '@/types/commonTypes';
 import { useState } from 'react';
-import { BsCart2, BsHeart } from 'react-icons/bs';
+import { BsCart2 } from 'react-icons/bs';
+import { CiHeart } from 'react-icons/ci';
 import { FaFacebook, FaStar, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { IoHeart } from 'react-icons/io5';
 import { PiWarningDiamondThin } from 'react-icons/pi';
 import { useParams } from 'react-router-dom';
+import { toast } from 'sonner';
 import paymentmethods from '../assets/images/Payment Method.png';
 import NotFound from './NotFound';
 
@@ -24,6 +33,36 @@ const ProductDetails = () => {
   const { data: allData, isLoading: isAllProductLoading } =
     useGetProductsQuery(undefined);
   let products = allData?.data?.data;
+
+  const dispatch = useAppDispatch();
+  const wishList = useAppSelector(useWishedProducts);
+  const isProductInWishList = wishList.find(
+    (item) => item?._id === product?._id
+  );
+
+  const wishListHandler = (product: TProduct) => {
+    // check if product is already in wishlist
+    const isProductInWishList = wishList.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInWishList) {
+      dispatch(RemoveWishedProductFromLocalState(product));
+      toast.success('Product removed from wishlist', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInWishList) {
+      dispatch(setWishedProductsInLocalState(product));
+      toast.success('Product added in the wishlist!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
 
   if (isLoading)
     return (
@@ -53,8 +92,21 @@ const ProductDetails = () => {
           {/* add to wishlist and share */}
           <div className="flex justify-between items-center mt-4 md:mt-6">
             <div>
-              <button className=" text-gray-600 flex space-x-1 md:space-x-2 items-center hover:text-orange-400 transition-all duration-300">
-                <BsHeart /> <span className="text-sm">Add to Wishlist</span>
+              <button
+                className=" text-gray-600 flex space-x-1 md:space-x-2 items-center"
+                onClick={() => wishListHandler(product as any)}
+              >
+                {isProductInWishList ? (
+                  <>
+                    <IoHeart className="text-orange lg:text-lg" />{' '}
+                    <span className="text-sm">Remove from Wishlist</span>
+                  </>
+                ) : (
+                  <>
+                    <CiHeart className="lg:text-lg" />{' '}
+                    <span className="text-sm">Add to Wishlist</span>
+                  </>
+                )}
               </button>
             </div>
             <div className="flex items-center space-x-2 md:pr-24">

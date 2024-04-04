@@ -1,5 +1,11 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useGetProductsQuery } from '@/redux/api/productApi';
+import {
+  RemoveWishedProductFromLocalState,
+  setWishedProductsInLocalState,
+  useWishedProducts,
+} from '@/redux/features/wishListSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TProduct } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
@@ -9,8 +15,10 @@ import {
   FaChevronRight,
   FaStar,
 } from 'react-icons/fa';
+import { IoHeart } from 'react-icons/io5';
 import { PiEyeLight } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 import headphoneImage from '../assets/images/headphone.png';
 import bannerWatch from '../assets/images/watchbanner.png';
 
@@ -25,6 +33,33 @@ const Shop = () => {
   const [sortBy, setSortBy] = useState<string>('');
   const [sortOrder, setSortOrder] = useState<string>('');
   const limit = '12';
+
+  const dispatch = useAppDispatch();
+  const wishList = useAppSelector(useWishedProducts);
+
+  const wishListHandler = (product: TProduct) => {
+    // check if product is already in wishlist
+    const isProductInWishList = wishList.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInWishList) {
+      dispatch(RemoveWishedProductFromLocalState(product));
+      toast.success('Product removed from wishlist', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInWishList) {
+      dispatch(setWishedProductsInLocalState(product));
+      toast.success('Product added in the wishlist!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
 
   let allFilters = {
     page: page,
@@ -554,57 +589,65 @@ const Shop = () => {
                   </div>
                 </div>
               ) : (
-                products.map((product: TProduct) => (
-                  <div
-                    key={product?._id}
-                    className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-4 md:py-2 px-4 relative rounded-md flex flex-col"
-                    onMouseEnter={() => setHoveredProduct(product?._id)}
-                    onMouseLeave={() => setHoveredProduct(null)}
-                  >
-                    {hoveredProduct === product?._id && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                        <div className="absolute inset-0 bg-custom-black opacity-75 rounded-md"></div>
-                        <div className="z-10 relative flex items-center justify-center w-full h-full">
-                          <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                            <CiHeart />
-                          </button>
-                          <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                            <CiShoppingCart />
-                          </button>
-                          <Link to={`/product/${product?._id}`}>
-                            <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                              <PiEyeLight />
+                products.map((product: TProduct) => {
+                  const isProductInWishList = wishList.find(
+                    (item) => item?._id === product?._id
+                  );
+                  return (
+                    <div
+                      key={product?._id}
+                      className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-4 md:py-2 px-4 relative rounded-md flex flex-col"
+                      onMouseEnter={() => setHoveredProduct(product?._id)}
+                      onMouseLeave={() => setHoveredProduct(null)}
+                    >
+                      {hoveredProduct === product?._id && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
+                          <div className="absolute inset-0 bg-custom-black opacity-75 rounded-md"></div>
+                          <div className="z-10 relative flex items-center justify-center w-full h-full">
+                            <button
+                              className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
+                              onClick={() => wishListHandler(product)}
+                            >
+                              {isProductInWishList ? <IoHeart /> : <CiHeart />}
                             </button>
-                          </Link>
+                            <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
+                              <CiShoppingCart />
+                            </button>
+                            <Link to={`/product/${product?._id}`}>
+                              <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                                <PiEyeLight />
+                              </button>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                    <img
-                      src={
-                        product?.displayImage
-                          ? product?.displayImage
-                          : headphoneImage
-                      }
-                      alt="product"
-                      className="w-full h-32 lg:h-40 object-contain"
-                    />
-                    {/* show star depending on rating */}
-                    <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start">
-                      <div className="flex flex-col">
-                        <div className="flex items-center space-x-1 mt-4">
-                          <FaStar className="text-orange text-xs" />
-                          <FaStar className="text-orange text-xs" />
-                          <FaStar className="text-orange text-xs" />
-                          <FaStar className="text-orange text-xs" />
-                          <FaStar className="text-orange text-xs" />
-                          <span className="text-graish text-xs">(5)</span>
+                      )}
+                      <img
+                        src={
+                          product?.displayImage
+                            ? product?.displayImage
+                            : headphoneImage
+                        }
+                        alt="product"
+                        className="w-full h-32 lg:h-40 object-contain"
+                      />
+                      {/* show star depending on rating */}
+                      <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start">
+                        <div className="flex flex-col">
+                          <div className="flex items-center space-x-1 mt-4">
+                            <FaStar className="text-orange text-xs" />
+                            <FaStar className="text-orange text-xs" />
+                            <FaStar className="text-orange text-xs" />
+                            <FaStar className="text-orange text-xs" />
+                            <FaStar className="text-orange text-xs" />
+                            <span className="text-graish text-xs">(5)</span>
+                          </div>
+                          <h5 className="mt-1 mb-1 font-semibold text-sm">{`${product?.title}`}</h5>
                         </div>
-                        <h5 className="mt-1 mb-1 font-semibold text-sm">{`${product?.title}`}</h5>
+                        <p className="text-bluish text-md">{`$${product?.price}`}</p>
                       </div>
-                      <p className="text-bluish text-md">{`$${product?.price}`}</p>
                     </div>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
             {/* pagination */}

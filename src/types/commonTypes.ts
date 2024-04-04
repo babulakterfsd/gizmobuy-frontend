@@ -15,6 +15,10 @@ export type TAuthInitialState = {
   token: string | null;
 };
 
+export type TWishListInitialState = {
+  wishedProducts: TProduct[];
+};
+
 export type TCurrentUser = {
   _id: string;
   name: string;

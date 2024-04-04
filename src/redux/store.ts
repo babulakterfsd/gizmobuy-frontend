@@ -12,18 +12,29 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { baseApi } from './api/baseApi';
 import authReducer from './features/authSlice';
+import wishListReducer from './features/wishListSlice';
 
 const persistConfig = {
   key: 'auth',
   storage,
 };
 
+const persistConfigForWishList = {
+  key: 'wishList',
+  storage,
+};
+
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedWishListReducer = persistReducer(
+  persistConfigForWishList,
+  wishListReducer
+);
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
+    wishList: persistedWishListReducer,
   },
   //   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>
