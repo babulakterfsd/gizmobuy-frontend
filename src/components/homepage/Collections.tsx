@@ -1,8 +1,16 @@
+import {
+  RemoveWishedProductFromLocalState,
+  setWishedProductsInLocalState,
+  useWishedProducts,
+} from '@/redux/features/wishListSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TProduct } from '@/types/commonTypes';
 import { useState } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
+import { IoHeart } from 'react-icons/io5';
 import { PiEyeLight } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 
 interface CollectionsProps {
   products: TProduct[];
@@ -15,6 +23,33 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
   const topRated: TProduct[] = [products[6], products[7], products[8]];
   const flashSaleToday: TProduct[] = [products[9], products[10], products[11]];
 
+  const dispatch = useAppDispatch();
+  const wishList = useAppSelector(useWishedProducts);
+
+  const wishListHandler = (product: TProduct) => {
+    // check if product is already in wishlist
+    const isProductInWishList = wishList.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInWishList) {
+      dispatch(RemoveWishedProductFromLocalState(product));
+      toast.success('Product removed from wishlist', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInWishList) {
+      dispatch(setWishedProductsInLocalState(product));
+      toast.success('Product added in the wishlist!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
+
   return (
     <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 lg:px-12 gap-x-6 gap-y-10">
       {/* flash sale today */}
@@ -23,44 +58,52 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Flash Sale Today
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {flashSaleToday?.map((product: TProduct) => (
-            <div
-              key={product?._id}
-              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
-              onMouseEnter={() => setHoveredProduct(product?._id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              {hoveredProduct === product?._id && (
-                <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
-                  <div className="z-10 relative flex items-center justify-center w-full h-full">
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <CiHeart />
-                    </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                      <CiShoppingCart />
-                    </button>
-                    <Link to={`/product/${product?._id}`}>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                        <PiEyeLight />
+          {flashSaleToday?.map((product: TProduct) => {
+            const isProductInWishList = wishList.find(
+              (item) => item?._id === product?._id
+            );
+            return (
+              <div
+                key={product?._id}
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                onMouseEnter={() => setHoveredProduct(product?._id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {hoveredProduct === product?._id && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
+                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="z-10 relative flex items-center justify-center w-full h-full">
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
+                        onClick={() => wishListHandler(product)}
+                      >
+                        {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                    </Link>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
+                        <CiShoppingCart />
+                      </button>
+                      <Link to={`/product/${product?._id}`}>
+                        <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                          <PiEyeLight />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                )}
+                <img
+                  src={product?.displayImage}
+                  alt={product?.title}
+                  className="w-16 h-16 object-cover rounded-md"
+                />
+                <div>
+                  <h6 className="text-custom-black text-sm font-semibold">
+                    {product?.title}
+                  </h6>
+                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
                 </div>
-              )}
-              <img
-                src={product?.displayImage}
-                alt={product?.title}
-                className="w-16 h-16 object-cover rounded-md"
-              />
-              <div>
-                <h6 className="text-custom-black text-sm font-semibold">
-                  {product?.title}
-                </h6>
-                <p className="text-bluish text-sm">{`$${product?.price}`}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       {/* best sellers */}
@@ -69,44 +112,52 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Best Sellers
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {bestSellers?.map((product: TProduct) => (
-            <div
-              key={product?._id}
-              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
-              onMouseEnter={() => setHoveredProduct(product?._id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              {hoveredProduct === product?._id && (
-                <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
-                  <div className="z-10 relative flex items-center justify-center w-full h-full">
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <CiHeart />
-                    </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                      <CiShoppingCart />
-                    </button>
-                    <Link to={`/product/${product?._id}`}>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                        <PiEyeLight />
+          {bestSellers?.map((product: TProduct) => {
+            const isProductInWishList = wishList.find(
+              (item) => item?._id === product?._id
+            );
+            return (
+              <div
+                key={product?._id}
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                onMouseEnter={() => setHoveredProduct(product?._id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {hoveredProduct === product?._id && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
+                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="z-10 relative flex items-center justify-center w-full h-full">
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
+                        onClick={() => wishListHandler(product)}
+                      >
+                        {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                    </Link>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
+                        <CiShoppingCart />
+                      </button>
+                      <Link to={`/product/${product?._id}`}>
+                        <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                          <PiEyeLight />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                )}
+                <img
+                  src={product?.displayImage}
+                  alt={product?.title}
+                  className="w-16 h-16 object-cover rounded-md"
+                />
+                <div>
+                  <h6 className="text-custom-black text-sm font-semibold">
+                    {product?.title}
+                  </h6>
+                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
                 </div>
-              )}
-              <img
-                src={product?.displayImage}
-                alt={product?.title}
-                className="w-16 h-16 object-cover rounded-md"
-              />
-              <div>
-                <h6 className="text-custom-black text-sm font-semibold">
-                  {product?.title}
-                </h6>
-                <p className="text-bluish text-sm">{`$${product?.price}`}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       {/* top rated */}
@@ -115,44 +166,52 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           Top Rated
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {topRated?.map((product: TProduct) => (
-            <div
-              key={product?._id}
-              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
-              onMouseEnter={() => setHoveredProduct(product?._id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              {hoveredProduct === product?._id && (
-                <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
-                  <div className="z-10 relative flex items-center justify-center w-full h-full">
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <CiHeart />
-                    </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                      <CiShoppingCart />
-                    </button>
-                    <Link to={`/product/${product?._id}`}>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                        <PiEyeLight />
+          {topRated?.map((product: TProduct) => {
+            const isProductInWishList = wishList.find(
+              (item) => item?._id === product?._id
+            );
+            return (
+              <div
+                key={product?._id}
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                onMouseEnter={() => setHoveredProduct(product?._id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {hoveredProduct === product?._id && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
+                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="z-10 relative flex items-center justify-center w-full h-full">
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
+                        onClick={() => wishListHandler(product)}
+                      >
+                        {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                    </Link>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
+                        <CiShoppingCart />
+                      </button>
+                      <Link to={`/product/${product?._id}`}>
+                        <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                          <PiEyeLight />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                )}
+                <img
+                  src={product?.displayImage}
+                  alt={product?.title}
+                  className="w-16 h-16 object-cover rounded-md"
+                />
+                <div>
+                  <h6 className="text-custom-black text-sm font-semibold">
+                    {product?.title}
+                  </h6>
+                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
                 </div>
-              )}
-              <img
-                src={product?.displayImage}
-                alt={product?.title}
-                className="w-16 h-16 object-cover rounded-md"
-              />
-              <div>
-                <h6 className="text-custom-black text-sm font-semibold">
-                  {product?.title}
-                </h6>
-                <p className="text-bluish text-sm">{`$${product?.price}`}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       {/* new arrival */}
@@ -161,44 +220,52 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           New Arrival
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {newArrival?.map((product: TProduct) => (
-            <div
-              key={product?._id}
-              className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
-              onMouseEnter={() => setHoveredProduct(product?._id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              {hoveredProduct === product?._id && (
-                <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                  <div className="absolute inset-0 bg-custom-black opacity-75"></div>
-                  <div className="z-10 relative flex items-center justify-center w-full h-full">
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                      <CiHeart />
-                    </button>
-                    <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                      <CiShoppingCart />
-                    </button>
-                    <Link to={`/product/${product?._id}`}>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
-                        <PiEyeLight />
+          {newArrival?.map((product: TProduct) => {
+            const isProductInWishList = wishList.find(
+              (item) => item?._id === product?._id
+            );
+            return (
+              <div
+                key={product?._id}
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                onMouseEnter={() => setHoveredProduct(product?._id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {hoveredProduct === product?._id && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
+                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="z-10 relative flex items-center justify-center w-full h-full">
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
+                        onClick={() => wishListHandler(product)}
+                      >
+                        {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                    </Link>
+                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
+                        <CiShoppingCart />
+                      </button>
+                      <Link to={`/product/${product?._id}`}>
+                        <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
+                          <PiEyeLight />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                )}
+                <img
+                  src={product?.displayImage}
+                  alt={product?.title}
+                  className="w-16 h-16 object-cover rounded-md"
+                />
+                <div>
+                  <h6 className="text-custom-black text-sm font-semibold">
+                    {product?.title}
+                  </h6>
+                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
                 </div>
-              )}
-              <img
-                src={product?.displayImage}
-                alt={product?.title}
-                className="w-16 h-16 object-cover rounded-md"
-              />
-              <div>
-                <h6 className="text-custom-black text-sm font-semibold">
-                  {product?.title}
-                </h6>
-                <p className="text-bluish text-sm">{`$${product?.price}`}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
