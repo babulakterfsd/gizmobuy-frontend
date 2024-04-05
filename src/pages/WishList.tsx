@@ -125,7 +125,7 @@ const WishList = () => {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-72 lg:h-96">
+          <div className="flex flex-col items-center justify-center h-96 md:h-72 lg:h-96">
             <h4 className="text-2xl font-semibold text-custom-black">
               Your wishlist is empty
             </h4>
