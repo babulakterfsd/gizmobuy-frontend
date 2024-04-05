@@ -90,7 +90,7 @@ const ProductDetails = () => {
             />
           </div>
           {/* add to wishlist and share */}
-          <div className="flex justify-between items-center mt-4 md:mt-6">
+          <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 justify-between md:items-center mt-4 md:mt-6">
             <div>
               <button
                 className=" text-gray-600 flex space-x-1 md:space-x-2 items-center"
@@ -235,7 +235,7 @@ const ProductDetails = () => {
       </div>
       {/* product description and reviews */}
       <div className="main-container">
-        <div className="my-8 md:mt-14 lg:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[800px] md:h-[700px] lg:h-[425px]">
+        <div className="my-8 md:mt-14 lg:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[850px] md:h-[700px] lg:h-[425px]">
           <div className="flex justify-center items-center space-x-10 mb-6 lg:mb-20">
             <p
               className={`font-semibold text-custom-black cursor-pointer pb-1  ${
