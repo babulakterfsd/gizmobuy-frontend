@@ -135,11 +135,7 @@ const Navbar = () => {
               <Link
                 to={token ? `/${currentUser?._id}/shopping-cart` : '/login'}
               >
-                <span
-                  className={`text-xl md:text-2xl text-white cursor-pointer ${
-                    currentUser?.email ? '' : 'hidden'
-                  }`}
-                >
+                <span className="text-xl md:text-2xl text-white cursor-pointer">
                   <BsCart2 />
                 </span>
               </Link>
@@ -148,11 +144,7 @@ const Navbar = () => {
                 to={token ? `/${currentUser?._id}/wishlist` : '/login'}
                 className="relative"
               >
-                <span
-                  className={`text-base md:text-xl mt-1 text-white cursor-pointer ${
-                    currentUser?.email ? '' : 'hidden'
-                  }`}
-                >
+                <span className="text-base md:text-xl mt-1 text-white cursor-pointer">
                   <BsHeart />
                 </span>
                 {wishedProducts?.length > 0 && (
