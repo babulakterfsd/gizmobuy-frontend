@@ -9,6 +9,7 @@ import {
   useCurrentToken,
   useCurrentUser,
 } from '@/redux/features/authSlice';
+import { useWishedProducts } from '@/redux/features/wishListSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect } from 'react';
@@ -30,6 +31,7 @@ import logo from '../../assets/images/logo-white.png';
 const Navbar = () => {
   const navigate = useNavigate();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
+  const wishedProducts = useAppSelector(useWishedProducts);
 
   const token = useAppSelector(useCurrentToken);
   const dispatch = useAppDispatch();
@@ -142,7 +144,10 @@ const Navbar = () => {
                 </span>
               </Link>
               {/* wishlist */}
-              <Link to={token ? `/${currentUser?._id}/wishlist` : '/login'}>
+              <Link
+                to={token ? `/${currentUser?._id}/wishlist` : '/login'}
+                className="relative"
+              >
                 <span
                   className={`text-base md:text-xl mt-1 text-white cursor-pointer ${
                     currentUser?.email ? '' : 'hidden'
@@ -150,6 +155,11 @@ const Navbar = () => {
                 >
                   <BsHeart />
                 </span>
+                {wishedProducts?.length > 0 && (
+                  <span className="absolute -top-4 -right-2.5 bg-white p-1 rounded-full text-custom-black  h-5 w-5 text-xs font-semibold text-center">
+                    {wishedProducts?.length}
+                  </span>
+                )}
               </Link>
               {/* auth actions */}
               {currentUser?.email ? (
