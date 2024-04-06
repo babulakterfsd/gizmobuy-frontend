@@ -146,11 +146,11 @@ const WishList = () => {
                           <CiShoppingCart className="font-semibold text-lg" />
                         </button>
                         <button
-                          className="text-gray-500 p-1 text-sm"
+                          className="p-1 text-base  lg:text-xl"
                           title="remove from wishlist"
                           onClick={() => removeFromWishList(product)}
                         >
-                          <RxCross2 />
+                          <RxCross2 className="text-gray-400" />
                         </button>
                       </td>
                     </tr>

@@ -1,10 +1,12 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useCurrentUser } from '@/redux/features/authSlice';
-import { useShoppingCartProducts } from '@/redux/features/shoppingCartSlice';
-import { RemoveWishedProductFromLocalState } from '@/redux/features/wishListSlice';
+import {
+  RemoveCartProductFromLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser, TProduct } from '@/types/commonTypes';
-import { CiShoppingCart } from 'react-icons/ci';
+import { useState } from 'react';
 import { PiEyeLight } from 'react-icons/pi';
 import { RxCross2 } from 'react-icons/rx';
 import { Link, useParams } from 'react-router-dom';
@@ -22,7 +24,7 @@ const ShoppingCart = () => {
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
 
   const removeFromShoppingCart = (product: TProduct) => {
-    dispatch(RemoveWishedProductFromLocalState(product));
+    dispatch(RemoveCartProductFromLocalState(product));
     toast.success('Product removed from shopping cart', {
       position: 'top-right',
       duration: 1500,
@@ -30,10 +32,29 @@ const ShoppingCart = () => {
     });
   };
 
+  const [productQuantities, setProductQuantities] = useState<{
+    [productId: string]: number;
+  }>(
+    shoppingCartProducts.reduce<{ [productId: string]: number }>(
+      (acc, product) => {
+        acc[product._id] = 1; // Initialize each product's quantity to 1
+        return acc;
+      },
+      {}
+    )
+  );
+
+  const updateProductQuantity = (productId: string, quantity: number) => {
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: quantity,
+    }));
+  };
+
   return (
     <div>
       <ScrollToTop />
-      <div className="main-container mt-24 md:mt-28 lg:px-36">
+      <div className="main-container mt-24 md:mt-28">
         {shoppingCartProducts.length > 0 ? (
           <div className="border border-gray-300 rounded">
             <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6 border border-gray-300">
@@ -58,6 +79,9 @@ const ShoppingCart = () => {
                     </th>
                     <th scope="col" className="px-4 lg:px-6 py-3 text-center">
                       Quantity
+                    </th>
+                    <th scope="col" className="px-4 lg:px-6 py-3 text-center">
+                      Sub-Total
                     </th>
                     <th scope="col" className="px-4 lg:px-6 py-3 text-center">
                       Actions
@@ -87,36 +111,59 @@ const ShoppingCart = () => {
                         {`$${product.price}`}
                       </td>
                       <td className="lg:px-6 py-4 text-center">
-                        {product.stock > 0 ? (
-                          <span className="text-green-400">in-stock</span>
-                        ) : (
-                          <span className="text-red-400">out-of-stock</span>
-                        )}
+                        <div className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md">
+                          <button
+                            onClick={() =>
+                              productQuantities[product._id] > 1
+                                ? updateProductQuantity(
+                                    product._id,
+                                    productQuantities[product._id] - 1
+                                  )
+                                : null
+                            }
+                            className="font-medium"
+                          >
+                            -
+                          </button>
+                          <span className="text-gray-600 font-semibold">
+                            {productQuantities[product._id]}
+                          </span>
+                          <button
+                            onClick={() =>
+                              updateProductQuantity(
+                                product._id,
+                                productQuantities[product._id] + 1
+                              )
+                            }
+                            className="font-medium"
+                          >
+                            +
+                          </button>
+                        </div>
                       </td>
-                      <td className="lg:px-6 md:py-4 flex md:space-x-4 justify-center items-center mt-4 md:mt-5">
+                      <td
+                        scope="row"
+                        className="lg:px-6 py-4 text-pure-gray text-sm font-semibold text-center"
+                      >
+                        {`$${Math.floor(
+                          product.price * productQuantities[product._id]
+                        ).toFixed(2)}`}
+                      </td>
+                      <td className="lg:px-6 md:py-4 flex md:space-x-2 justify-center items-center mt-4 md:mt-5">
                         <Link to={`/product/${product?._id}`}>
                           <button
-                            className="md:border border-gray-300 p-1 lg:p-2 rounded-full"
+                            className="md:border border-gray-300 p-1 rounded-full text-orange"
                             title="view details"
                           >
-                            <PiEyeLight className="md:text-orange md:text-sm lg:text-base" />
+                            <PiEyeLight className="md:text-orange md:text-sm " />
                           </button>
                         </Link>
-                        <button
-                          className="md:bg-orange-400 md:text-white py-1.5 px-3 rounded flex justify-center items-center space-x-1"
-                          title="add to cart"
-                        >
-                          <span className="text-sm lg:text-base hidden md:inline">
-                            Add to cart
-                          </span>
-                          <CiShoppingCart className="font-semibold text-lg" />
-                        </button>
                         <button
                           className="text-gray-500 p-1 text-sm"
                           title="remove from wishlist"
                           onClick={() => removeFromShoppingCart(product)}
                         >
-                          <RxCross2 />
+                          <RxCross2 className="text-[22px] md:border border-gray-300 p-1 rounded-full -mt-0.5 text-orange" />
                         </button>
                       </td>
                     </tr>

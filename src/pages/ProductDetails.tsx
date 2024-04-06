@@ -35,7 +35,6 @@ import paymentmethods from '../assets/images/Payment Method.png';
 import NotFound from './NotFound';
 
 const ProductDetails = () => {
-  const [buyQuantity, setBuyQuantity] = useState<number>(1);
   const [activeTab, setActiveTab] = useState('description');
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useGetSingleProductQuery(id);
@@ -96,7 +95,6 @@ const ProductDetails = () => {
       duration: 1500,
       icon: '🤔',
     });
-    setBuyQuantity(1);
   };
 
   if (isLoading)
@@ -225,53 +223,6 @@ const ProductDetails = () => {
           </div>
           {/* action buttons */}
           <div className="flex justify-start items-center space-x-1 md:space-x-4 mt-3 md:mt-12">
-            {/* quantity control */}
-            {isProductInCart ? (
-              <div
-                className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md cursor-not-allowed"
-                title="control quantity from cart page"
-              >
-                <button
-                  onClick={() =>
-                    buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
-                  }
-                  className="font-medium cursor-not-allowed"
-                  disabled={true}
-                >
-                  -
-                </button>
-                <span className="text-gray-600 font-semibold cursor-not-allowed">
-                  {buyQuantity}
-                </span>
-                <button
-                  onClick={() => setBuyQuantity(buyQuantity + 1)}
-                  className="font-medium cursor-not-allowed"
-                  disabled={true}
-                >
-                  +
-                </button>
-              </div>
-            ) : (
-              <div className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md">
-                <button
-                  onClick={() =>
-                    buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
-                  }
-                  className="font-medium"
-                >
-                  -
-                </button>
-                <span className="text-gray-600 font-semibold">
-                  {buyQuantity}
-                </span>
-                <button
-                  onClick={() => setBuyQuantity(buyQuantity + 1)}
-                  className="font-medium"
-                >
-                  +
-                </button>
-              </div>
-            )}
             {/* add to cart button */}
             {isProductInCart ? (
               <div>
