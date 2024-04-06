@@ -6,6 +6,11 @@ import {
   useGetSingleProductQuery,
 } from '@/redux/api/productApi';
 import {
+  RemoveCartProductFromLocalState,
+  setCartProductsInLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import {
   RemoveWishedProductFromLocalState,
   setWishedProductsInLocalState,
   useWishedProducts,
@@ -15,7 +20,13 @@ import { TProduct, TProductWithVendorDetails } from '@/types/commonTypes';
 import { useState } from 'react';
 import { BsCart2 } from 'react-icons/bs';
 import { CiHeart } from 'react-icons/ci';
-import { FaFacebook, FaStar, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import {
+  FaClipboardCheck,
+  FaFacebook,
+  FaStar,
+  FaTwitter,
+  FaWhatsapp,
+} from 'react-icons/fa';
 import { IoHeart } from 'react-icons/io5';
 import { PiWarningDiamondThin } from 'react-icons/pi';
 import { useParams } from 'react-router-dom';
@@ -62,6 +73,30 @@ const ProductDetails = () => {
         icon: '😍',
       });
     }
+  };
+
+  const shoppingCart = useAppSelector(useShoppingCartProducts);
+  const isProductInCart = shoppingCart.find(
+    (item) => item?._id === product?._id
+  );
+
+  const addProducttoShoppingCart = (product: TProduct) => {
+    dispatch(setCartProductsInLocalState(product));
+    toast.success('Product added to the shopping cart', {
+      position: 'top-right',
+      duration: 1500,
+      icon: '😍',
+    });
+  };
+
+  const removeProductFromCart = (product: TProduct) => {
+    dispatch(RemoveCartProductFromLocalState(product));
+    toast.success('Product removed from cart', {
+      position: 'top-right',
+      duration: 1500,
+      icon: '🤔',
+    });
+    setBuyQuantity(1);
   };
 
   if (isLoading)
@@ -191,29 +226,77 @@ const ProductDetails = () => {
           {/* action buttons */}
           <div className="flex justify-start items-center space-x-1 md:space-x-4 mt-3 md:mt-12">
             {/* quantity control */}
-            <div className="flex justify-around items-center border border-gray-200 py-2 px-2 w-16 md:w-28 rounded-md">
-              <button
-                onClick={() =>
-                  buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
-                }
-                className="font-medium"
+            {isProductInCart ? (
+              <div
+                className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md cursor-not-allowed"
+                title="control quantity from cart page"
               >
-                -
-              </button>
-              <span className="text-gray-600 font-semibold">{buyQuantity}</span>
-              <button
-                onClick={() => setBuyQuantity(buyQuantity + 1)}
-                className="font-medium"
-              >
-                +
-              </button>
-            </div>
-            <div>
-              <button className="bg-orange py-2 px-4 rounded text-white font-semibold flex items-center justify-center space-x-4">
-                <BsCart2 />
-                <span className="md:text-[16px] text-nowrap">Add to Cart</span>
-              </button>
-            </div>
+                <button
+                  onClick={() =>
+                    buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
+                  }
+                  className="font-medium cursor-not-allowed"
+                  disabled={true}
+                >
+                  -
+                </button>
+                <span className="text-gray-600 font-semibold cursor-not-allowed">
+                  {buyQuantity}
+                </span>
+                <button
+                  onClick={() => setBuyQuantity(buyQuantity + 1)}
+                  className="font-medium cursor-not-allowed"
+                  disabled={true}
+                >
+                  +
+                </button>
+              </div>
+            ) : (
+              <div className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md">
+                <button
+                  onClick={() =>
+                    buyQuantity > 1 ? setBuyQuantity(buyQuantity - 1) : null
+                  }
+                  className="font-medium"
+                >
+                  -
+                </button>
+                <span className="text-gray-600 font-semibold">
+                  {buyQuantity}
+                </span>
+                <button
+                  onClick={() => setBuyQuantity(buyQuantity + 1)}
+                  className="font-medium"
+                >
+                  +
+                </button>
+              </div>
+            )}
+            {/* add to cart button */}
+            {isProductInCart ? (
+              <div>
+                <button
+                  className="bg-orange py-[9px] px-4 rounded text-white font-semibold flex items-center justify-center space-x-1 lg:space-x-4 w-[160px] lg:w-[170px]"
+                  onClick={() => removeProductFromCart(product as any)}
+                >
+                  <FaClipboardCheck /> <span>Added to Cart</span>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button
+                  className="bg-orange py-[9px] px-4 rounded text-white font-semibold flex items-center justify-center space-x-4 w-[160px] lg:w-[170px]"
+                  onClick={() => addProducttoShoppingCart(product as any)}
+                >
+                  <BsCart2 />
+                  <span className="md:text-[16px] text-nowrap">
+                    Add to Cart
+                  </span>
+                </button>
+              </div>
+            )}
+
+            {/* buy now button */}
             <div>
               <button className="border border-orange-400 py-2 px-4 rounded text-white font-semibold text-orange hover:bg-orange-400 hover:text-white transition-all duration-300">
                 Buy Now

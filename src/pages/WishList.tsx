@@ -1,6 +1,10 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useCurrentUser } from '@/redux/features/authSlice';
 import {
+  setCartProductsInLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import {
   RemoveWishedProductFromLocalState,
   useWishedProducts,
 } from '@/redux/features/wishListSlice';
@@ -16,6 +20,7 @@ import NotFound from './NotFound';
 const WishList = () => {
   const { id } = useParams<{ id: string }>();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
+  const shoppingCart = useAppSelector(useShoppingCartProducts);
   const wishedProducts = useAppSelector(useWishedProducts);
   const dispatch = useAppDispatch();
 
@@ -26,6 +31,31 @@ const WishList = () => {
       duration: 1500,
       icon: '🤔',
     });
+  };
+
+  const addWishedProductToShoppingCart = (product: TProduct) => {
+    // check if the product is already in the shopping cart
+    const isProductAlreadyInCart = shoppingCart.find(
+      (item) => item._id === product._id
+    );
+
+    if (isProductAlreadyInCart) {
+      toast.error('Product is already in the Shopping Cart!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+      dispatch(RemoveWishedProductFromLocalState(product));
+      return;
+    }
+
+    dispatch(setCartProductsInLocalState(product));
+    toast.success('Product added in the Shopping Cart!', {
+      position: 'top-right',
+      duration: 1500,
+      icon: '😍',
+    });
+    dispatch(RemoveWishedProductFromLocalState(product));
   };
 
   if (id !== currentUser._id) {
@@ -106,6 +136,9 @@ const WishList = () => {
                         <button
                           className="md:bg-orange-400 md:text-white py-1.5 px-3 rounded flex justify-center items-center space-x-1"
                           title="add to cart"
+                          onClick={() =>
+                            addWishedProductToShoppingCart(product)
+                          }
                         >
                           <span className="text-sm lg:text-base hidden md:inline">
                             Add to cart
