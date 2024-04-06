@@ -1,6 +1,11 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useGetProductsQuery } from '@/redux/api/productApi';
 import {
+  RemoveCartProductFromLocalState,
+  setCartProductsInLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import {
   RemoveWishedProductFromLocalState,
   setWishedProductsInLocalState,
   useWishedProducts,
@@ -16,7 +21,7 @@ import {
   FaStar,
 } from 'react-icons/fa';
 import { IoHeart } from 'react-icons/io5';
-import { PiEyeLight } from 'react-icons/pi';
+import { PiEyeLight, PiShoppingCartSimpleFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import headphoneImage from '../assets/images/headphone.png';
@@ -54,6 +59,32 @@ const Shop = () => {
     if (!isProductInWishList) {
       dispatch(setWishedProductsInLocalState(product));
       toast.success('Product added in the wishlist!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
+
+  const shoppingCart = useAppSelector(useShoppingCartProducts);
+
+  const shoppingCartHandler = (product: TProduct) => {
+    // check if product is already in shopping cart
+    const isProductInShoppingCart = shoppingCart.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInShoppingCart) {
+      dispatch(RemoveCartProductFromLocalState(product));
+      toast.success('Product removed from Shopping Cart', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInShoppingCart) {
+      dispatch(setCartProductsInLocalState(product));
+      toast.success('Product added in the Shopping Cart!', {
         position: 'top-right',
         duration: 1500,
         icon: '😍',
@@ -593,6 +624,9 @@ const Shop = () => {
                   const isProductInWishList = wishList.find(
                     (item) => item?._id === product?._id
                   );
+                  const isProductInShoppingCart = shoppingCart.find(
+                    (item) => item?._id === product?._id
+                  );
                   return (
                     <div
                       key={product?._id}
@@ -610,8 +644,15 @@ const Shop = () => {
                             >
                               {isProductInWishList ? <IoHeart /> : <CiHeart />}
                             </button>
-                            <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                              <CiShoppingCart />
+                            <button
+                              className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                              onClick={() => shoppingCartHandler(product)}
+                            >
+                              {isProductInShoppingCart ? (
+                                <PiShoppingCartSimpleFill />
+                              ) : (
+                                <CiShoppingCart />
+                              )}
                             </button>
                             <Link to={`/product/${product?._id}`}>
                               <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">

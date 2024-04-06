@@ -1,4 +1,9 @@
 import {
+  RemoveCartProductFromLocalState,
+  setCartProductsInLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import {
   RemoveWishedProductFromLocalState,
   setWishedProductsInLocalState,
   useWishedProducts,
@@ -7,10 +12,10 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TProduct } from '@/types/commonTypes';
 import { useState } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
-import { FaStar } from 'react-icons/fa';
+import { FaClipboardCheck, FaStar } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoHeart } from 'react-icons/io5';
-import { PiEyeLight } from 'react-icons/pi';
+import { PiEyeLight, PiShoppingCartSimpleFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import headphoneImage from '../../assets/images/headphone.png';
@@ -53,6 +58,35 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
     }
   };
 
+  const shoppingCart = useAppSelector(useShoppingCartProducts);
+  const isHighlightedProductInShoppingCart = shoppingCart.find(
+    (item) => item?._id === newArrivalProducts[0]?._id
+  );
+
+  const shoppingCartHandler = (product: TProduct) => {
+    // check if product is already in shopping cart
+    const isProductInShoppingCart = shoppingCart.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInShoppingCart) {
+      dispatch(RemoveCartProductFromLocalState(product));
+      toast.success('Product removed from Shopping Cart', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInShoppingCart) {
+      dispatch(setCartProductsInLocalState(product));
+      toast.success('Product added in the Shopping Cart!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
+
   return (
     <div className="mt-14 lg:mt-20">
       <div className="header flex items-center mb-6">
@@ -75,7 +109,10 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
         <div className="col-span-12 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-4">
           {newArrivalProducts?.slice(1, 9)?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
-              (item) => item?._id === product?._id
+              (item: TProduct) => item?._id === product?._id
+            );
+            const isProductInShoppingCart = shoppingCart.find(
+              (item: TProduct) => item?._id === product?._id
             );
             return (
               <div
@@ -94,8 +131,15 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
                       >
                         {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                        <CiShoppingCart />
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                        onClick={() => shoppingCartHandler(product)}
+                      >
+                        {isProductInShoppingCart ? (
+                          <PiShoppingCartSimpleFill />
+                        ) : (
+                          <CiShoppingCart />
+                        )}
                       </button>
                       <Link to={`/product/${product?._id}`}>
                         <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
@@ -147,15 +191,24 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           <h5 className="text-graish text-sm mt-2 mb-2">
             {newArrivalProducts[0]?.description?.slice(0, 100)}
           </h5>
-          <div className="flex items-center space-x-2  lg:justify-around mt-4">
+          <div className="flex items-center space-x-1  lg:justify-around mt-4">
             <button
               className="bg-orange rounded-sm text-white py-2 text-lg px-3"
               onClick={() => wishListHandler(newArrivalProducts[0])}
             >
               {isHighlightedProductInWishList ? <IoHeart /> : <CiHeart />}
             </button>
-            <button className="bg-orange rounded-sm text-white py-2 text-sm px-3">
-              Add to cart
+            <button
+              className="bg-orange rounded-sm text-white py-[7px] text-sm px-3  flex justify-center items-center space-x-2 w-40 text-nowrap"
+              onClick={() => shoppingCartHandler(newArrivalProducts[0])}
+            >
+              {isHighlightedProductInShoppingCart ? (
+                <>
+                  <FaClipboardCheck /> <span>Added</span>
+                </>
+              ) : (
+                'Add to Cart'
+              )}
             </button>
             <Link to={`/product/${newArrivalProducts[0]?._id}`}>
               <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">

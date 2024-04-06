@@ -1,4 +1,5 @@
 import { useCurrentUser } from '@/redux/features/authSlice';
+import { useShoppingCartProducts } from '@/redux/features/shoppingCartSlice';
 import { useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useParams } from 'react-router-dom';
@@ -11,6 +12,8 @@ const ShoppingCart = () => {
   if (id !== currentUser._id) {
     return <NotFound />;
   }
+
+  const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
 
   return (
     <div className="main-container">

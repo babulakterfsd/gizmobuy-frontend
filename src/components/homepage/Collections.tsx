@@ -1,4 +1,9 @@
 import {
+  RemoveCartProductFromLocalState,
+  setCartProductsInLocalState,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import {
   RemoveWishedProductFromLocalState,
   setWishedProductsInLocalState,
   useWishedProducts,
@@ -8,7 +13,7 @@ import { TProduct } from '@/types/commonTypes';
 import { useState } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
 import { IoHeart } from 'react-icons/io5';
-import { PiEyeLight } from 'react-icons/pi';
+import { PiEyeLight, PiShoppingCartSimpleFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -50,6 +55,32 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
     }
   };
 
+  const shoppingCart = useAppSelector(useShoppingCartProducts);
+
+  const shoppingCartHandler = (product: TProduct) => {
+    // check if product is already in shopping cart
+    const isProductInShoppingCart = shoppingCart.find(
+      (item) => item?._id === product?._id
+    );
+
+    if (isProductInShoppingCart) {
+      dispatch(RemoveCartProductFromLocalState(product));
+      toast.success('Product removed from Shopping Cart', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+    }
+    if (!isProductInShoppingCart) {
+      dispatch(setCartProductsInLocalState(product));
+      toast.success('Product added in the Shopping Cart!', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '😍',
+      });
+    }
+  };
+
   return (
     <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 lg:px-12 gap-x-6 gap-y-10">
       {/* flash sale today */}
@@ -61,6 +92,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
           {flashSaleToday?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
               (item) => item?._id === product?._id
+            );
+            const isProductInShoppingCart = shoppingCart.find(
+              (item: TProduct) => item?._id === product?._id
             );
             return (
               <div
@@ -79,8 +113,15 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                       >
                         {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                        <CiShoppingCart />
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                        onClick={() => shoppingCartHandler(product)}
+                      >
+                        {isProductInShoppingCart ? (
+                          <PiShoppingCartSimpleFill />
+                        ) : (
+                          <CiShoppingCart />
+                        )}
                       </button>
                       <Link to={`/product/${product?._id}`}>
                         <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
@@ -114,7 +155,10 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {bestSellers?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
-              (item) => item?._id === product?._id
+              (item: TProduct) => item?._id === product?._id
+            );
+            const isProductInShoppingCart = shoppingCart.find(
+              (item: TProduct) => item?._id === product?._id
             );
             return (
               <div
@@ -133,8 +177,15 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                       >
                         {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                        <CiShoppingCart />
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                        onClick={() => shoppingCartHandler(product)}
+                      >
+                        {isProductInShoppingCart ? (
+                          <PiShoppingCartSimpleFill />
+                        ) : (
+                          <CiShoppingCart />
+                        )}
                       </button>
                       <Link to={`/product/${product?._id}`}>
                         <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
@@ -170,6 +221,9 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             const isProductInWishList = wishList.find(
               (item) => item?._id === product?._id
             );
+            const isProductInShoppingCart = shoppingCart.find(
+              (item: TProduct) => item?._id === product?._id
+            );
             return (
               <div
                 key={product?._id}
@@ -187,8 +241,15 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                       >
                         {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                        <CiShoppingCart />
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                        onClick={() => shoppingCartHandler(product)}
+                      >
+                        {isProductInShoppingCart ? (
+                          <PiShoppingCartSimpleFill />
+                        ) : (
+                          <CiShoppingCart />
+                        )}
                       </button>
                       <Link to={`/product/${product?._id}`}>
                         <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">
@@ -222,7 +283,10 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {newArrival?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
-              (item) => item?._id === product?._id
+              (item: TProduct) => item?._id === product?._id
+            );
+            const isProductInShoppingCart = shoppingCart.find(
+              (item: TProduct) => item?._id === product?._id
             );
             return (
               <div
@@ -241,8 +305,15 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                       >
                         {isProductInWishList ? <IoHeart /> : <CiHeart />}
                       </button>
-                      <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3">
-                        <CiShoppingCart />
+                      <button
+                        className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold mx-3"
+                        onClick={() => shoppingCartHandler(product)}
+                      >
+                        {isProductInShoppingCart ? (
+                          <PiShoppingCartSimpleFill />
+                        ) : (
+                          <CiShoppingCart />
+                        )}
                       </button>
                       <Link to={`/product/${product?._id}`}>
                         <button className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold">

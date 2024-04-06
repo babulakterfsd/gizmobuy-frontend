@@ -19,6 +19,10 @@ export type TWishListInitialState = {
   wishedProducts: TProduct[];
 };
 
+export type TShoppingCartInitialState = {
+  cartProducts: TProduct[];
+};
+
 export type TCurrentUser = {
   _id: string;
   name: string;

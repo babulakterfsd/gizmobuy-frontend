@@ -1,4 +1,8 @@
-import { TAuthInitialState, TWishListInitialState } from '../types/commonTypes';
+import {
+  TAuthInitialState,
+  TShoppingCartInitialState,
+  TWishListInitialState,
+} from '../types/commonTypes';
 
 export const authInitialState: TAuthInitialState = {
   user: null,
@@ -7,4 +11,8 @@ export const authInitialState: TAuthInitialState = {
 
 export const wishListInitialState: TWishListInitialState = {
   wishedProducts: [],
+};
+
+export const shoppingCartInitialState: TShoppingCartInitialState = {
+  cartProducts: [],
 };

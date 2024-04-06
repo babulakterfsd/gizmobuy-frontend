@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { baseApi } from './api/baseApi';
 import authReducer from './features/authSlice';
+import shoppingCartReducer from './features/shoppingCartSlice';
 import wishListReducer from './features/wishListSlice';
 
 const persistConfig = {
@@ -24,10 +25,19 @@ const persistConfigForWishList = {
   storage,
 };
 
+const persistConfigForShoppingCart = {
+  key: 'shoppingCart',
+  storage,
+};
+
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 const persistedWishListReducer = persistReducer(
   persistConfigForWishList,
   wishListReducer
+);
+const persistedShoppingCartReducer = persistReducer(
+  persistConfigForShoppingCart,
+  shoppingCartReducer
 );
 
 export const store = configureStore({
@@ -35,6 +45,7 @@ export const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
     wishList: persistedWishListReducer,
+    shoppingCart: persistedShoppingCartReducer,
   },
   //   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>

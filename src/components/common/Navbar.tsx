@@ -9,6 +9,7 @@ import {
   useCurrentToken,
   useCurrentUser,
 } from '@/redux/features/authSlice';
+import { useShoppingCartProducts } from '@/redux/features/shoppingCartSlice';
 import { useWishedProducts } from '@/redux/features/wishListSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
@@ -32,6 +33,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
   const wishedProducts = useAppSelector(useWishedProducts);
+  const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
 
   const token = useAppSelector(useCurrentToken);
   const dispatch = useAppDispatch();
@@ -134,10 +136,16 @@ const Navbar = () => {
               {/* cart */}
               <Link
                 to={token ? `/${currentUser?._id}/shopping-cart` : '/login'}
+                className="relative"
               >
                 <span className="text-xl md:text-2xl text-white cursor-pointer">
                   <BsCart2 />
                 </span>
+                {shoppingCartProducts?.length > 0 && (
+                  <span className="absolute -top-4 -right-2.5 bg-white p-1 rounded-full text-custom-black  h-5 w-5 text-xs font-semibold text-center">
+                    {shoppingCartProducts?.length}
+                  </span>
+                )}
               </Link>
               {/* wishlist */}
               <Link
