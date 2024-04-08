@@ -110,8 +110,8 @@ const ShoppingCart = () => {
                       >
                         {`$${product.price}`}
                       </td>
-                      <td className="lg:px-6 py-4 text-center">
-                        <div className="flex justify-around items-center border border-gray-200 py-[9px] px-2 w-16 md:w-28 rounded-md">
+                      <td className="lg:px-6 py-4 flex justify-center">
+                        <div className="flex justify-between items-center border border-gray-200 py-[9px] px-2 w-16 md:w-20 rounded-md">
                           <button
                             onClick={() =>
                               productQuantities[product._id] > 1
