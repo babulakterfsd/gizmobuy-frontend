@@ -71,18 +71,21 @@ const ShoppingCart = () => {
   return (
     <div>
       <ScrollToTop />
-      <div className="main-container">
-        <div className="lg:w-6/12 lg:mx-auto mt-8 shadow rounded-full px-3 py-2">
-          <Marquee pauseOnHover={true}>
-            <h4 className="ml-5 md:ml-3 lg:ml-2">
-              Apply coupon code{' '}
-              <span className="text-orange font-semibold">eid2024</span> to get{' '}
-              <span className="text-orange font-semibold">7% discount</span> on
-              your total purchase.
-            </h4>
-          </Marquee>
+      {shoppingCartProducts.length > 0 ? (
+        <div className="main-container">
+          <div className="lg:w-6/12 lg:mx-auto mt-8 shadow rounded-full px-3 py-2">
+            <Marquee pauseOnHover={true}>
+              <h4 className="ml-5 md:ml-3 lg:ml-2">
+                Apply coupon code{' '}
+                <span className="text-orange font-semibold">eid2024</span> to
+                get{' '}
+                <span className="text-orange font-semibold">7% discount</span>{' '}
+                on your total purchase.
+              </h4>
+            </Marquee>
+          </div>
         </div>
-      </div>
+      ) : null}
       <div className="main-container mt-12 md:mt-16 mb-8 lg:mb-20">
         {/* cart products */}
         {shoppingCartProducts.length > 0 ? (
