@@ -66,8 +66,8 @@ const WishList = () => {
       <ScrollToTop />
       <div className="main-container mt-24 md:mt-28 lg:px-36">
         {wishedProducts.length > 0 ? (
-          <div className="border border-gray-300 rounded">
-            <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6 border border-gray-300">
+          <div className="shadow rounded">
+            <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6">
               Wishlist
             </h4>
             <div className="relative overflow-x-auto">

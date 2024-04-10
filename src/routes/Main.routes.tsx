@@ -1,4 +1,5 @@
 import AboutUs from '@/pages/AboutUs';
+import Checkout from '@/pages/Checkout';
 import Faq from '@/pages/Faq';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
@@ -32,6 +33,14 @@ export const mainRoutePaths = [
     element: (
       <ProtectedRoute>
         <ShoppingCart />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/:id/check-out',
+    element: (
+      <ProtectedRoute>
+        <Checkout />
       </ProtectedRoute>
     ),
   },
