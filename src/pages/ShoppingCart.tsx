@@ -141,7 +141,7 @@ const ShoppingCart = () => {
                         >
                           {`$${product.price}`}
                         </td>
-                        <td className="lg:px-6 py-4 flex justify-center">
+                        <td className="lg:px-6 py-4 md:py-8 lg:py-4 flex justify-center">
                           <div className="flex justify-between items-center border border-gray-200 py-[9px] px-2 w-16 md:w-20 rounded-md">
                             <button
                               onClick={() =>
