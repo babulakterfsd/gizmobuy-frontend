@@ -29,7 +29,7 @@ import {
 } from 'react-icons/fa';
 import { IoHeart } from 'react-icons/io5';
 import { PiWarningDiamondThin } from 'react-icons/pi';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import paymentmethods from '../assets/images/Payment Method.png';
 import NotFound from './NotFound';
@@ -145,9 +145,21 @@ const ProductDetails = () => {
             <div className="flex items-center space-x-2 md:pr-24">
               <span className="text-gray-500">share product: </span>{' '}
               <div className="flex items-center space-x-2 md:space-x-3">
-                <FaFacebook className="text-blue-600 cursor-pointer" />
-                <FaTwitter className="text-blue-400 cursor-pointer" />
-                <FaWhatsapp className="text-green-400 cursor-pointer" />
+                <Link
+                  to={`https://facebook.com/babulakterfsd2`}
+                  target="_blank"
+                >
+                  <FaFacebook className="text-blue-600 cursor-pointer" />
+                </Link>
+                <Link to={`https://twitter.com/babulakterfsd`} target="_blank">
+                  <FaTwitter className="text-blue-400 cursor-pointer" />
+                </Link>
+                <Link
+                  to={`https://api.whatsapp.com/send?phone=8801740020464&text=Hello,%20Babul%20Akter`}
+                  target="_blank"
+                >
+                  <FaWhatsapp className="text-green-400 cursor-pointer" />
+                </Link>
               </div>
             </div>
           </div>
