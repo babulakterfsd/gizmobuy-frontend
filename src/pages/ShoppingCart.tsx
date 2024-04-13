@@ -21,6 +21,7 @@ const ShoppingCart = () => {
   const [subtotal, setSubtotal] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
+  const [couponToBeApplied, setCouponToBeApplied] = useState<string>('');
 
   if (id !== currentUser._id) {
     return <NotFound />;
@@ -54,6 +55,55 @@ const ShoppingCart = () => {
       ...prevQuantities,
       [productId]: quantity,
     }));
+  };
+
+  const coupons = [
+    {
+      code: 'eid2024',
+      discount: 7,
+    },
+    {
+      code: 'eid2025',
+      discount: 8,
+    },
+  ];
+
+  const calculateAppliedDiscount = (coupon: string) => {
+    // check if coupns array includes the coupon code that user entered
+    const appliedCoupon = coupons.find((c) => c.code === coupon);
+
+    if (appliedCoupon) {
+      if (discount !== 0) {
+        toast.error('You have already applied a coupon code', {
+          position: 'top-right',
+          duration: 1500,
+          icon: '🤔',
+        });
+        setCouponToBeApplied('');
+        return;
+      }
+
+      const totalDiscount = (subtotal * appliedCoupon.discount) / 100;
+      setDiscount(totalDiscount);
+      setTotal(subtotal - totalDiscount);
+      toast.success(
+        `Coupon ${appliedCoupon.code} applied successfully and you got ${appliedCoupon.discount}% discount.`,
+        {
+          position: 'top-right',
+          duration: 1500,
+          icon: '🤔',
+        }
+      );
+      setCouponToBeApplied('');
+    } else {
+      toast.error('Invalid coupon code', {
+        position: 'top-right',
+        duration: 1500,
+        icon: '🤔',
+      });
+      setCouponToBeApplied('');
+      return;
+    }
   };
 
   useEffect(() => {
@@ -262,8 +312,13 @@ const ShoppingCart = () => {
                     type="text"
                     placeholder="Enter your coupon code"
                     className="border border-gray-200 rounded py-2.5 px-3 text-sm focus:outline-none"
+                    value={couponToBeApplied}
+                    onChange={(e) => setCouponToBeApplied(e.target.value)}
                   />
-                  <button className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-[180px] text-center transition-all duration-300">
+                  <button
+                    className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-[180px] text-center transition-all duration-300"
+                    onClick={() => calculateAppliedDiscount(couponToBeApplied)}
+                  >
                     Apply Coupon
                   </button>
                 </div>
