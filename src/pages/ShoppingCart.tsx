@@ -15,6 +15,11 @@ import { Link, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import NotFound from './NotFound';
 
+interface ICoupons {
+  code: string;
+  discount: number;
+}
+
 const ShoppingCart = () => {
   const { id } = useParams<{ id: string }>();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
@@ -22,6 +27,7 @@ const ShoppingCart = () => {
   const [discount, setDiscount] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
   const [couponToBeApplied, setCouponToBeApplied] = useState<string>('');
+  const [appliedCoupon, setAppliedCoupon] = useState<string>('');
 
   if (id !== currentUser._id) {
     return <NotFound />;
@@ -107,16 +113,27 @@ const ShoppingCart = () => {
   };
 
   useEffect(() => {
+    const userAppliedCoupon = coupons.find((c) => c.code === appliedCoupon);
+    if (userAppliedCoupon) {
+      const totalDiscount = (subtotal * userAppliedCoupon.discount) / 100;
+      setDiscount(totalDiscount);
+      setTotal(subtotal - totalDiscount);
+    }
     let total = 0;
     shoppingCartProducts.forEach((product: TProduct) => {
       total += product.price * productQuantities[product._id];
     });
     setSubtotal(total);
-  }, [shoppingCartProducts, productQuantities]);
-
-  useEffect(() => {
     setTotal(subtotal - discount);
-  }, [subtotal, discount]);
+  }, [
+    shoppingCartProducts,
+    productQuantities,
+    subtotal,
+    discount,
+    total,
+    couponToBeApplied,
+    appliedCoupon,
+  ]);
 
   return (
     <div>
@@ -314,6 +331,7 @@ const ShoppingCart = () => {
                     className="border border-gray-200 rounded py-2.5 px-3 text-sm focus:outline-none"
                     value={couponToBeApplied}
                     onChange={(e) => setCouponToBeApplied(e.target.value)}
+                    onBlur={(e) => setAppliedCoupon(e.target.value)}
                   />
                   <button
                     className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-[180px] text-center transition-all duration-300"
