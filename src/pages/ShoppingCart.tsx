@@ -15,11 +15,6 @@ import { Link, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import NotFound from './NotFound';
 
-interface ICoupons {
-  code: string;
-  discount: number;
-}
-
 const ShoppingCart = () => {
   const { id } = useParams<{ id: string }>();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
