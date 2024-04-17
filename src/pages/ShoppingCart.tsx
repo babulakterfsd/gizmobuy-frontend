@@ -1,5 +1,6 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useCurrentUser } from '@/redux/features/authSlice';
+import { CalculateAmountToBePaid } from '@/redux/features/paymentSlice';
 import {
   RemoveCartProductFromLocalState,
   useShoppingCartProducts,
@@ -24,6 +25,17 @@ const ShoppingCart = () => {
   const [couponToBeApplied, setCouponToBeApplied] = useState<string>('');
   const [appliedCoupon, setAppliedCoupon] = useState<string>('');
 
+  const coupons = [
+    {
+      code: 'eid2024',
+      discount: 7,
+    },
+    {
+      code: 'eid2025',
+      discount: 8,
+    },
+  ];
+
   if (id !== currentUser._id) {
     return <NotFound />;
   }
@@ -44,7 +56,7 @@ const ShoppingCart = () => {
   }>(
     shoppingCartProducts.reduce<{ [productId: string]: number }>(
       (acc, product) => {
-        acc[product._id] = 1; // Initialize each product's quantity to 1
+        acc[product._id] = 1;
         return acc;
       },
       {}
@@ -57,17 +69,6 @@ const ShoppingCart = () => {
       [productId]: quantity,
     }));
   };
-
-  const coupons = [
-    {
-      code: 'eid2024',
-      discount: 7,
-    },
-    {
-      code: 'eid2025',
-      discount: 8,
-    },
-  ];
 
   const calculateAppliedDiscount = (coupon: string) => {
     // check if coupns array includes the coupon code that user entered
@@ -129,6 +130,23 @@ const ShoppingCart = () => {
     couponToBeApplied,
     appliedCoupon,
   ]);
+
+  useEffect(() => {
+    dispatch(
+      CalculateAmountToBePaid({
+        cartProducts: shoppingCartProducts.map((product) => ({
+          productId: product._id,
+          quantity: productQuantities[product._id],
+          productPrice: product.price,
+          billForThisProduct: product.price * productQuantities[product._id],
+        })),
+
+        appliedCoupon: appliedCoupon,
+        discount,
+        totalToBePaid: total,
+      })
+    );
+  }, [shoppingCartProducts, productQuantities, discount, total, appliedCoupon]);
 
   return (
     <div>

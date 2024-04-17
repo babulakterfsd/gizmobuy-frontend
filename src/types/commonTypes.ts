@@ -117,6 +117,13 @@ export type TProductSort = {
   sortOrder: string;
 };
 
+export type TPayment = {
+  cartProducts: [];
+  appliedCoupon: '';
+  discount: number;
+  totalToBePaid: number;
+};
+
 export type TProductCategories =
   | 'desktop'
   | 'laptop'

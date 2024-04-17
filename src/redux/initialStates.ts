@@ -1,5 +1,6 @@
 import {
   TAuthInitialState,
+  TPayment,
   TShoppingCartInitialState,
   TWishListInitialState,
 } from '../types/commonTypes';
@@ -15,4 +16,11 @@ export const wishListInitialState: TWishListInitialState = {
 
 export const shoppingCartInitialState: TShoppingCartInitialState = {
   cartProducts: [],
+};
+
+export const paymentInitialState: TPayment = {
+  cartProducts: [],
+  appliedCoupon: '',
+  discount: 0,
+  totalToBePaid: 0,
 };
