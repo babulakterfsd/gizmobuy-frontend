@@ -136,7 +136,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     dispatch(
       CalculateAmountToBePaid({
-        cartProducts: shoppingCartProducts.map((product) => ({
+        cartProducts: shoppingCartProducts.map((product: TProduct) => ({
           productId: product._id,
           quantity: productQuantities[product._id],
           productPrice: product.price,
@@ -147,7 +147,14 @@ const ShoppingCart = () => {
         totalToBePaid: total,
       })
     );
-  }, [shoppingCartProducts, productQuantities, discount, total, appliedCoupon]);
+  }, [
+    shoppingCartProducts,
+    productQuantities,
+    discount,
+    total,
+    appliedCoupon,
+    subtotal,
+  ]);
 
   return (
     <div>
