@@ -108,6 +108,7 @@ const ShoppingCart = () => {
     }
   };
 
+  // set subtotal, discount and total in local storage
   useEffect(() => {
     const userAppliedCoupon = coupons.find((c) => c.code === appliedCoupon);
     if (userAppliedCoupon) {
@@ -131,6 +132,7 @@ const ShoppingCart = () => {
     appliedCoupon,
   ]);
 
+  // set payment for checkout page
   useEffect(() => {
     dispatch(
       CalculateAmountToBePaid({
@@ -140,7 +142,6 @@ const ShoppingCart = () => {
           productPrice: product.price,
           billForThisProduct: product.price * productQuantities[product._id],
         })),
-
         appliedCoupon: appliedCoupon,
         discount,
         totalToBePaid: total,

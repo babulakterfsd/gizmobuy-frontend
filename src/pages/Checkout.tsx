@@ -12,9 +12,11 @@ const Checkout = () => {
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
   const payments = useAppSelector(usePaymentCalculation);
 
-  console.log('payments', payments);
-
-  if (id !== currentUser._id || shoppingCartProducts.length === 0) {
+  if (
+    id !== currentUser._id ||
+    shoppingCartProducts.length === 0 ||
+    payments?.cartProducts.length === 0
+  ) {
     return <NotFound />;
   }
 
