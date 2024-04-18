@@ -46,6 +46,7 @@ export type TProduct = {
   vendor: string;
   runningDiscount: number;
   releaseDate: string;
+  quantity?: number;
 };
 
 export type TProductWithVendorDetails = {
@@ -121,7 +122,17 @@ export type TPayment = {
   cartProducts: [];
   appliedCoupon: '';
   discount: number;
+  subtotal: number;
   totalToBePaid: number;
+};
+
+export type TPaymentProduct = {
+  productId: string;
+  productImage: string;
+  productTitle: string;
+  quantity: number;
+  productPrice: number;
+  billForThisProduct: number;
 };
 
 export type TProductCategories =

@@ -10,6 +10,7 @@ const paymentSlice = createSlice({
       state.cartProducts = action.payload.cartProducts;
       state.appliedCoupon = action.payload.appliedCoupon;
       state.discount = action.payload.discount;
+      state.subtotal = action.payload.subtotal;
       state.totalToBePaid = action.payload.totalToBePaid;
     },
   },

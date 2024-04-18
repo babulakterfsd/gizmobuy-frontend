@@ -138,12 +138,15 @@ const ShoppingCart = () => {
       CalculateAmountToBePaid({
         cartProducts: shoppingCartProducts.map((product: TProduct) => ({
           productId: product._id,
+          productImage: product.displayImage,
+          productTitle: product.title,
           quantity: productQuantities[product._id],
           productPrice: product.price,
           billForThisProduct: product.price * productQuantities[product._id],
         })),
         appliedCoupon: appliedCoupon,
         discount,
+        subtotal,
         totalToBePaid: total,
       })
     );
@@ -310,7 +313,7 @@ const ShoppingCart = () => {
                   <div className="flex justify-between items-center px-4 mt-2 pb-2">
                     <h5 className="text-sm text-pure-gray">Shipping</h5>
                     <h5 className="text-sm text-custom-black font-semibold">
-                      Free
+                      {`$0.00`}
                     </h5>
                   </div>
                   <div className="flex justify-between items-center px-4 mt-2 pb-2">

@@ -3,6 +3,7 @@ import Checkout from '@/pages/Checkout';
 import Faq from '@/pages/Faq';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
+import OrderSuccess from '@/pages/OrderSuccess';
 import ProductDetails from '@/pages/ProductDetails';
 import Shop from '@/pages/Shop';
 import ShoppingCart from '@/pages/ShoppingCart';
@@ -41,6 +42,14 @@ export const mainRoutePaths = [
     element: (
       <ProtectedRoute>
         <Checkout />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/:id/order-success',
+    element: (
+      <ProtectedRoute>
+        <OrderSuccess />
       </ProtectedRoute>
     ),
   },

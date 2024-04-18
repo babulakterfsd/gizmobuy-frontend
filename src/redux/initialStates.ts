@@ -22,5 +22,6 @@ export const paymentInitialState: TPayment = {
   cartProducts: [],
   appliedCoupon: '',
   discount: 0,
+  subtotal: 0,
   totalToBePaid: 0,
 };
