@@ -1,8 +1,14 @@
 import ScrollToTop from '@/components/ui/ToTop';
 import { useCurrentUser } from '@/redux/features/authSlice';
-import { usePaymentCalculation } from '@/redux/features/paymentSlice';
-import { useShoppingCartProducts } from '@/redux/features/shoppingCartSlice';
-import { useAppSelector } from '@/redux/hook';
+import {
+  ClearPaymentInfoAfterMakingOrder,
+  usePaymentCalculation,
+} from '@/redux/features/paymentSlice';
+import {
+  MakeShoppingCartEmpty,
+  useShoppingCartProducts,
+} from '@/redux/features/shoppingCartSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser, TPaymentProduct } from '@/types/commonTypes';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,6 +21,7 @@ const Checkout = () => {
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
   const payments = useAppSelector(usePaymentCalculation);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   if (
     id !== currentUser._id ||
@@ -30,6 +37,9 @@ const Checkout = () => {
       duration: 3000,
       icon: '🚀',
     });
+
+    dispatch(ClearPaymentInfoAfterMakingOrder());
+    dispatch(MakeShoppingCartEmpty());
 
     navigate(`/${currentUser?._id}/order-success`);
   };

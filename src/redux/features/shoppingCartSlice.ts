@@ -26,11 +26,18 @@ const shoppingCartSlice = createSlice({
         (product) => product?._id !== cartProduct?._id
       );
     },
+
+    MakeShoppingCartEmpty: (state) => {
+      state.cartProducts = [];
+    },
   },
 });
 
-export const { setCartProductsInLocalState, RemoveCartProductFromLocalState } =
-  shoppingCartSlice.actions;
+export const {
+  setCartProductsInLocalState,
+  RemoveCartProductFromLocalState,
+  MakeShoppingCartEmpty,
+} = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;
 
 export const useShoppingCartProducts = (state: RootState) =>
