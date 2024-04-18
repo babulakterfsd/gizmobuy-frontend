@@ -352,11 +352,13 @@ const ShoppingCart = () => {
                     className="border border-gray-200 rounded py-2.5 px-3 text-sm focus:outline-none"
                     value={couponToBeApplied}
                     onChange={(e) => setCouponToBeApplied(e.target.value)}
-                    onBlur={(e) => setAppliedCoupon(e.target.value)}
                   />
                   <button
                     className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-[180px] text-center transition-all duration-300"
-                    onClick={() => calculateAppliedDiscount(couponToBeApplied)}
+                    onClick={() => {
+                      calculateAppliedDiscount(couponToBeApplied);
+                      setAppliedCoupon(couponToBeApplied);
+                    }}
                   >
                     Apply Coupon
                   </button>
