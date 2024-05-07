@@ -10,18 +10,26 @@ import {
 } from '@/redux/features/shoppingCartSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser, TPaymentProduct } from '@/types/commonTypes';
+import { useState } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import NotFound from './NotFound';
 
 const Checkout = () => {
+  const [billingInfoName, setBillingInfoName] = useState('');
+  const [billingInfoEmail, setBillingInfoEmail] = useState('');
+  const [shippingInfoName, setShippingInfoName] = useState('');
+  const [shippingInfoEmail, setShippingInfoEmail] = useState('');
+
   const { id } = useParams<{ id: string }>();
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
   const payments = useAppSelector(usePaymentCalculation);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  console.log('hello');
 
   if (
     id !== currentUser._id ||

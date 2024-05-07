@@ -27,12 +27,12 @@ const ShoppingCart = () => {
 
   const coupons = [
     {
-      code: 'eid2024',
+      code: 'eid2025',
       discount: 7,
     },
     {
-      code: 'eid2025',
-      discount: 8,
+      code: 'blackfriday2025',
+      discount: 13,
     },
   ];
 
@@ -166,13 +166,21 @@ const ShoppingCart = () => {
         <div className="main-container">
           <div className="lg:w-6/12 lg:mx-auto mt-8 shadow rounded-full px-3 py-2">
             <Marquee pauseOnHover={true}>
-              <h4 className="ml-5 md:ml-3 lg:ml-2">
-                Apply coupon code{' '}
-                <span className="text-orange font-semibold">eid2024</span> to
-                get{' '}
-                <span className="text-orange font-semibold">7% discount</span>{' '}
-                on your total purchase.
-              </h4>
+              {coupons.map((coupon) => {
+                return (
+                  <h4 className="ml-5 md:ml-3 lg:ml-2 mr-10 lg:mr-20">
+                    Apply coupon code{' '}
+                    <span className="text-orange font-semibold">
+                      {coupon.code}
+                    </span>{' '}
+                    to get{' '}
+                    <span className="text-orange font-semibold">
+                      {coupon.discount}% discount
+                    </span>{' '}
+                    on your total purchase.
+                  </h4>
+                );
+              })}
             </Marquee>
           </div>
         </div>
