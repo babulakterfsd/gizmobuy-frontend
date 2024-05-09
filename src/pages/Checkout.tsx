@@ -29,8 +29,6 @@ const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  console.log('hello');
-
   if (
     id !== currentUser._id ||
     shoppingCartProducts.length === 0 ||
