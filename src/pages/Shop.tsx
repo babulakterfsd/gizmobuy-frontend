@@ -496,7 +496,11 @@ const Shop = () => {
               </div>
             </div>
             {/* banner ad */}
-            <div className="border-2 border-orange-300 px-2 py-8 w-4/5 hidden lg:flex flex-col justify-center items-center md:col-span-12">
+            <div
+              className={`border-2 border-orange-300 px-2 py-8 w-4/5 hidden  flex-col justify-center items-center md:col-span-12 ${
+                products?.length < 12 ? '' : 'lg:flex'
+              }`}
+            >
               <img
                 src={bannerWatch}
                 alt="banner"
