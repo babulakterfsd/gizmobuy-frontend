@@ -25,7 +25,7 @@ const Login = () => {
   const token = useAppSelector(useCurrentToken);
 
   const handleGoogleLogin = () => {
-    toast.error('Login with Google is not implemented yet', {
+    toast.error('Login with Google will be implemented soon !', {
       position: 'top-right',
       icon: '😢',
       duration: 1500,

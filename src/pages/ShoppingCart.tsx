@@ -168,7 +168,10 @@ const ShoppingCart = () => {
             <Marquee pauseOnHover={true}>
               {coupons.map((coupon) => {
                 return (
-                  <h4 className="ml-5 md:ml-3 lg:ml-2 mr-10 lg:mr-20">
+                  <h4
+                    key={coupon.code}
+                    className="ml-5 md:ml-3 lg:ml-2 mr-10 lg:mr-20"
+                  >
                     Apply coupon code{' '}
                     <span className="text-orange font-semibold">
                       {coupon.code}
