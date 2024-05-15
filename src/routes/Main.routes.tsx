@@ -3,6 +3,8 @@ import Checkout from '@/pages/Checkout';
 import Faq from '@/pages/Faq';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
+import OrderCancel from '@/pages/OrderCancel';
+import OrderFail from '@/pages/OrderFail';
 import OrderSuccess from '@/pages/OrderSuccess';
 import ProductDetails from '@/pages/ProductDetails';
 import Shop from '@/pages/Shop';
@@ -46,10 +48,26 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/:id/order-success',
+    path: '/order-success',
     element: (
       <ProtectedRoute>
         <OrderSuccess />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/order-fail',
+    element: (
+      <ProtectedRoute>
+        <OrderFail />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/order-cancel',
+    element: (
+      <ProtectedRoute>
+        <OrderCancel />
       </ProtectedRoute>
     ),
   },

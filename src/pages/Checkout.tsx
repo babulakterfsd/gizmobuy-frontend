@@ -14,7 +14,7 @@ import { TCurrentUser, TPaymentProduct } from '@/types/commonTypes';
 import { useCreateOrderMutation } from '@/redux/api/orderApi';
 import { useState } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import NotFound from './NotFound';
 
@@ -41,9 +41,12 @@ const Checkout = () => {
   const currentUser = useAppSelector(useCurrentUser) as TCurrentUser;
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
   const payments = useAppSelector(usePaymentCalculation);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [createOrder] = useCreateOrderMutation();
+
+  const generatedOrderId = `${Math.floor(
+    Math.random() * 999
+  )}${currentUser?.email.slice(0, 7)}${Date.now().toString().slice(7, 11)}`;
 
   if (
     id !== currentUser._id ||
@@ -73,6 +76,8 @@ const Checkout = () => {
     } else {
       setLoading(true);
       orderData = {
+        orderId: generatedOrderId,
+        customerName: currentUser.name,
         orderBy: currentUser.email,
         products: payments.cartProducts.map((product: TPaymentProduct) => {
           return {
@@ -99,12 +104,8 @@ const Checkout = () => {
 
     const response = await createOrder(orderData).unwrap();
 
-    if (response?.statusCode === 201) {
-      toast.success('Your order has been placed successfully!', {
-        position: 'top-right',
-        duration: 3000,
-        icon: '🚀',
-      });
+    if (response?.data) {
+      window.location.replace(response.data);
       setAinfo('');
       setAddress('');
       setCity('');
@@ -114,11 +115,8 @@ const Checkout = () => {
       setState('');
       setMobile('');
       setLoading(false);
-
       dispatch(ClearPaymentInfoAfterMakingOrder());
       dispatch(MakeShoppingCartEmpty());
-
-      navigate(`/${currentUser?._id}/order-success`);
     } else {
       toast.error('Failed to place order. Please try again!', {
         position: 'top-right',
@@ -299,11 +297,13 @@ const Checkout = () => {
             <h4 className="text-custom-black font-semibold pt-3 mt-8 md:mt-10 lg:mt-14">
               Payment Info
             </h4>
-            <p className="text-sm text-offgray mb-3">
-              (Currently we only support SSLCommerz payment gateway. It is 110%
-              secured and trusted by millions of users. You can pay with your
-              credit card, debit card, mobile banking, and more options through
-              SSLCommerz.)
+            <p className="text-sm text-red-400 font-bold mb-3">
+              ( Its's a test project and payment is not real. So, some payment
+              features may not work properly as sslcommerz provides only sandbox
+              features for free.When you click on the 'place order' button, the
+              order gets placed, doesn't matter if you pay, cancel or it fails.
+              When we will buy their paid service, we will implment the payment
+              gateway properly. Thank you for understanding. )
             </p>
             <form className="mb-10">
               <input
