@@ -261,7 +261,10 @@ const ProductDetails = () => {
 
             {/* buy now button */}
             <div>
-              <button className="border border-orange-400 py-2 px-4 rounded text-white font-semibold text-orange hover:bg-orange-400 hover:text-white transition-all duration-300">
+              <button
+                className="border border-orange-400 py-2 px-4 rounded text-white font-semibold text-orange hover:bg-orange-400 hover:text-white transition-all duration-300 disabled:cursor-not-allowed"
+                disabled={true}
+              >
                 Buy Now
               </button>
             </div>

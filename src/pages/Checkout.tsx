@@ -298,12 +298,11 @@ const Checkout = () => {
               Payment Info
             </h4>
             <p className="text-sm text-red-400 font-bold mb-3">
-              ( Its's a test project and payment is not real. So, some payment
-              features may not work properly as sslcommerz provides only sandbox
-              features for free.When you click on the 'place order' button, the
-              order gets placed, doesn't matter if you pay, cancel or it fails.
-              When we will buy their paid service, we will implment the payment
-              gateway properly. Thank you for understanding. )
+              (I am using free tier of sslcommerz payment gateway as it's a
+              personal project. There is some limitation of it, like user have
+              to click on 'success' button to pay. When it will be paid project,
+              I will use paid tier of sslcommerz and everything will work like a
+              charm. Thanks for understanding.)
             </p>
             <form className="mb-10">
               <input
