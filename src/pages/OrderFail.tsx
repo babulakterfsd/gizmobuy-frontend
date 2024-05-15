@@ -27,8 +27,12 @@ const OrderFail = () => {
             Something went wrong!
           </h3>
           <p className="text-offgray text-sm md:w-7/12 lg:w-5/12 text-center mt-2">
-            Something went wrong while processing your order. Please try again
-            later. If the problem persists, please contact our support team.
+            Something went wrong while processing your order.{' '}
+            <span className="font-semibold text-red-400 text-sm">
+              Maybe you pressed 'Fail' while paying through sslcommerz.
+            </span>{' '}
+            Please try again later. If the problem persists, please contact our
+            support team.
           </p>
           <Link to={`/`}>
             <button className="py-2 lg:py-2.5 px-3 lg:px-6 rounded text-orange-400 font-semibold flex items-center justify-center gap-x-2 w-full mt-6 text-center text-nowrap border-2 border-orange-400 hover:bg-orange-400 hover:text-white transition-all duration-300">
