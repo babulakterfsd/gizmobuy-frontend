@@ -1,3 +1,4 @@
+import { useGetProfileQuery } from '@/redux/api/authApi';
 import {
   setUserInLocalState,
   useCurrentUser,
@@ -5,10 +6,11 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
-import { FaUserTie } from 'react-icons/fa';
+import { GrWorkshop } from 'react-icons/gr';
+import { HiOutlineDocumentReport } from 'react-icons/hi';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
-import { LiaSitemapSolid } from 'react-icons/lia';
 import { RxCross2 } from 'react-icons/rx';
+import { TbShoppingBagEdit } from 'react-icons/tb';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
 import logo from '../../assets/images/logo.png';
@@ -20,6 +22,9 @@ const VendorDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeDashboardRoute, setActiveDashboardRoute] = useState('');
   const dispatch = useAppDispatch();
+
+  const { data } = useGetProfileQuery(undefined);
+  const userProfile = data?.data;
 
   useEffect(() => {
     if (role !== 'vendor') {
@@ -99,13 +104,13 @@ const VendorDashboard = () => {
             onClick={() => setActiveDashboardRoute('overview')}
           >
             <div
-              className="flex justify-center items-center space-x-1 hover:cursor-pointer"
+              className="flex justify-start items-center space-x-1 hover:cursor-pointer"
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
               <img
                 src={logo}
                 alt="logo"
-                className="h-6 lg:h-12 w-6 lg:w-12 lg:mt-6 object-contain"
+                className="h-6 lg:h-7 w-6 lg:w-7 lg:ml-2 lg:mt-6 object-contain"
               />
 
               <h3
@@ -126,14 +131,18 @@ const VendorDashboard = () => {
           <ul className="font-medium lg:mt-12">
             <Link
               to="/dashboard/vendor/profile"
-              className={` lg:hidden flex ml-1 lg:ml-0 items-center space-x-2 mb-4 hover:text-orange-400 transition-all duration-300 ease-in-out rounded-md py-2.5 px-3 ${
+              className={` lg:hidden flex items-center space-x-2 mb-4 hover:text-orange-400 transition-all duration-300 ease-in-out rounded-md py-2.5 px-3 md:mt-6 ${
                 activeDashboardRoute === 'profile'
                   ? 'bg-orange text-white'
                   : 'bg-none text-offgray'
               }`}
               onClick={profileClickHandler}
             >
-              <FaUserTie />
+              <img
+                src={userProfile?.profileImage}
+                alt="profile"
+                className="w-8 h-8 rounded-full"
+              />
               <li className="">{` ${name}`}</li>
             </Link>
             <hr className="mt-2 lg:hidden" />
@@ -151,7 +160,7 @@ const VendorDashboard = () => {
                   className="flex items-center space-x-2"
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                  <LiaSitemapSolid />
+                  <TbShoppingBagEdit className="text-xl" />
                   <span>Manage Products</span>
                 </div>
               </Link>
@@ -170,7 +179,7 @@ const VendorDashboard = () => {
                   className="flex items-center space-x-2"
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                  <LiaSitemapSolid />
+                  <GrWorkshop className="text-lg text-orange" />
                   <span>Manage Orders</span>
                 </div>
               </Link>
@@ -189,7 +198,7 @@ const VendorDashboard = () => {
                   className="flex items-center space-x-2"
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                  <LiaSitemapSolid />
+                  <HiOutlineDocumentReport className="text-xl text-deep-yellow" />
                   <span>Sells Report</span>
                 </div>
               </Link>
@@ -242,8 +251,12 @@ const VendorDashboard = () => {
             }`}
             onClick={profileClickHandler}
           >
-            <FaUserTie />
-            <li className="list-none text-md font-semibold">{` ${name}`}</li>
+            <img
+              src={userProfile?.profileImage}
+              alt="profile"
+              className="w-8 h-8 rounded-full"
+            />
+            <li className="list-none text-md">{` ${name}`}</li>
           </Link>
         </div>
         <Outlet />

@@ -57,6 +57,18 @@ const Checkout = () => {
   }
 
   const handlePayment = async (data: any) => {
+    if (currentUser?.role !== 'customer') {
+      toast.error(
+        'You are not authorized to place order. Please login with customer account.',
+        {
+          position: 'top-right',
+          icon: '🚫',
+          duration: 3000,
+        }
+      );
+      return;
+    }
+
     let orderData = {};
 
     if (
