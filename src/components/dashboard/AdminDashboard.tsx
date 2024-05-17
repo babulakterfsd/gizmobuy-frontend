@@ -8,11 +8,9 @@ import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { FaUserTie } from 'react-icons/fa';
 import { FcShop } from 'react-icons/fc';
-import { GrWorkshop } from 'react-icons/gr';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
-import { TbShoppingBagEdit } from 'react-icons/tb';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
 import logo from '../../assets/images/logo.png';
@@ -156,25 +154,6 @@ const AdminDashboard = () => {
               <li className="">{` ${name}`}</li>
             </Link>
             <hr className="mt-2 lg:hidden" />
-            <li>
-              <Link
-                to={`/dashboard/admin/manage-products`}
-                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
-                  activeDashboardRoute === 'productmanagement'
-                    ? 'bg-orange text-white'
-                    : 'bg-none text-offgray'
-                }`}
-                onClick={() => setActiveDashboardRoute('productmanagement')}
-              >
-                <div
-                  className="flex items-center space-x-2"
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                  <TbShoppingBagEdit className="text-xl" />
-                  <span>Manage Products</span>
-                </div>
-              </Link>
-            </li>
             <li className="my-2">
               <Link
                 to="/dashboard/admin/manage-vendors"
@@ -210,25 +189,6 @@ const AdminDashboard = () => {
                 >
                   <FaUserTie className="text-lg text-bluish" />
                   <span>Manage Customers</span>
-                </div>
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to="/dashboard/admin/manage-orders"
-                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
-                  activeDashboardRoute === 'ordermanagement'
-                    ? 'bg-orange text-white'
-                    : 'bg-none text-offgray'
-                }`}
-                onClick={() => setActiveDashboardRoute('ordermanagement')}
-              >
-                <div
-                  className="flex items-center space-x-2"
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                  <GrWorkshop className="text-lg text-orange" />
-                  <span>Manage Orders</span>
                 </div>
               </Link>
             </li>

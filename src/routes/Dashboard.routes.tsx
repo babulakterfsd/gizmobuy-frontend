@@ -1,7 +1,5 @@
 import AdminOverview from '@/components/dashboard/admincomponents/AdminOverview';
 import AdminProfile from '@/components/dashboard/admincomponents/AdminProfile';
-import ManageOrders from '@/components/dashboard/admincomponents/ManageOrders';
-import ManageProducts from '@/components/dashboard/admincomponents/ManageProducts';
 import ManageVendors from '@/components/dashboard/admincomponents/ManageVendors';
 import ManageCustomers from '@/components/dashboard/admincomponents/MangeCustomers';
 import SellsReport from '@/components/dashboard/admincomponents/SellsReport';
@@ -23,10 +21,8 @@ export const dashboardRoutePaths = [
   },
   { path: 'admin/profile', element: <AdminProfile /> },
   { path: 'admin/overview', element: <AdminOverview /> },
-  { path: 'admin/manage-products', element: <ManageProducts /> },
   { path: 'admin/manage-vendors', element: <ManageVendors /> },
   { path: 'admin/manage-customers', element: <ManageCustomers /> },
-  { path: 'admin/manage-orders', element: <ManageOrders /> },
   { path: 'admin/sells-report', element: <SellsReport /> },
   {
     /* vendor routes */
