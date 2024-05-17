@@ -274,7 +274,7 @@ const CustomerProfile = () => {
         added.
       </p>
       <div className="mt-16 md:mt-20 lg:mt-24">
-        <div className="h-60 w-11/12 md:w-10/12 lg:w-5/12 mx-auto py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center relative">
+        <div className="w-11/12 md:w-10/12 lg:w-5/12 mx-auto py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center relative">
           {isLoading ? (
             <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-red-300"></div>
           ) : (
