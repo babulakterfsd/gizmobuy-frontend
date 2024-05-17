@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { GrWorkshop } from 'react-icons/gr';
-import { HiOutlineDocumentReport } from 'react-icons/hi';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { TbShoppingBagEdit } from 'react-icons/tb';
@@ -184,26 +183,6 @@ const VendorDashboard = () => {
                 </div>
               </Link>
             </li>
-            <li className="my-2">
-              <Link
-                to="/dashboard/vendor/sells-report"
-                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
-                  activeDashboardRoute === 'sellsreport'
-                    ? 'bg-orange text-white'
-                    : 'bg-none text-offgray'
-                }`}
-                onClick={() => setActiveDashboardRoute('sellsreport')}
-              >
-                <div
-                  className="flex items-center space-x-2"
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                  <HiOutlineDocumentReport className="text-xl text-deep-yellow" />
-                  <span>Sells Report</span>
-                </div>
-              </Link>
-            </li>
-
             <div className="absolute bottom-20 sm:bottom-10">
               <li>
                 <Link

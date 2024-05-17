@@ -9,7 +9,6 @@ import CustomerProfile from '@/components/dashboard/customercomponents/CustomerP
 import MyOrders from '@/components/dashboard/customercomponents/MyOrders';
 import VendorManageOrders from '@/components/dashboard/vendorcomponents/ManageOrders';
 import VendorManageProducts from '@/components/dashboard/vendorcomponents/ManageProducts';
-import VendorsSellsReport from '@/components/dashboard/vendorcomponents/SellsReport';
 import VendorOverview from '@/components/dashboard/vendorcomponents/VendorOverview';
 import VendorProfile from '@/components/dashboard/vendorcomponents/VendorProfile';
 import NotFound from '@/pages/NotFound';
@@ -31,7 +30,6 @@ export const dashboardRoutePaths = [
   { path: 'vendor/overview', element: <VendorOverview /> },
   { path: 'vendor/manage-products', element: <VendorManageProducts /> },
   { path: 'vendor/manage-orders', element: <VendorManageOrders /> },
-  { path: 'vendor/sells-report', element: <VendorsSellsReport /> },
   {
     /* customer routes */
   },
