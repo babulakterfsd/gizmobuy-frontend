@@ -50,6 +50,33 @@ const authApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['user'],
     }),
+    getAdminOverviewMetaData: builder.query({
+      query: () => {
+        return {
+          url: '/auth/getadminoverviewdata',
+          method: 'GET',
+        };
+      },
+      providesTags: ['user'],
+    }),
+    getVendorOverviewMetaData: builder.query({
+      query: () => {
+        return {
+          url: '/auth/getvendoroverviewdata',
+          method: 'GET',
+        };
+      },
+      providesTags: ['user'],
+    }),
+    getCustomerOverviewMetaData: builder.query({
+      query: () => {
+        return {
+          url: '/auth/getcustomeroverviewdata',
+          method: 'GET',
+        };
+      },
+      providesTags: ['user'],
+    }),
   }),
 });
 
@@ -59,4 +86,7 @@ export const {
   useGetProfileQuery,
   useChangePasswordMutation,
   useUpdateProfileMutation,
+  useGetAdminOverviewMetaDataQuery,
+  useGetVendorOverviewMetaDataQuery,
+  useGetCustomerOverviewMetaDataQuery,
 } = authApi;
