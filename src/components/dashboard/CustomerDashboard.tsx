@@ -7,12 +7,12 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
 import { AiOutlineHistory } from 'react-icons/ai';
-import { FaUserTie } from 'react-icons/fa';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { TbShoppingBagEdit } from 'react-icons/tb';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
+import demoUserImage from '../../assets/images/babul.png';
 import logo from '../../assets/images/logo.png';
 import ScrollToTop from '../ui/ToTop';
 
@@ -61,6 +61,8 @@ const CustomerDashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setActiveDashboardRoute('profile');
   };
+
+  const userImage = userProfile?.profileImage || demoUserImage;
 
   return (
     <div>
@@ -136,15 +138,11 @@ const CustomerDashboard = () => {
               }`}
               onClick={profileClickHandler}
             >
-              {userProfile?.profileImage ? (
-                <img
-                  src={userProfile?.profileImage}
-                  alt="profile"
-                  className="w-8 h-8 rounded-full"
-                />
-              ) : (
-                <FaUserTie />
-              )}
+              <img
+                src={userImage}
+                alt="profile"
+                className="w-8 h-8 rounded-full"
+              />
               <li className="">{` ${name}`}</li>
             </Link>
             <hr className="mt-2 lg:hidden" />
@@ -234,15 +232,11 @@ const CustomerDashboard = () => {
             }`}
             onClick={profileClickHandler}
           >
-            {userProfile?.profileImage ? (
-              <img
-                src={userProfile?.profileImage}
-                alt="profile"
-                className="w-8 h-8 rounded-full"
-              />
-            ) : (
-              <FaUserTie />
-            )}
+            <img
+              src={userImage}
+              alt="profile"
+              className="w-8 h-8 rounded-full"
+            />
             <li className="list-none text-md">{` ${name}`}</li>
           </Link>
         </div>

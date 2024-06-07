@@ -5,7 +5,7 @@ import {
   useGetProfileQuery,
   useUpdateProfileMutation,
 } from '@/redux/api/authApi';
-import { FaUserTie } from 'react-icons/fa';
+import demoUserImage from '../../../assets/images/babul.png';
 
 import {
   DropdownMenu,
@@ -284,11 +284,9 @@ const VendorProfile = () => {
               </div>
               <img
                 src={
-                  userProfileFromDb?.profileImage ? (
-                    userProfileFromDb?.profileImage
-                  ) : (
-                    <FaUserTie />
-                  )
+                  userProfileFromDb?.profileImage
+                    ? userProfileFromDb?.profileImage
+                    : demoUserImage
                 }
                 alt={userProfileFromDb?.name}
                 className="h-20 w-20 rounded-full object-cover"
@@ -300,18 +298,28 @@ const VendorProfile = () => {
               <h3 className="text-sm mt-0.5">
                 {userProfileFromDb?.address?.mobile}
               </h3>
-              <div className="text-sm mt-4 text-center">
-                <span>{userProfileFromDb?.address?.address}</span>
-                {','}
-                <span>{userProfileFromDb?.address?.postalCode}</span> <br />
-                <span>
-                  {userProfileFromDb?.address?.city}
+              {userProfileFromDb?.address?.address &&
+              userProfileFromDb?.address?.city &&
+              userProfileFromDb?.address?.state &&
+              userProfileFromDb?.address?.country &&
+              userProfileFromDb?.address?.postalCode ? (
+                <div className="text-sm mt-4 text-center">
+                  <span>{userProfileFromDb?.address?.address}</span>
                   {','}
-                  {userProfileFromDb?.address?.state}
-                  {','}
-                  {userProfileFromDb?.address?.country}
+                  <span>{userProfileFromDb?.address?.postalCode}</span> <br />
+                  <span>
+                    {userProfileFromDb?.address?.city}
+                    {','}
+                    {userProfileFromDb?.address?.state}
+                    {','}
+                    {userProfileFromDb?.address?.country}
+                  </span>
+                </div>
+              ) : (
+                <span className="text-red-400 text-sm mt-3">
+                  Please update your address and other info !
                 </span>
-              </div>
+              )}
             </>
           )}
           <div

@@ -5,7 +5,6 @@ import {
   useGetProfileQuery,
   useUpdateProfileMutation,
 } from '@/redux/api/authApi';
-import { FaUserTie } from 'react-icons/fa';
 
 import {
   DropdownMenu,
@@ -18,6 +17,7 @@ import { CiEdit } from 'react-icons/ci';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'sonner';
+import demoUserImage from '../../../assets/images/babul.png';
 
 const CustomerProfile = () => {
   CheckRoleAndLogout('customer');
@@ -259,6 +259,8 @@ const CustomerProfile = () => {
     }
   };
 
+  const userImage = userProfileFromDb?.profileImage || demoUserImage;
+
   if (isLoading) {
     return <Loader />;
   }
@@ -283,13 +285,7 @@ const CustomerProfile = () => {
                 {userProfileFromDb?.role}
               </div>
               <img
-                src={
-                  userProfileFromDb?.profileImage ? (
-                    userProfileFromDb?.profileImage
-                  ) : (
-                    <FaUserTie />
-                  )
-                }
+                src={userImage}
                 alt={userProfileFromDb?.name}
                 className="h-20 w-20 rounded-full object-cover"
               />
@@ -300,18 +296,28 @@ const CustomerProfile = () => {
               <h3 className="text-sm mt-0.5">
                 {userProfileFromDb?.address?.mobile}
               </h3>
-              <div className="text-sm mt-4 text-center">
-                <span>{userProfileFromDb?.address?.address}</span>
-                {','}
-                <span>{userProfileFromDb?.address?.postalCode}</span> <br />
-                <span>
-                  {userProfileFromDb?.address?.city}
+              {userProfileFromDb?.address?.address &&
+              userProfileFromDb?.address?.city &&
+              userProfileFromDb?.address?.state &&
+              userProfileFromDb?.address?.country &&
+              userProfileFromDb?.address?.postalCode ? (
+                <div className="text-sm mt-4 text-center">
+                  <span>{userProfileFromDb?.address?.address}</span>
                   {','}
-                  {userProfileFromDb?.address?.state}
-                  {','}
-                  {userProfileFromDb?.address?.country}
+                  <span>{userProfileFromDb?.address?.postalCode}</span> <br />
+                  <span>
+                    {userProfileFromDb?.address?.city}
+                    {','}
+                    {userProfileFromDb?.address?.state}
+                    {','}
+                    {userProfileFromDb?.address?.country}
+                  </span>
+                </div>
+              ) : (
+                <span className="text-red-400 text-sm text-center mt-3">
+                  This customer didn't update his details yet
                 </span>
-              </div>
+              )}
             </>
           )}
           <div
@@ -409,7 +415,10 @@ const CustomerProfile = () => {
                               name="Address"
                               id="Address"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.address}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.address ||
+                                'Jinjirtala'
+                              }`}
                               onChange={(e) => setUserAddress(e.target.value)}
                             />
                           </div>
@@ -427,7 +436,9 @@ const CustomerProfile = () => {
                               name="city"
                               id="city"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.city}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.city || 'Dhunat'
+                              }`}
                               onChange={(e) => setUserCity(e.target.value)}
                             />
                           </div>
@@ -445,7 +456,9 @@ const CustomerProfile = () => {
                               name="state"
                               id="state"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.state}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.state || 'Bogura'
+                              }`}
                               onChange={(e) => setUserState(e.target.value)}
                             />
                           </div>
@@ -463,7 +476,10 @@ const CustomerProfile = () => {
                               name="country"
                               id="country"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.country}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.country ||
+                                'Bangladesh'
+                              }`}
                               onChange={(e) => setUserCountry(e.target.value)}
                             />
                           </div>
@@ -481,7 +497,9 @@ const CustomerProfile = () => {
                               name="postalCode"
                               id="postalCode"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.postalCode}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.postalCode || '5850'
+                              }`}
                               onChange={(e) =>
                                 setUserPostalCode(e.target.value)
                               }
@@ -501,7 +519,10 @@ const CustomerProfile = () => {
                               name="mobile"
                               id="mobile"
                               className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                              placeholder={`e.g. ${userProfileFromDb?.address?.mobile}`}
+                              placeholder={`e.g. ${
+                                userProfileFromDb?.address?.mobile ||
+                                '01740020464'
+                              }`}
                               onChange={(e) => setUserMobile(e.target.value)}
                             />
                           </div>

@@ -4,7 +4,7 @@ import {
   useGetCustomerOverviewMetaDataQuery,
   useGetProfileQuery,
 } from '@/redux/api/authApi';
-import { FaUserTie } from 'react-icons/fa';
+import demoUserImage from '../../../assets/images/babul.png';
 
 const CustomerOverview = () => {
   CheckRoleAndLogout('customer');
@@ -13,6 +13,8 @@ const CustomerOverview = () => {
   const userProfileFromDb = profileData?.data;
   const { data: overViewData, isLoading: isOverViewDataLoading } =
     useGetCustomerOverviewMetaDataQuery(undefined);
+
+  const userImage = userProfileFromDb?.profileImage || demoUserImage;
 
   if (isLoading || isOverViewDataLoading) {
     return <Loader />;
@@ -31,13 +33,7 @@ const CustomerOverview = () => {
         {/* profile details */}
         <div className="flex shadow rounded p-2 flex-col justify-center items-center">
           <img
-            src={
-              userProfileFromDb?.profileImage ? (
-                userProfileFromDb?.profileImage
-              ) : (
-                <FaUserTie />
-              )
-            }
+            src={userImage}
             alt={userProfileFromDb?.name}
             className="h-20 w-20 rounded-full object-cover"
           />

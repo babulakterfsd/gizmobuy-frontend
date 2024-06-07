@@ -12,6 +12,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { TbShoppingBagEdit } from 'react-icons/tb';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
+import demoUserImage from '../../assets/images/babul.png';
 import logo from '../../assets/images/logo.png';
 import ScrollToTop from '../ui/ToTop';
 
@@ -62,6 +63,8 @@ const VendorDashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setActiveDashboardRoute('profile');
   };
+
+  const userImage = userProfile?.profileImage || demoUserImage;
 
   return (
     <div>
@@ -138,7 +141,7 @@ const VendorDashboard = () => {
               onClick={profileClickHandler}
             >
               <img
-                src={userProfile?.profileImage}
+                src={userImage}
                 alt="profile"
                 className="w-8 h-8 rounded-full"
               />
@@ -231,7 +234,7 @@ const VendorDashboard = () => {
             onClick={profileClickHandler}
           >
             <img
-              src={userProfile?.profileImage}
+              src={userImage}
               alt="profile"
               className="w-8 h-8 rounded-full"
             />

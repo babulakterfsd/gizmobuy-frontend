@@ -77,6 +77,37 @@ const authApi = baseApi.injectEndpoints({
       },
       providesTags: ['user'],
     }),
+    getAllVendorsForAdmin: builder.query({
+      query: (query) => {
+        return {
+          url: `/auth/getallvendors?${query}`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['user'],
+    }),
+    getAllCustomers: builder.query({
+      query: (query) => {
+        return {
+          url: `/auth/getallcustomers?${query}`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['user'],
+    }),
+    blockOrUnblockUser: builder.mutation({
+      query: (blockOrUnblockData) => {
+        return {
+          url: '/auth/blockorunblockuser',
+          method: 'PUT',
+          body: {
+            id: blockOrUnblockData.id,
+            block: blockOrUnblockData.block,
+          },
+        };
+      },
+      invalidatesTags: ['user'],
+    }),
   }),
 });
 
@@ -89,4 +120,7 @@ export const {
   useGetAdminOverviewMetaDataQuery,
   useGetVendorOverviewMetaDataQuery,
   useGetCustomerOverviewMetaDataQuery,
+  useGetAllVendorsForAdminQuery,
+  useGetAllCustomersQuery,
+  useBlockOrUnblockUserMutation,
 } = authApi;

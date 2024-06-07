@@ -13,6 +13,7 @@ import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { Link, Outlet } from 'react-router-dom';
 import { toast } from 'sonner';
+import demoUserImage from '../../assets/images/babul.png';
 import logo from '../../assets/images/logo.png';
 import ScrollToTop from '../ui/ToTop';
 
@@ -67,6 +68,8 @@ const AdminDashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setActiveDashboardRoute('profile');
   };
+
+  const userImage = userProfile?.profileImage || demoUserImage;
 
   return (
     <div>
@@ -142,15 +145,12 @@ const AdminDashboard = () => {
               }`}
               onClick={profileClickHandler}
             >
-              {userProfile?.profileImage ? (
-                <img
-                  src={userProfile?.profileImage}
-                  alt="profile"
-                  className="w-8 h-8 rounded-full"
-                />
-              ) : (
-                <FaUserTie />
-              )}
+              <img
+                src={userImage}
+                alt="profile"
+                className="w-8 h-8 rounded-full"
+              />
+
               <li className="">{` ${name}`}</li>
             </Link>
             <hr className="mt-2 lg:hidden" />
@@ -259,15 +259,11 @@ const AdminDashboard = () => {
             }`}
             onClick={profileClickHandler}
           >
-            {userProfile?.profileImage ? (
-              <img
-                src={userProfile?.profileImage}
-                alt="profile"
-                className="w-8 h-8 rounded-full"
-              />
-            ) : (
-              <FaUserTie />
-            )}
+            <img
+              src={userImage}
+              alt="profile"
+              className="w-8 h-8 rounded-full"
+            />
             <li className="list-none text-md font-[500]">{` ${name}`}</li>
           </Link>
         </div>

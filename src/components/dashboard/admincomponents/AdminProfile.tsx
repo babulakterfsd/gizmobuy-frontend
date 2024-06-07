@@ -5,7 +5,6 @@ import {
   useGetProfileQuery,
   useUpdateProfileMutation,
 } from '@/redux/api/authApi';
-import { FaUserTie } from 'react-icons/fa';
 
 import {
   DropdownMenu,
@@ -18,6 +17,7 @@ import { CiEdit } from 'react-icons/ci';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'sonner';
+import demoUserImage from '../../../assets/images/babul.png';
 
 const AdminProfile = () => {
   CheckRoleAndLogout('admin');
@@ -258,6 +258,8 @@ const AdminProfile = () => {
     }
   };
 
+  const userImage = userProfileFromDb?.profileImage || demoUserImage;
+
   if (isLoading) {
     return <Loader />;
   }
@@ -282,13 +284,7 @@ const AdminProfile = () => {
                 {userProfileFromDb?.role}
               </div>
               <img
-                src={
-                  userProfileFromDb?.profileImage ? (
-                    userProfileFromDb?.profileImage
-                  ) : (
-                    <FaUserTie />
-                  )
-                }
+                src={userImage}
                 alt={userProfileFromDb?.name}
                 className="h-20 w-20 rounded-full object-cover"
               />
