@@ -84,7 +84,7 @@ const AdminOverview = () => {
               : overViewData?.data?.totalOrders}
           </h3>
           <p className="text-lg font-semibold text-gray-400 mt-1.5">
-            Orders Placed
+            Orders Completed
           </p>
         </div>
         {/* total sells */}
