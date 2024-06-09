@@ -91,8 +91,8 @@ const AdminOverview = () => {
         <div className="py-4 px-3 flex justify-center items-center flex-col shadow bg-gray-100 rounded">
           <h3 className="gradientTitle tracking-wider text-3xl md:text-5xl font-bold">
             {overViewData?.data?.totalSellByAllVendors < 10
-              ? `$0${overViewData?.data?.totalSellByAllVendors}`
-              : `$${overViewData?.data?.totalSellByAllVendors}`}
+              ? `$0${(overViewData?.data?.totalSellByAllVendors).toFixed(2)}`
+              : `$${(overViewData?.data?.totalSellByAllVendors).toFixed(2)}`}
           </h3>
           <p className="text-lg font-semibold text-gray-400 mt-1.5">
             Total Sells
@@ -102,8 +102,8 @@ const AdminOverview = () => {
         <div className="py-4 px-3 flex justify-center items-center flex-col shadow bg-gray-100 rounded">
           <h3 className="gradientTitle tracking-wider text-3xl md:text-5xl font-bold">
             {overViewData?.data?.totalProfitOfGizmobuy < 10
-              ? `0${overViewData?.data?.totalProfitOfGizmobuy}`
-              : `$${overViewData?.data?.totalProfitOfGizmobuy}`}
+              ? `0${(overViewData?.data?.totalProfitOfGizmobuy).toFixed(2)}`
+              : `$${(overViewData?.data?.totalProfitOfGizmobuy).toFixed(2)}`}
           </h3>
           <p className="text-lg font-semibold text-gray-400 mt-1.5">
             Gizmobuy Profit

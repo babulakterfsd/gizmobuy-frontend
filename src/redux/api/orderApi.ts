@@ -12,7 +12,17 @@ const orderApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['products', 'product', 'orders'],
     }),
+    getAllOrdersForAdminHistory: builder.query({
+      query: (query) => {
+        return {
+          url: `/orders/sells-history?${query}`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['user', 'orders', 'order'],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation } = orderApi;
+export const { useCreateOrderMutation, useGetAllOrdersForAdminHistoryQuery } =
+  orderApi;
