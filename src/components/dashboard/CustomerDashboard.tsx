@@ -6,7 +6,6 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
-import { AiOutlineHistory } from 'react-icons/ai';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { TbShoppingBagEdit } from 'react-icons/tb';
@@ -38,8 +37,6 @@ const CustomerDashboard = () => {
       setActiveDashboardRoute('profile');
     } else if (location.pathname === '/dashboard/customer/manage-orders') {
       setActiveDashboardRoute('ordermanagement');
-    } else if (location.pathname === '/dashboard/customer/buy-history') {
-      setActiveDashboardRoute('buyhistory');
     }
   }, [location.pathname, dispatch, role]);
 
@@ -162,25 +159,6 @@ const CustomerDashboard = () => {
                 >
                   <TbShoppingBagEdit className="text-xl text-bluish" />
                   <span>My Orders</span>
-                </div>
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to="/dashboard/customer/buy-history"
-                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
-                  activeDashboardRoute === 'buyhistory'
-                    ? 'bg-orange text-white'
-                    : 'bg-none text-offgray'
-                }`}
-                onClick={() => setActiveDashboardRoute('buyhistory')}
-              >
-                <div
-                  className="flex items-center space-x-2"
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                  <AiOutlineHistory className="text-lg text-orange" />
-                  <span>Buy History</span>
                 </div>
               </Link>
             </li>
