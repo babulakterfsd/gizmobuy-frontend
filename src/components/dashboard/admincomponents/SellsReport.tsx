@@ -65,7 +65,7 @@ const SellsReport = () => {
   }
 
   return (
-    <div className="">
+    <div>
       <h3 className="text-center mt-10 lg:mt-14 text-2xl">Sells Report</h3>
       <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
         Welcome, {userProfileFromDb?.name}! Here you can see total sells history

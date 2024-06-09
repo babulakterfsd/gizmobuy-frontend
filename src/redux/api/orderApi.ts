@@ -19,10 +19,22 @@ const orderApi = baseApi.injectEndpoints({
           method: 'GET',
         };
       },
-      providesTags: ['user', 'orders', 'order'],
+      providesTags: ['orders', 'order'],
+    }),
+    getMyOrders: builder.query({
+      query: () => {
+        return {
+          url: `/orders/my-orders`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['orders', 'order'],
     }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetAllOrdersForAdminHistoryQuery } =
-  orderApi;
+export const {
+  useCreateOrderMutation,
+  useGetAllOrdersForAdminHistoryQuery,
+  useGetMyOrdersQuery,
+} = orderApi;
