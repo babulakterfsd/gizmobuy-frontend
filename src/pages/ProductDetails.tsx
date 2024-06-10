@@ -1,4 +1,5 @@
 import Loader from '@/components/common/Loader';
+import Magnifier from '@/components/common/Magnifyer';
 import Collections from '@/components/homepage/Collections';
 import ScrollToTop from '@/components/ui/ToTop';
 import {
@@ -116,10 +117,14 @@ const ProductDetails = () => {
       <div className="main-container mt-8 grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-6 md:gap-y-0">
         <div className="col-span-12 lg:col-span-6">
           <div className="border border-gray-200 rounded p-2 md:p-6">
-            <img
-              src={product?.displayImage}
-              alt={product?.title}
-              className="w-full h-52 md:h-96 object-contain"
+            <Magnifier
+              imageUrl={product?.displayImage}
+              largeImageUrl={product?.displayImage}
+              zoomFactor={2}
+              imgAlt={product?.title}
+              glassDimension={400}
+              glassBorderColor="#be9a35"
+              glassBorderWidth={2}
             />
           </div>
           {/* add to wishlist and share */}
