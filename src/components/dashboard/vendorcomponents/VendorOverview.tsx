@@ -14,6 +14,8 @@ const VendorOverview = () => {
   const { data: overViewData, isLoading: isOverViewDataLoading } =
     useGetVendorOverviewMetaDataQuery(undefined);
 
+  console.log('overViewData', overViewData);
+
   const userImage = userProfileFromDb?.profileImage || demoUserImage;
 
   if (isLoading || isOverViewDataLoading) {
@@ -43,6 +45,7 @@ const VendorOverview = () => {
           <h3 className="text-sm mt-0.5">
             {userProfileFromDb?.address?.mobile}
           </h3>
+          <p className="text-sm text-gray-400 mt-3">{`Joined on ${overViewData?.data?.joined}`}</p>
         </div>
         {/* products */}
         <div className="py-4 px-3 flex justify-center items-center flex-col shadow bg-gray-100 rounded">
