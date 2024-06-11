@@ -239,7 +239,7 @@ const VendorManageProducts = () => {
                   <button
                     className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
                       isProductsLoading || allProducts?.data?.data?.length < 12
-                        ? 'mr-4'
+                        ? 'mr-2'
                         : ''
                     }`}
                     onClick={() => handlePageChange(Number(page) - 1)}
