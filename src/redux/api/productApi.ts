@@ -30,6 +30,15 @@ const productApi = baseApi.injectEndpoints({
       },
       providesTags: ['product'],
     }),
+    getAllProductsOfAVendorToManage: builder.query({
+      query: (query) => {
+        return {
+          url: `/products/manage-products?${query}`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['product', 'products'],
+    }),
     updateProduct: builder.mutation({
       query: ({ id, ...productData }) => {
         return {
@@ -71,4 +80,5 @@ export const {
   useUpdateProductMutation,
   useDeleteProductMutation,
   useDeleteMultipleProductsMutation,
+  useGetAllProductsOfAVendorToManageQuery,
 } = productApi;

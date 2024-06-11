@@ -14,8 +14,6 @@ const VendorOverview = () => {
   const { data: overViewData, isLoading: isOverViewDataLoading } =
     useGetVendorOverviewMetaDataQuery(undefined);
 
-  console.log('overViewData', overViewData);
-
   const userImage = userProfileFromDb?.profileImage || demoUserImage;
 
   if (isLoading || isOverViewDataLoading) {
