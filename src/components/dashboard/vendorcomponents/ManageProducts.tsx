@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import Loader from '@/components/common/Loader';
@@ -12,12 +13,11 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { CiEdit } from 'react-icons/ci';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { IoEyeOutline } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const VendorManageProducts = () => {
   CheckRoleAndLogout('vendor');
-  const router = useNavigate();
 
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
@@ -26,7 +26,7 @@ const VendorManageProducts = () => {
   const [page, setPage] = useState<string>('1');
   const limit = '10';
 
-  let allFilters = {
+  const allFilters = {
     page: page,
     limit: limit,
     search: searchProductByTitle,
@@ -45,7 +45,7 @@ const VendorManageProducts = () => {
   let queryParams = createQueryString(allFilters);
 
   useEffect(() => {
-    if (searchProductByTitle !== '') {
+    if (searchProductByTitle !== '' && Number(page) > 1) {
       setPage('1');
     }
     queryParams = createQueryString({
