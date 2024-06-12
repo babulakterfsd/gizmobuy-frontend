@@ -193,14 +193,14 @@ const AddProduct = () => {
         accurate information. You can always edit the product later.
       </p>
       {/* Add Product Form */}
-      <div className="lg:w-10/12 lg:mx-auto shadow lg:px-10 lg:py-16 rounded lg:mt-6">
+      <div className="lg:w-10/12 lg:mx-auto shadow px-4 py-4 lg:px-10 md:pt-12 md:pb-8 rounded mt-6">
         <form onSubmit={handleAddProduct}>
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="grid gap-4 md:grid-cols-12 sm:gap-6">
             {/* product image */}
-            <div className="w-full">
+            <div className="col-span-12 md:col-span-6">
               <label
                 htmlFor="productImage"
-                className="block mb-2 text-sm font-medium "
+                className="block mb-2 text-sm font-semibold"
               >
                 Product Image
               </label>
@@ -220,8 +220,11 @@ const AddProduct = () => {
               />
             </div>
             {/* name */}
-            <div className="sm:col-span-2">
-              <label htmlFor="name" className="block mb-2 text-sm font-medium ">
+            <div className="col-span-12 md:col-span-6">
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm font-semibold"
+              >
                 Product Name
               </label>
               <input
@@ -238,10 +241,10 @@ const AddProduct = () => {
               />
             </div>
             {/* price */}
-            <div className="w-full">
+            <div className="col-span-12 md:col-span-6">
               <label
                 htmlFor="price"
-                className="block mb-2 text-sm font-medium "
+                className="block mb-2 text-sm font-semibold"
               >
                 Price
               </label>
@@ -259,10 +262,10 @@ const AddProduct = () => {
               />
             </div>
             {/* brand */}
-            <div className="sm:col-span-2">
+            <div className="col-span-12 md:col-span-6">
               <label
                 htmlFor="brand"
-                className="block mb-2 text-sm font-medium "
+                className="block mb-2 text-sm font-semibold"
               >
                 Brand Name
               </label>
@@ -280,10 +283,10 @@ const AddProduct = () => {
               />
             </div>
             {/* release date */}
-            <div className="w-full">
+            <div className="col-span-12 md:col-span-6">
               <label
                 htmlFor="releaseDate"
-                className="block mb-2 text-sm font-medium "
+                className="block mb-2 text-sm font-semibold"
               >
                 Release Date
               </label>
@@ -300,10 +303,10 @@ const AddProduct = () => {
               />
             </div>
             {/* category */}
-            <div className="w-full">
+            <div className="col-span-12 md:col-span-6">
               <label
                 htmlFor="category"
-                className="block mb-2 text-sm font-medium"
+                className="block mb-2 text-sm font-semibold"
               >
                 Product Category
               </label>
@@ -328,10 +331,10 @@ const AddProduct = () => {
               </select>
             </div>
             {/* description */}
-            <div className="sm:col-span-2">
+            <div className="col-span-12">
               <label
                 htmlFor="description"
-                className="block mb-2 text-sm font-medium"
+                className="block mb-2 text-sm font-semibold"
               >
                 Product Description
               </label>
@@ -351,7 +354,7 @@ const AddProduct = () => {
           </div>
           <div className="flex justify-end items-center">
             <button
-              className="bg-red-300 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-red-400 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-8 disabled:opacity-50"
+              className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-orange-500 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-8 disabled:opacity-50"
               type="submit"
               disabled={productDisplayImageUploadOngoing}
             >
