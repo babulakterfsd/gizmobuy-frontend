@@ -78,8 +78,8 @@ const AddProduct = () => {
       });
       return;
     }
-    if (productDescription?.length < 200) {
-      toast.error('Description must be at least 200 characters.', {
+    if (productDescription?.length < 400) {
+      toast.error('Description must be at least 400 characters.', {
         position: 'top-right',
         duration: 1500,
         icon: ' ❌',
@@ -230,8 +230,8 @@ const AddProduct = () => {
                 id="name"
                 className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
                 placeholder="e.g. Samsung Galaxy S24 Ultra 5G"
-                minLength={5}
-                maxLength={50}
+                minLength={3}
+                maxLength={255}
                 required
                 value={productTitle}
                 onChange={(e) => setProductTitle(e.target.value)}
@@ -254,6 +254,7 @@ const AddProduct = () => {
                 placeholder="e.g. 499.99"
                 required
                 value={productPrice}
+                min={1}
                 onChange={(e) => setProductPrice(Number(e.target.value))}
               />
             </div>
@@ -271,7 +272,7 @@ const AddProduct = () => {
                 id="brand"
                 className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
                 placeholder="e.g. Samsung"
-                minLength={5}
+                minLength={3}
                 maxLength={50}
                 required
                 value={productBrand}
@@ -339,9 +340,9 @@ const AddProduct = () => {
                 id="description"
                 className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600 focus:outline-none"
                 placeholder="e.g. The Samsung Galaxy S24 Ultra 5G is the latest flagship smartphone from Samsung. It comes with a 6.8-inch Super AMOLED display, Exynos 2200 chipset, 108MP camera, and 5000mAh battery."
-                minLength={50}
-                maxLength={500}
-                rows={10}
+                minLength={400}
+                maxLength={600}
+                rows={8}
                 required
                 value={productDescription}
                 onChange={(e) => setProductDescription(e.target.value)}
