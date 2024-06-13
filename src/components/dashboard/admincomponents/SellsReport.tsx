@@ -20,7 +20,7 @@ const SellsReport = () => {
   };
 
   /* query */
-  let allFilters = {
+  const allFilters = {
     page: page,
     limit: limit,
     timeframe: timeframe,
@@ -53,6 +53,8 @@ const SellsReport = () => {
       refetchOnMountOrArgChange: true,
     });
   const allOrders = orders?.data;
+
+  console.log(allOrders);
 
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
@@ -111,9 +113,33 @@ const SellsReport = () => {
         </div>
       </div>
 
+      {/* summary */}
+      <div className="main-container lg:w-11/12 lg:mx-auto my-3 lg:my-0">
+        <div className="grid grid-cols-12 gap-y-6 lg:gap-x-12 mt-6 md:mt-8 lg:mt-14">
+          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
+            <h3 className={`gradientTitle text-4xl font-bold`}>
+              {allOrders?.completedSells}
+            </h3>
+            <p className="text-xl font-semibold">Sells Completed</p>
+          </div>
+          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
+            <h3 className={`gradientTitle text-4xl font-bold`}>
+              {`$${allOrders?.totalSells?.toFixed(2)}`}
+            </h3>
+            <p className="text-xl font-semibold">Total Sells</p>
+          </div>
+          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
+            <h3 className={`gradientTitle text-4xl font-bold`}>
+              {`$${allOrders?.gizmobuyProfit?.toFixed(2)}`}
+            </h3>
+            <p className="text-xl font-semibold">Gizmobuy Profit</p>
+          </div>
+        </div>
+      </div>
+
       {/* order list table */}
       <div className="lg:w-11/12 lg:mx-auto">
-        <div className="mb-10 lg:mb-24 lg:mt-10 lg:shadow-md lg:rounded-md lg:py-5 lg:px-6 lg:pb-8">
+        <div className="mb-10 lg:mb-24 mt-6 lg:mt-10 lg:shadow-md lg:rounded-md lg:py-5 lg:px-6 lg:pb-8">
           <div className="mt-0">
             <div className="relative overflow-x-auto">
               <table className="w-full text-sm text-left rtl:text-right text-gray-500">

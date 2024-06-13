@@ -1,15 +1,68 @@
+'use client';
+
 import Loader from '@/components/common/Loader';
 import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
 import { useGetProfileQuery } from '@/redux/api/authApi';
-import { useUpdateOrderStatusMutation } from '@/redux/api/orderApi';
+import {
+  useGetAllOrdersForAdminHistoryQuery,
+  useUpdateOrderStatusMutation,
+} from '@/redux/api/orderApi';
+import { useEffect, useState } from 'react';
 
 const ManageOrders = () => {
   CheckRoleAndLogout('admin');
+
+  const [customersEmail, setCustomersEmail] = useState<string>('');
 
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
 
   const [updateOrderStatus] = useUpdateOrderStatusMutation();
+
+  /* pagination */
+  const [page, setPage] = useState<string>('1');
+  const limit = '10';
+  const handlePageChange = (page: number) => {
+    setPage(page.toString());
+  };
+
+  /* query */
+  const allFilters = {
+    page: page,
+    limit: limit,
+    customersEmail: customersEmail,
+  };
+
+  const createQueryString = (obj: any) => {
+    const keyValuePairs = [];
+    for (const key in obj) {
+      keyValuePairs.push(
+        encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
+      );
+    }
+    return keyValuePairs.join('&');
+  };
+
+  let queryParams = createQueryString(allFilters);
+
+  useEffect(() => {
+    queryParams = createQueryString({
+      page,
+      limit,
+      customersEmail,
+    });
+  }, [page, limit, customersEmail]);
+
+  const { data: orders, isLoading: isAllOrdersLoading } =
+    useGetAllOrdersForAdminHistoryQuery(queryParams, {
+      refetchOnMountOrArgChange: true,
+    });
+  const allOrders = orders?.data;
+
+  console.log('allOrders', allOrders);
+
+  const totalItems = allOrders?.orders?.length || 0;
+  const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
   if (isLoading) {
     return <Loader />;
