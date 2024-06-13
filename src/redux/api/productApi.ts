@@ -40,9 +40,9 @@ const productApi = baseApi.injectEndpoints({
       providesTags: ['product', 'products'],
     }),
     updateProduct: builder.mutation({
-      query: ({ id, ...productData }) => {
+      query: (productData) => {
         return {
-          url: `/products/${id}`,
+          url: `/products/${productData?.id}`,
           method: 'PUT',
           body: productData,
         };

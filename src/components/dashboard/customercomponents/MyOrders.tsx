@@ -24,8 +24,6 @@ const MyOrders = () => {
 
   const allOrders = orders?.data;
 
-  console.log('allOrders', orders);
-
   const totalItems = allOrders?.length || 0;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
