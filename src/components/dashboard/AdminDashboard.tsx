@@ -5,6 +5,7 @@ import {
 } from '@/redux/features/authSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
+import { ShoppingBasket } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { FaUserTie } from 'react-icons/fa';
 import { FcShop } from 'react-icons/fc';
@@ -189,6 +190,25 @@ const AdminDashboard = () => {
                 >
                   <FaUserTie className="text-lg text-bluish" />
                   <span>Manage Customers</span>
+                </div>
+              </Link>
+            </li>
+            <li className="my-2">
+              <Link
+                to="/dashboard/admin/manage-orders"
+                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
+                  activeDashboardRoute === 'ordermanagement'
+                    ? 'bg-orange text-white'
+                    : 'bg-none text-offgray'
+                }`}
+                onClick={() => setActiveDashboardRoute('ordermanagement')}
+              >
+                <div
+                  className="flex items-center space-x-2"
+                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                >
+                  <ShoppingBasket className="text-lg text-amber-600" />
+                  <span>Manage Orders</span>
                 </div>
               </Link>
             </li>

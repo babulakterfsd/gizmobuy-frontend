@@ -6,7 +6,6 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { TCurrentUser } from '@/types/commonTypes';
 import { useEffect, useState } from 'react';
-import { GrWorkshop } from 'react-icons/gr';
 import { IoMdHome, IoMdLogOut } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { TbShoppingBagEdit } from 'react-icons/tb';
@@ -38,8 +37,6 @@ const VendorDashboard = () => {
       setActiveDashboardRoute('profile');
     } else if (location.pathname === '/dashboard/vendor/manage-products') {
       setActiveDashboardRoute('productmanagement');
-    } else if (location.pathname === '/dashboard/vendor/manage-orders') {
-      setActiveDashboardRoute('ordermanagement');
     } else if (location.pathname === '/dashboard/vendor/sells-report') {
       setActiveDashboardRoute('sellsreport');
     }
@@ -164,25 +161,6 @@ const VendorDashboard = () => {
                 >
                   <TbShoppingBagEdit className="text-xl" />
                   <span>Manage Products</span>
-                </div>
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to="/dashboard/vendor/manage-orders"
-                className={`flex items-center p-2 rounded-lg  hover:bg-orange-400 hover:text-white group ${
-                  activeDashboardRoute === 'ordermanagement'
-                    ? 'bg-orange text-white'
-                    : 'bg-none text-offgray'
-                }`}
-                onClick={() => setActiveDashboardRoute('ordermanagement')}
-              >
-                <div
-                  className="flex items-center space-x-2"
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                  <GrWorkshop className="text-lg text-orange" />
-                  <span>Manage Orders</span>
                 </div>
               </Link>
             </li>

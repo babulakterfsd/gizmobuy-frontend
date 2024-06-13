@@ -12,6 +12,16 @@ const orderApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['products', 'product', 'orders'],
     }),
+    updateOrderStatus: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/orders/update-order-status/${data.id}`,
+          method: 'POST',
+          body: data,
+        };
+      },
+      invalidatesTags: ['orders', 'order'],
+    }),
     getAllOrdersForAdminHistory: builder.query({
       query: (query) => {
         return {
@@ -37,4 +47,5 @@ export const {
   useCreateOrderMutation,
   useGetAllOrdersForAdminHistoryQuery,
   useGetMyOrdersQuery,
+  useUpdateOrderStatusMutation,
 } = orderApi;
