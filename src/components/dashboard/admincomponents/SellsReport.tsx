@@ -54,8 +54,6 @@ const SellsReport = () => {
     });
   const allOrders = orders?.data;
 
-  console.log(allOrders);
-
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
 
@@ -118,19 +116,29 @@ const SellsReport = () => {
         <div className="grid grid-cols-12 gap-y-6 lg:gap-x-12 mt-6 md:mt-8 lg:mt-14">
           <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
             <h3 className={`gradientTitle text-4xl font-bold`}>
-              {allOrders?.completedSells}
+              {allOrders?.completedSells === undefined
+                ? 0
+                : allOrders?.completedSells}
             </h3>
             <p className="text-xl font-semibold">Sells Completed</p>
           </div>
           <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
             <h3 className={`gradientTitle text-4xl font-bold`}>
-              {`$${allOrders?.totalSells?.toFixed(2)}`}
+              {`$${
+                allOrders?.totalSells?.toFixed(2) === undefined
+                  ? 0
+                  : allOrders?.totalSells?.toFixed(2)
+              }`}
             </h3>
             <p className="text-xl font-semibold">Total Sells</p>
           </div>
           <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
             <h3 className={`gradientTitle text-4xl font-bold`}>
-              {`$${allOrders?.gizmobuyProfit?.toFixed(2)}`}
+              {`$${
+                allOrders?.gizmobuyProfit?.toFixed(2) === undefined
+                  ? 0
+                  : allOrders?.gizmobuyProfit?.toFixed(2)
+              }`}
             </h3>
             <p className="text-xl font-semibold">Gizmobuy Profit</p>
           </div>

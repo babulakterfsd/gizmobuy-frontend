@@ -15,8 +15,8 @@ const orderApi = baseApi.injectEndpoints({
     updateOrderStatus: builder.mutation({
       query: (data) => {
         return {
-          url: `/orders/update-order-status/${data.id}`,
-          method: 'POST',
+          url: `/orders/update-order-status/${data?.id}`,
+          method: 'PUT',
           body: data,
         };
       },
