@@ -43,7 +43,7 @@ const ProductDetails = () => {
 
   const { data: allData, isLoading: isAllProductLoading } =
     useGetProductsQuery(undefined);
-  let products = allData?.data?.data;
+  const products = allData?.data?.data;
 
   const dispatch = useAppDispatch();
   const wishList = useAppSelector(useWishedProducts);
@@ -169,7 +169,11 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-6 border-gray-200">
+        <div
+          className="col-span-12 lg:col-span-6 border-gray-200"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <div className="pb-8 border-b">
             {/* user feedback */}
             <div className="flex items-center justify-start space-x-5 md:mt-4 lg:mt-0">
@@ -288,7 +292,11 @@ const ProductDetails = () => {
         </div>
       </div>
       {/* product description and reviews */}
-      <div className="main-container">
+      <div
+        className="main-container"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <div className="my-8 md:mt-14 lg:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[850px] md:h-[700px] lg:h-[425px]">
           <div className="flex justify-center items-center space-x-10 mb-6 lg:mb-20">
             <p

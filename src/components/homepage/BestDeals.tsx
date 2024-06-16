@@ -27,8 +27,8 @@ interface BestDealsProps {
 
 const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  let bestDealProducts: TProduct[] = products?.slice(32, 41);
-  const targetDate = new Date('2024-07-27T23:59:59');
+  const bestDealProducts: TProduct[] = products?.slice(32, 41);
+  const targetDate = new Date('2024-12-31T23:59:59');
 
   const dispatch = useAppDispatch();
   const wishList = useAppSelector(useWishedProducts);
@@ -112,7 +112,11 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
       {/* product cards */}
       <div className="grid grid-cols-1 md:grid-cols-12">
         {/* big product */}
-        <div className="col-span-1 md:hidden lg:block lg:col-span-2 border border-gray-100 px-10 lg:px-3 py-4">
+        <div
+          className="col-span-1 md:hidden lg:block lg:col-span-2 border border-gray-100 px-10 lg:px-3 py-4"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <img
             src={bestDealProducts[0]?.displayImage}
             alt={bestDealProducts[0]?.title}
@@ -137,7 +141,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
           </h5>
           <div className="flex items-center space-x-1  lg:justify-around mt-4">
             <button
-              className="bg-orange rounded-sm text-white py-2 text-lg px-3"
+              className="bg-orange rounded-sm text-white py-2 text-lg px-3 lg:hidden 2xl:block"
               onClick={() => wishListHandler(bestDealProducts[0])}
             >
               {isHighlightedProductInWishList ? <IoHeart /> : <CiHeart />}
@@ -155,7 +159,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
               )}
             </button>
             <Link to={`/product/${bestDealProducts[0]?._id}`}>
-              <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
+              <button className="bg-orange rounded-sm text-white py-2 text-lg px-3 lg:hidden 2xl:block">
                 <PiEyeLight />
               </button>
             </Link>
@@ -176,6 +180,8 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
                 className="col-span-1 md:col-span-3 border border-gray-100 py-2 px-4 relative"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
+                data-aos="fade-down"
+                data-aos-duration="1500"
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">

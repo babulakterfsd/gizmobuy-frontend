@@ -76,7 +76,11 @@ const Support = () => {
       <div className="border-b border-gray-200 pb-8">
         <div className="main-container">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="col-span-12 md:col-span-6">
+            <div
+              className="col-span-12 md:col-span-6"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <button className="bg-deep-yellow py-2 px-4 lg:px-4 rounded-sm text-custom-black font-medium text-sm mt-8 md:mt-0">
                 Help Center
               </button>
@@ -100,7 +104,11 @@ const Support = () => {
                 </button>
               </form>
             </div>
-            <div className="col-span-12 md:col-span-6 order-first md:order-last">
+            <div
+              className="col-span-12 md:col-span-6 order-first md:order-last"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <img
                 src={supportImage}
                 alt="support"
@@ -113,7 +121,11 @@ const Support = () => {
       {/* support category section */}
       <div className=" mt-8 lg:mt-20">
         <div className="main-container">
-          <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 text-center">
+          <h3
+            className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 text-center"
+            data-aos="fade-down"
+            data-aos-duration="1500"
+          >
             What can we assist you with today?
           </h3>
           <div className="mt-5 lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-8">
@@ -122,6 +134,8 @@ const Support = () => {
                 <div
                   key={option.id}
                   className="col-span-12 md:col-span-4 lg:col-span-3 border border-orange-200 p-5 lg:p-6 rounded-md"
+                  data-aos="fade-down"
+                  data-aos-duration="1500"
                 >
                   <div className="flex justify-start items-center space-x-3">
                     <img
@@ -142,7 +156,11 @@ const Support = () => {
       {/* contact us section */}
       <div className="mt-8 lg:mt-20 py-10 lg:py-20 bg-offwhite">
         <div className="main-container">
-          <div className="text-center">
+          <div
+            className="text-center"
+            data-aos="fade-down"
+            data-aos-duration="1500"
+          >
             <button className="bg-deep-bluish text-white py-2 px-4 lg:px-4 rounded-sm font-medium text-sm">
               Contact Us
             </button>
@@ -154,7 +172,11 @@ const Support = () => {
           {/* cards */}
           <div className="grid grid-cols-1 md:grid-cols-12 mt-5 lg:mt-10 md:space-x-6 space-y-4 md:space-y-0 lg:px-32">
             {/* call */}
-            <div className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
+            <div
+              className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <div className="col-span-12 md:col-span-3">
                 <div className="bg-[rgba(45,165,243,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
                   <img
@@ -181,7 +203,11 @@ const Support = () => {
               </div>
             </div>
             {/* chat */}
-            <div className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4">
+            <div
+              className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <div className="col-span-12 md:col-span-3">
                 <div className="bg-[rgba(45,178,36,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
                   <img

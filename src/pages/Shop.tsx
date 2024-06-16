@@ -92,7 +92,7 @@ const Shop = () => {
     }
   };
 
-  let allFilters = {
+  const allFilters = {
     page: page,
     limit: limit,
     sortBy: sortBy,
@@ -149,7 +149,7 @@ const Shop = () => {
   };
 
   const { data, isLoading } = useGetProductsQuery(queryParams);
-  let products = data?.data?.data;
+  const products = data?.data?.data;
   const totalItems = data?.data?.meta?.total;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
@@ -637,6 +637,8 @@ const Shop = () => {
                       className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-4 md:py-2 px-4 relative rounded-md flex flex-col"
                       onMouseEnter={() => setHoveredProduct(product?._id)}
                       onMouseLeave={() => setHoveredProduct(null)}
+                      data-aos="fade-down"
+                      data-aos-duration="1500"
                     >
                       {hoveredProduct === product?._id && (
                         <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">

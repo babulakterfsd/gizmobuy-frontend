@@ -19,7 +19,11 @@ const Carousel = () => {
   return (
     <div className="banner grid grid-cols-1 lg:grid-cols-12 justify-items-center mt-6 lg:mt-10 gap-4">
       {/* carousel */}
-      <div className="swipercontainer col-span-12 lg:col-span-8  main-container">
+      <div
+        className="swipercontainer col-span-12 lg:col-span-8  main-container"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <Swiper
           scrollbar
           navigation
@@ -76,7 +80,11 @@ const Carousel = () => {
       </div>
       {/* side products */}
       <div className="col-span-12 lg:col-span-4 flex flex-col md:flex-row lg:flex-col gap-y-4 gap-x-4">
-        <div className="product-1 bg-custom-black rounded-md flex space-x-1 px-3 py-5">
+        <div
+          className="product-1 bg-custom-black rounded-md flex space-x-1 px-3 py-5"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <div className="col-span-6 mt-4 lg:mt-9">
             <h4 className="text-yellow font-semibold mb-1 text-sm">
               summer sells
@@ -103,7 +111,11 @@ const Carousel = () => {
           </div>
         </div>
         {/* banner  for product 2*/}
-        <div className="product-2 bg-offwhite rounded-md flex space-x-8 px-3 py-5 md:w-3/5 lg:w-full">
+        <div
+          className="product-2 bg-offwhite rounded-md flex space-x-8 px-3 py-5 md:w-3/5 lg:w-full"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <div className="col-span-6">
             <img
               src={samsungWatch4?.displayImage}

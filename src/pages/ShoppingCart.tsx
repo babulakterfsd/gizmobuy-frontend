@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client';
+
 import ScrollToTop from '@/components/ui/ToTop';
 import { useCurrentUser } from '@/redux/features/authSlice';
 import { CalculateAmountToBePaid } from '@/redux/features/paymentSlice';
@@ -192,7 +195,11 @@ const ShoppingCart = () => {
         {/* cart products */}
         {shoppingCartProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0 md:gap-x-2 lg:gap-x-6 ">
-            <div className="col-span-12 md:col-span-7 lg:col-span-8 h-fit shadow rounded">
+            <div
+              className="col-span-12 md:col-span-7 lg:col-span-8 h-fit shadow rounded"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6">
                 Shopping Cart
               </h4>
@@ -310,7 +317,11 @@ const ShoppingCart = () => {
             </div>
             <div className="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col gap-y-6">
               {/* cart total */}
-              <div className="shadow rounded px-4">
+              <div
+                className="shadow rounded px-4"
+                data-aos="fade-down"
+                data-aos-duration="1500"
+              >
                 <h4 className="text-custom-black font-semibold py-3 px-4">
                   Cart Total
                 </h4>
@@ -355,7 +366,11 @@ const ShoppingCart = () => {
                 </div>
               </div>
               {/* coupon code */}
-              <div className="shadow rounded px-4">
+              <div
+                className="shadow rounded px-4"
+                data-aos="fade-down"
+                data-aos-duration="1500"
+              >
                 <h4 className="text-custom-black font-semibold py-3 px-4">
                   Coupon Code
                 </h4>
@@ -381,7 +396,11 @@ const ShoppingCart = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-96 md:h-72 lg:h-96">
+          <div
+            className="flex flex-col items-center justify-center h-96 md:h-72 lg:h-96"
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+          >
             <h4 className="text-2xl font-semibold text-custom-black">
               Your shopping cart is empty
             </h4>

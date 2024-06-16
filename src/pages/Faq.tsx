@@ -81,7 +81,11 @@ const Faq = () => {
     <div>
       <ScrollToTop />
       <div className="main-container mt-6 lg:mt-14 pb-6 lg:pb-10 grid grid-cols-1 md:grid-cols-12 min-h-screen">
-        <div className="col-span-12 md:col-span-6">
+        <div
+          className="col-span-12 md:col-span-6"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <h3 className="text-custom-black text-xl md:text-2xl lg:text-3xl font-semibold mb-4">
             Frequently Asked Questions
           </h3>
@@ -104,7 +108,11 @@ const Faq = () => {
             )}
           </Accordion>
         </div>
-        <div className="col-span-12 md:col-span-6">
+        <div
+          className="col-span-12 md:col-span-6"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <div className="bg-offyellow w-full md:w-11/12 mx-auto p-6 mt-8 md:mt-0 md:p-5 lg:p-8 rounded-md">
             <h3 className="text-custom-black text-md lg:text-lg font-semibold mb-3">
               Didn't find your answer, Ask for support.

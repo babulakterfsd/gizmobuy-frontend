@@ -66,7 +66,11 @@ const WishList = () => {
       <ScrollToTop />
       <div className="main-container mt-24 md:mt-28 lg:px-36">
         {wishedProducts.length > 0 ? (
-          <div className="shadow rounded">
+          <div
+            className="shadow rounded"
+            data-aos="fade-down"
+            data-aos-duration="1500"
+          >
             <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6">
               Wishlist
             </h4>
@@ -160,7 +164,11 @@ const WishList = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-96 md:h-72 lg:h-96">
+          <div
+            className="flex flex-col items-center justify-center h-96 md:h-72 lg:h-96"
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+          >
             <h4 className="text-2xl font-semibold text-custom-black">
               Your wishlist is empty
             </h4>

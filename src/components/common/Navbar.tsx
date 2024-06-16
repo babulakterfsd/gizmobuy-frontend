@@ -70,13 +70,16 @@ const Navbar = () => {
         <div className="main-container">
           {/* welcome */}
           <div className="flex flex-col md:flex-row gap-y-2 justify-between items-center py-3">
-            <h1 className="text-white text-sm">
-              {` ${
-                currentUser?.name
-                  ? `Welcome to GizmoBuy, ${currentUser?.name}`
-                  : 'Welcome to GizmoBuy ecommerce store.'
-              }`}
-            </h1>
+            {currentUser?.name ? (
+              <h2 className="text-sm tracking-wider">
+                Welcome to gizmobuy,{' '}
+                <span className="text-orange-400">{currentUser?.name}</span>
+              </h2>
+            ) : (
+              <h2 className="text-sm tracking-wider">
+                Welcome to gizmobuy store
+              </h2>
+            )}
             <div className="text-sm flex gap-x-2 items-center">
               <span className="mr-3">Follow us: </span>
               <a href="https://facebook.com/babulakterfsd2" target="_blank">

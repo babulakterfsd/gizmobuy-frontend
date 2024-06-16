@@ -54,8 +54,8 @@ const CustomerProfile = () => {
     e.preventDefault();
     setUpdateProfilePhotoOngoing(true);
 
-    const preset_key = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-    const cloud_name = import.meta.env.VITE_CLODINARY_CLOUD_NAME;
+    const preset_key = 'mzkzsual';
+    const cloud_name = 'dzqkcbgew';
 
     const formData = new FormData();
 

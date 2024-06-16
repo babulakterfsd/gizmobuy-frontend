@@ -21,7 +21,11 @@ const OrderCancel = () => {
     <div>
       <ScrollToTop />
       <div className="main-container">
-        <div className="flex justify-center h-[75vh] items-center flex-col">
+        <div
+          className="flex justify-center h-[75vh] items-center flex-col"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <MdErrorOutline className="text-4xl text-red-700" />
           <h3 className="text-custom-black text-xl md:text-2xl font-semibold mt-6 text-center">
             Your order has been canceled !

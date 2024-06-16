@@ -2,7 +2,11 @@ import { categoriesData } from '@/utils/demoDataForHome';
 
 const ShopCategories = () => {
   return (
-    <div className="mt-14 lg:mt-20">
+    <div
+      className="mt-14 lg:mt-20"
+      data-aos="fade-down"
+      data-aos-duration="1500"
+    >
       <h3 className="text-center text-custom-black text-3xl font-bold mb-10">
         We Proudly Sell
       </h3>

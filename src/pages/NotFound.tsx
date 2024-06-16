@@ -7,7 +7,11 @@ const NotFound = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="h-screen flex flex-col items-center mt-8 md:mt-10 lg:mt-16">
+      <div
+        className="h-screen flex flex-col items-center mt-8 md:mt-10 lg:mt-16"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <img
           src={notFoundImg}
           alt="Not Found"

@@ -62,6 +62,8 @@ const Blog = () => {
           <div
             className="bg-white p-6 md:py-3 md:px-2 lg:p-6 rounded-sm"
             key={blog.id}
+            data-aos="fade-down"
+            data-aos-duration="1500"
           >
             <img
               src={blog.image}

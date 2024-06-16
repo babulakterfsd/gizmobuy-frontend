@@ -25,7 +25,11 @@ const OrderSuccess = () => {
     <div>
       <ScrollToTop />
       <div className="main-container">
-        <div className="flex justify-center h-[75vh] items-center flex-col">
+        <div
+          className="flex justify-center h-[75vh] items-center flex-col"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <img
             src={checkcircle}
             alt="check-circle"

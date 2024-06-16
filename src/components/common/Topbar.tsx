@@ -24,7 +24,7 @@ const Topbar = () => {
         <div className="flex gap-x-1 lg:gap-x-2 items-center">
           <span className="hidden md:inline-block">Up to</span>{' '}
           <span className="text-xl md:text-2xl lg:text-4xl text-deep-yellow font-semibold">
-            50%
+            13%
           </span>{' '}
           <span className="text-sm md:text-base">OFF</span>
         </div>

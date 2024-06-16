@@ -84,7 +84,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
   return (
     <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 lg:px-12 gap-x-6 gap-y-10">
       {/* flash sale today */}
-      <div className="cols-span-12 md:col-span-6 lg:col-span-3">
+      <div
+        className="cols-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Flash Sale Today
         </h4>
@@ -148,7 +152,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         </div>
       </div>
       {/* best sellers */}
-      <div className="cols-span-12 md:col-span-6 lg:col-span-3">
+      <div
+        className="cols-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Best Sellers
         </h4>
@@ -212,7 +220,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         </div>
       </div>
       {/* top rated */}
-      <div className="cols-span-12 md:col-span-6 lg:col-span-3">
+      <div
+        className="cols-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           Top Rated
         </h4>
@@ -276,7 +288,11 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
         </div>
       </div>
       {/* new arrival */}
-      <div className="cols-span-12 md:col-span-6 lg:col-span-3">
+      <div
+        className="cols-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <h4 className="text-custom-black font-semibold leading-6 mb-4 uppercase">
           New Arrival
         </h4>

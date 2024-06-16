@@ -5,7 +5,11 @@ import trophy from '../../assets/images/Trophy.svg';
 
 const FeatureSummary = () => {
   return (
-    <div className="mt-14 lg:mt-20 border border-gray-100 rounded-md w-full grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 md:justify-items-center lg:justify-items-start gap-y-8 py-6 px-6 md:px-0 lg:p-6">
+    <div
+      className="mt-14 lg:mt-20 border border-gray-100 rounded-md w-full grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 md:justify-items-center lg:justify-items-start gap-y-8 py-6 px-6 md:px-0 lg:p-6"
+      data-aos="fade-down"
+      data-aos-duration="1500"
+    >
       {/* feature 1 */}
       <div className="flex space-x-4 col-span-12 md:col-span-6 lg:col-span-3">
         <img

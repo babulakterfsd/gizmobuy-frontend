@@ -26,7 +26,7 @@ interface NewArrivalProps {
 
 const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  let newArrivalProducts: TProduct[] = products?.slice(0, 9);
+  const newArrivalProducts: TProduct[] = products?.slice(0, 9);
 
   const dispatch = useAppDispatch();
   const wishList = useAppSelector(useWishedProducts);
@@ -120,6 +120,8 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
                 className="border border-gray-100 py-2 px-4 relative"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
+                data-aos="fade-down"
+                data-aos-duration="1500"
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
@@ -165,7 +167,11 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           })}
         </div>
         {/* big product */}
-        <div className="cols-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3">
+        <div
+          className="cols-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <h3 className="text-center font-semibold text-sm mb-2">
             Buy today's hot deal <br /> with the best price in the market
           </h3>
@@ -193,7 +199,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           </h5>
           <div className="flex items-center space-x-1  lg:justify-around mt-4">
             <button
-              className="bg-orange rounded-sm text-white py-2 text-lg px-3"
+              className="bg-orange rounded-sm text-white py-2 text-lg px-3 lg:hidden 2xl:block"
               onClick={() => wishListHandler(newArrivalProducts[0])}
             >
               {isHighlightedProductInWishList ? <IoHeart /> : <CiHeart />}
@@ -211,7 +217,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
               )}
             </button>
             <Link to={`/product/${newArrivalProducts[0]?._id}`}>
-              <button className="bg-orange rounded-sm text-white py-2 text-lg px-3">
+              <button className="bg-orange rounded-sm text-white py-2 text-lg px-3 lg:hidden 2xl:block">
                 <PiEyeLight />
               </button>
             </Link>

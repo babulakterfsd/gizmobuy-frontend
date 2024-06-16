@@ -60,7 +60,11 @@ const coreTeamMemberOptions = [
 const CoreTeamMember = () => {
   return (
     <div className=" mt-8 lg:mt-20">
-      <div className="main-container">
+      <div
+        className="main-container"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+      >
         <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 md:text-center">
           Our core team member
         </h3>

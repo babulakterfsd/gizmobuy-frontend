@@ -144,7 +144,11 @@ const Checkout = () => {
       <ScrollToTop />
       <div className="main-container mt-12 md:mt-16 mb-8 lg:mb-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0 md:gap-x-2 lg:gap-x-6 ">
-          <div className="col-span-12 md:col-span-7 lg:col-span-8">
+          <div
+            className="col-span-12 md:col-span-7 lg:col-span-8"
+            data-aos="fade-down"
+            data-aos-duration="1500"
+          >
             {/* billing information */}
             <h4 className="text-custom-black font-semibold py-3">
               Billing Information
@@ -331,7 +335,11 @@ const Checkout = () => {
           </div>
           <div className="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col gap-y-6">
             {/* order summary */}
-            <div className="shadow rounded px-4">
+            <div
+              className="shadow rounded px-4"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-0">
                 Order Summary
               </h4>
