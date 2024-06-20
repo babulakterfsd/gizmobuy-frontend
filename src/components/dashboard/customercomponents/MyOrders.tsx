@@ -4,7 +4,7 @@ import Loader from '@/components/common/Loader';
 import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
 import { useGetProfileQuery } from '@/redux/api/authApi';
 import { useGetMyOrdersQuery } from '@/redux/api/orderApi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MyOrders = () => {
   CheckRoleAndLogout('customer');
@@ -16,15 +16,44 @@ const MyOrders = () => {
     setPage(page.toString());
   };
 
+  /* query */
+  const allFilters = {
+    page: page,
+    limit: limit,
+  };
+
+  const createQueryString = (obj: any) => {
+    const keyValuePairs = [];
+    for (const key in obj) {
+      keyValuePairs.push(
+        encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
+      );
+    }
+    return keyValuePairs.join('&');
+  };
+
+  let queryParams = createQueryString(allFilters);
+
+  useEffect(() => {
+    queryParams = createQueryString({
+      page,
+      limit,
+    });
+  }, [page, limit]);
+
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
 
-  const { data: orders, isLoading: isMyOrdersLoading } =
-    useGetMyOrdersQuery(undefined);
+  const { data: orders, isLoading: isMyOrdersLoading } = useGetMyOrdersQuery(
+    queryParams,
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
 
-  const allOrders = orders?.data;
+  const allOrders = orders?.data?.data;
 
-  const totalItems = allOrders?.length || 0;
+  const totalItems = orders?.data?.meta?.total || 0;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
   if (isLoading) {

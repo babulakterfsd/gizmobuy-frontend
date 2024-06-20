@@ -1,3 +1,5 @@
+'use client';
+
 import Loader from '@/components/common/Loader';
 import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
 import {
@@ -21,7 +23,7 @@ const ManageVendors = () => {
   const [page, setPage] = useState<string>('1');
   const limit = '10';
 
-  let allFilters = {
+  const allFilters = {
     page: page,
     limit: limit,
   };

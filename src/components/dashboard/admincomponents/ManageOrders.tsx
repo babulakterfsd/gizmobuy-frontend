@@ -58,9 +58,9 @@ const ManageOrders = () => {
     useGetAllOrdersForAdminHistoryQuery(queryParams, {
       refetchOnMountOrArgChange: true,
     });
-  const allOrders = orders?.data;
+  const allOrders = orders?.data?.data;
 
-  const totalItems = allOrders?.orders?.length || 0;
+  const totalItems = orders?.data?.meta?.total || 0;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
   const handleUpdateOrderStatus = async (id: string, status: string) => {

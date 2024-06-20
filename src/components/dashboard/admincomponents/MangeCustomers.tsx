@@ -21,7 +21,7 @@ const ManageCustomers = () => {
   const [page, setPage] = useState<string>('1');
   const limit = '10';
 
-  let allFilters = {
+  const allFilters = {
     page: page,
     limit: limit,
   };

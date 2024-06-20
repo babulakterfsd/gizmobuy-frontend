@@ -52,12 +52,12 @@ const SellsReport = () => {
     useGetAllOrdersForAdminHistoryQuery(queryParams, {
       refetchOnMountOrArgChange: true,
     });
-  const allOrders = orders?.data;
+  const allOrders = orders?.data?.data;
 
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
 
-  const totalItems = allOrders?.orders?.length || 0;
+  const totalItems = orders?.data?.meta?.total || 0;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
   if (isLoading) {

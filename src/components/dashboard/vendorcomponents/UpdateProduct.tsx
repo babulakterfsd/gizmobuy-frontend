@@ -123,7 +123,6 @@ const UpdateProduct = () => {
         productDisplayImage.type !== 'image/png'
       ) {
         setProductDisplayImageUploadOngoing(false);
-        console.log(productDisplayImage);
         toast.error('We accept only jpg, jpeg and png type images', {
           position: 'top-right',
           duration: 1500,
