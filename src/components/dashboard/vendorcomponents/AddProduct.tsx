@@ -55,8 +55,8 @@ const AddProduct = () => {
       releaseDate: productReleaseDate,
     };
 
-    const preset_key = 'mzkzsual';
-    const cloud_name = 'dzqkcbgew';
+    const preset_key = 'use your own preset key here';
+    const cloud_name = 'use your own cloud name here';
 
     const formData = new FormData();
 
