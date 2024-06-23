@@ -287,7 +287,7 @@ const ManageCustomers = () => {
                 >
                   <button
                     className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      customers?.length < 5 ? 'mr-2' : ''
+                      customers?.length < 11 ? 'mr-2' : ''
                     }`}
                     onClick={() => handlePageChange(Number(page) - 1)}
                     disabled={Number(page) === 1}
