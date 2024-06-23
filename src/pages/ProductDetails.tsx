@@ -123,7 +123,7 @@ const ProductDetails = () => {
               largeImageUrl={product?.displayImage}
               zoomFactor={2}
               imgAlt={product?.title}
-              glassDimension={300}
+              glassDimension={400}
               glassBorderColor="#be9a35"
               glassBorderWidth={2}
             />
@@ -135,7 +135,7 @@ const ProductDetails = () => {
               largeImageUrl={product?.displayImage}
               zoomFactor={2}
               imgAlt={product?.title}
-              glassDimension={150}
+              glassDimension={250}
               glassBorderColor="#be9a35"
               glassBorderWidth={2}
             />
