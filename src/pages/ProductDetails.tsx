@@ -116,13 +116,26 @@ const ProductDetails = () => {
       {/* product details */}
       <div className="main-container mt-8 grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-6 md:gap-y-0">
         <div className="col-span-12 lg:col-span-6">
-          <div className="border border-gray-200 rounded p-2 md:p-6">
+          {/* from tab to large devices */}
+          <div className="border border-gray-200 rounded p-2 md:p-6 hidden lg:block">
             <Magnifier
               imageUrl={product?.displayImage}
               largeImageUrl={product?.displayImage}
               zoomFactor={2}
               imgAlt={product?.title}
-              glassDimension={400}
+              glassDimension={300}
+              glassBorderColor="#be9a35"
+              glassBorderWidth={2}
+            />
+          </div>
+          {/* for mobile and tab devices */}
+          <div className="border border-gray-200 rounded p-2 md:p-6 lg:hidden">
+            <Magnifier
+              imageUrl={product?.displayImage}
+              largeImageUrl={product?.displayImage}
+              zoomFactor={2}
+              imgAlt={product?.title}
+              glassDimension={150}
               glassBorderColor="#be9a35"
               glassBorderWidth={2}
             />
