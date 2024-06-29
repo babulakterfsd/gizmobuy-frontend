@@ -115,7 +115,7 @@ const ManageCustomers = () => {
                       Email
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Payment Completed Orders
+                      Account Status
                     </th>
                     <th scope="col" className="px-6 py-3">
                       Total BillPaid
@@ -146,7 +146,20 @@ const ManageCustomers = () => {
                             {customer.name}
                           </th>
                           <td className="px-6 py-6">{`${customer.email}`}</td>
-                          <td className="px-6 py-6">{customer?.totalOrders}</td>
+                          <td
+                            className={`px-6 py-6 ${
+                              customer?.isBlocked
+                                ? 'text-red-400'
+                                : 'text-green-400'
+                            }`}
+                            title={`${
+                              customer?.isBlocked
+                                ? 'This user can not login now'
+                                : 'This user can login normally'
+                            }`}
+                          >{`${
+                            customer?.isBlocked ? 'Inactive' : 'Active'
+                          }`}</td>
                           <td className="px-6 py-6">{customer?.totalPaid}</td>
                           <td className="ml-5 py-6 flex space-x-4 justify-start items-center">
                             <button

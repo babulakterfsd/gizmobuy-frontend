@@ -1,21 +1,23 @@
+import ScrollToTop from '@/components/ui/ToTop';
 import { useLoginMutation } from '@/redux/api/authApi';
 import {
   setUserInLocalState,
   useCurrentToken,
 } from '@/redux/features/authSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
-import { FieldValues, useForm } from 'react-hook-form';
-import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
-import { toast } from 'sonner';
-
-import ScrollToTop from '@/components/ui/ToTop';
 import { useEffect, useState } from 'react';
-import { FaGoogle, FaSignInAlt } from 'react-icons/fa';
+import { FieldValues, useForm } from 'react-hook-form';
+import { FaSignInAlt } from 'react-icons/fa';
+import { FaDatabase } from 'react-icons/fa6';
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const Login = () => {
   const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
+  const [showDemoAccountDataModal, setShowDemoAccountDataModal] =
+    useState(false);
   const [forgetPasswordEmail, setForgetPasswordEmail] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const { register, handleSubmit } = useForm();
@@ -24,12 +26,8 @@ const Login = () => {
   const navigate = useNavigate();
   const token = useAppSelector(useCurrentToken);
 
-  const handleGoogleLogin = () => {
-    toast.error('Login with Google will be implemented soon !', {
-      position: 'top-right',
-      icon: '😢',
-      duration: 1500,
-    });
+  const handleShowDemoAccountData = () => {
+    setShowDemoAccountDataModal(true);
   };
 
   const handleForgotPassword = async (e: any) => {
@@ -65,11 +63,14 @@ const Login = () => {
       );
       const data = await response.json();
       if (data?.statusCode === 200 && data?.success === true) {
-        toast.success(data.message, {
-          position: 'top-right',
-          icon: '👏',
-          duration: 1500,
-        });
+        toast.success(
+          'Password reset link successfully sent from gizmobuy server. But you may not recieve the email because vercel does not allow sending mails using nodemailer',
+          {
+            position: 'top-right',
+            icon: '👏',
+            duration: 3000,
+          }
+        );
         setShowForgotPasswordModal(false);
       } else {
         toast.error(data?.message, {
@@ -226,15 +227,15 @@ const Login = () => {
               <span className="-mt-6 mx-3 text-offgray">or</span>
               <div className="h-[.5px] w-3/5 mb-6 bg-orange"></div>
             </div>
-            {/* google sign in button */}
+            {/* demo account data button */}
             <div
-              className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white"
-              onClick={handleGoogleLogin}
+              className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+              onClick={handleShowDemoAccountData}
             >
               <span className="text-sm">
-                <FaGoogle />
+                <FaDatabase />
               </span>
-              <span className="ml-2 text-sm">Sign in with Google</span>
+              <span className="ml-2 text-sm">Show Demo Credentials</span>
             </div>
 
             {/* not registered */}
@@ -305,6 +306,75 @@ const Login = () => {
                         Send Reset Link
                       </button>
                     </form>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-custom-black transition-all duration-300"></div>
+            </>
+          ) : null}
+        </div>
+        {/* forgot demo credentials modal */}
+        <div>
+          {showDemoAccountDataModal ? (
+            <>
+              <div
+                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
+                data-aos="zoom-in"
+                data-aos-duration="500"
+              >
+                <div className="relative w-[370px] lg:w-[640px] my-6 mx-auto">
+                  {/*content*/}
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    {/*header*/}
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                      <h3 className="text-lg ml-4 font-bold text-center">
+                        Demo Accounts
+                      </h3>
+                      <button
+                        className="text-2xl text-orange hover:text-orange-400 hover:transition-all duration-300 ease-in-out"
+                        onClick={() => setShowDemoAccountDataModal(false)}
+                      >
+                        <RxCross2 />
+                      </button>
+                    </div>
+                    {/*body*/}
+                    <div className="py-6 px-10">
+                      <div className="flex flex-col gap-y-4">
+                        <div className="border-b-2 pb-4 border-orange-200">
+                          <h4 className="text-md font-bold text-offgray">
+                            Admin
+                          </h4>
+                          <p className="text-sm text-offgray">
+                            Email: demoadmin@gmail.com
+                          </p>
+                          <p className="text-sm text-offgray">
+                            Password: admin123
+                          </p>
+                        </div>
+                        <div className="border-b-2 pb-4 border-orange-200">
+                          <h4 className="text-md font-bold text-offgray">
+                            Vendor
+                          </h4>
+                          <p className="text-sm text-offgray">
+                            Email: demovendor@gmail.com
+                          </p>
+                          <p className="text-sm text-offgray">
+                            Password: vendor123
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-md font-bold text-offgray">
+                            Customer
+                          </h4>
+                          <p className="text-sm text-offgray">
+                            Email: democustomer@gmail.com
+                          </p>
+                          <p className="text-sm text-offgray">
+                            Password: customer123
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -110,10 +110,10 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
         </Link>
       </div>
       {/* product cards */}
-      <div className="grid grid-cols-1 md:grid-cols-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-1">
         {/* big product */}
         <div
-          className="col-span-1 md:hidden lg:block lg:col-span-2 border border-gray-100 px-10 lg:px-3 py-4"
+          className="col-span-1 md:hidden lg:block lg:col-span-2 border border-gray-100 px-10 lg:px-3 py-4 rounded"
           data-aos="fade-down"
           data-aos-duration="1500"
         >
@@ -166,7 +166,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
           </div>
         </div>
         {/* small products */}
-        <div className="col-span-1 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-12">
+        <div className="col-span-1 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-12 gap-3">
           {bestDealProducts?.slice(1, 9)?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
               (item) => item?._id === product?._id
@@ -177,7 +177,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="col-span-1 md:col-span-3 border border-gray-100 py-2 px-4 relative"
+                className="col-span-1 md:col-span-3 border border-gray-100 py-2 px-4 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
                 data-aos="fade-down"
@@ -185,7 +185,7 @@ const BestDeals: React.FC<BestDealsProps> = ({ products }) => {
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"

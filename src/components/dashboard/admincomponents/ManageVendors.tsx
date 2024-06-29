@@ -118,6 +118,9 @@ const ManageVendors = () => {
                       Products
                     </th>
                     <th scope="col" className="px-6 py-3">
+                      Account Status
+                    </th>
+                    <th scope="col" className="px-6 py-3">
                       Action
                     </th>
                   </tr>
@@ -144,6 +147,18 @@ const ManageVendors = () => {
                           </th>
                           <td className="px-6 py-6">{`${vendor.email}`}</td>
                           <td className="px-6 py-6">{53}</td>
+                          <td
+                            className={`px-6 py-6 ${
+                              vendor?.isBlocked
+                                ? 'text-red-400'
+                                : 'text-green-400'
+                            }`}
+                            title={`${
+                              vendor?.isBlocked
+                                ? 'This vendor can not login now'
+                                : 'This vendor can login normally'
+                            }`}
+                          >{`${vendor?.isBlocked ? 'Inactive' : 'Active'}`}</td>
                           <td className="ml-5 py-6 flex space-x-4 justify-start items-center">
                             <button
                               className="text-lg text-bluish"

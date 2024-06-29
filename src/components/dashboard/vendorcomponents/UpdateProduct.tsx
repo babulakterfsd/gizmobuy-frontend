@@ -46,6 +46,21 @@ const UpdateProduct = () => {
   const handleUpdateProduct = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (
+      userProfileFromDb?.email === 'demovendor@gmail.com' &&
+      product?.releaseDate === '2023-01-01'
+    ) {
+      toast.error(
+        'Admin has set restrictions to update this product to maintain integrity of the system. Please create your own product to test this feature.',
+        {
+          position: 'top-right',
+          duration: 3000,
+          icon: '🔒',
+        }
+      );
+      return;
+    }
+
     const productData = {
       id: id,
       title: productTitle,
@@ -57,8 +72,8 @@ const UpdateProduct = () => {
       description: productDescription,
     };
 
-    const preset_key = 'use your own preset key here';
-    const cloud_name = 'use your own cloud name here';
+    const preset_key = 'use your own';
+    const cloud_name = 'use your own';
 
     const formData = new FormData();
 

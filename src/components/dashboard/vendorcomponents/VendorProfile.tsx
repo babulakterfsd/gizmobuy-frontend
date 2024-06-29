@@ -54,8 +54,8 @@ const VendorProfile = () => {
     e.preventDefault();
     setUpdateProfilePhotoOngoing(true);
 
-    const preset_key = 'use real one here';
-    const cloud_name = 'use real one here';
+    const preset_key = 'use your own';
+    const cloud_name = 'use your own';
 
     const formData = new FormData();
 

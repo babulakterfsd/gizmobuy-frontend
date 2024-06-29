@@ -80,6 +80,25 @@ const VendorManageProducts = () => {
       });
       return;
     } else {
+      const productToDelete = allProducts?.data?.data?.find(
+        (product: any) => product._id === productId
+      );
+
+      if (
+        userProfileFromDb?.email === 'demovendor@gmail.com' &&
+        productToDelete?.releaseDate === '2023-01-01'
+      ) {
+        toast.error(
+          'Admin has set restrictions to delete this product to maintain integrity of the system. Please create your own product to test this feature.',
+          {
+            position: 'top-right',
+            duration: 3000,
+            icon: '🔒',
+          }
+        );
+        return;
+      }
+
       const response = await deleteProduct(productId).unwrap();
 
       if (response?.statusCode === 200) {

@@ -634,7 +634,7 @@ const Shop = () => {
                   return (
                     <div
                       key={product?._id}
-                      className="col-span-12 md:col-span-6 lg:col-span-4 shadow-sm border-2 border-gray-100 py-4 md:py-2 px-4 relative rounded-md flex flex-col"
+                      className="col-span-12 md:col-span-6 lg:col-span-4 border border-gray-100 py-4 md:py-2 px-4 relative rounded flex flex-col"
                       onMouseEnter={() => setHoveredProduct(product?._id)}
                       onMouseLeave={() => setHoveredProduct(null)}
                       data-aos="fade-down"

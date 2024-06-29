@@ -104,9 +104,9 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
         </Link>
       </div>
       {/* product cards */}
-      <div className="grid grid-cols-1 md:grid-cols-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-1">
         {/* small products */}
-        <div className="col-span-12 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-4">
+        <div className="col-span-12 md:col-span-12 lg:col-span-10 grid grid-cols-2 md:grid-cols-4 rounded gap-3">
           {newArrivalProducts?.slice(1, 9)?.map((product: TProduct) => {
             const isProductInWishList = wishList.find(
               (item: TProduct) => item?._id === product?._id
@@ -117,7 +117,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="border border-gray-100 py-2 px-4 relative"
+                className="border border-gray-100 py-2 px-4 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
                 data-aos="fade-down"
@@ -125,7 +125,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
@@ -168,7 +168,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
         </div>
         {/* big product */}
         <div
-          className="cols-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3"
+          className="cols-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3 rounded"
           data-aos="fade-down"
           data-aos-duration="1500"
         >

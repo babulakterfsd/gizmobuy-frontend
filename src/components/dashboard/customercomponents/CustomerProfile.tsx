@@ -54,8 +54,8 @@ const CustomerProfile = () => {
     e.preventDefault();
     setUpdateProfilePhotoOngoing(true);
 
-    const preset_key = 'use your own key here';
-    const cloud_name = 'use your own cloud name here';
+    const preset_key = 'use your own';
+    const cloud_name = 'use your own';
 
     const formData = new FormData();
 

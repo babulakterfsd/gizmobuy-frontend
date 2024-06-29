@@ -103,13 +103,13 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
@@ -171,13 +171,13 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
@@ -239,13 +239,13 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
@@ -307,13 +307,13 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
             return (
               <div
                 key={product?._id}
-                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative"
+                className="col-span-12 md:col-span-4 lg:col-span-12 flex flex-row space-x-6 py-3 px-6 items-center border border-gray-100 relative rounded"
                 onMouseEnter={() => setHoveredProduct(product?._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {hoveredProduct === product?._id && (
                   <div className="absolute inset-0 flex items-center justify-center bg-opacity-5">
-                    <div className="absolute inset-0 bg-custom-black opacity-75"></div>
+                    <div className="absolute inset-0 bg-custom-black opacity-75 rounded"></div>
                     <div className="z-10 relative flex items-center justify-center w-full h-full">
                       <button
                         className="bg-orange text-white rounded-full h-8 w-8 flex justify-center items-center text-2xl font-semibold"
