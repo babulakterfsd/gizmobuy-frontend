@@ -40,9 +40,9 @@ const Login = () => {
       });
       return;
     } else if (
-      forgetPasswordEmail === 'babulakterfsd@gmail.com' ||
-      forgetPasswordEmail === 'xpawal@gmail.com' ||
-      forgetPasswordEmail === 'belayet@gmail.com'
+      forgetPasswordEmail === 'demoadmin@gmail.com' ||
+      forgetPasswordEmail === 'demovendor@gmail.com' ||
+      forgetPasswordEmail === 'democustomer@gmail.com'
     ) {
       toast.error('You can not reset demo accounts password', {
         position: 'top-right',
@@ -64,7 +64,7 @@ const Login = () => {
       const data = await response.json();
       if (data?.statusCode === 200 && data?.success === true) {
         toast.success(
-          'Password reset link successfully sent from gizmobuy server. But you may not recieve the email because vercel does not allow sending mails using nodemailer',
+          'Password reset link successfully sent. Please check your email',
           {
             position: 'top-right',
             icon: '👏',
