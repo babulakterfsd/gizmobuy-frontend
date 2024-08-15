@@ -7,6 +7,7 @@ import OrderCancel from '@/pages/OrderCancel';
 import OrderFail from '@/pages/OrderFail';
 import OrderSuccess from '@/pages/OrderSuccess';
 import ProductDetails from '@/pages/ProductDetails';
+import ResetPassword from '@/pages/ResetPassword';
 import Shop from '@/pages/Shop';
 import ShoppingCart from '@/pages/ShoppingCart';
 import Signup from '@/pages/Signup';
@@ -22,6 +23,7 @@ export const mainRoutePaths = [
   { path: '/product/:id', element: <ProductDetails /> },
   { path: 'support', element: <Support /> },
   { path: 'login', element: <Login /> },
+  { path: 'forgot-password', element: <ResetPassword /> },
   { path: 'signup', element: <Signup /> },
   {
     path: '/:id/wishlist',
