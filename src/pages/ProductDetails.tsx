@@ -322,7 +322,7 @@ const ProductDetails = () => {
             >
               Description
             </p>
-            <p
+            {/* <p
               className={`font-semibold text-custom-black cursor-pointer pb-1 ${
                 activeTab !== 'description'
                   ? 'border-b-2 border-orange-400 '
@@ -331,7 +331,7 @@ const ProductDetails = () => {
               onClick={() => setActiveTab('reviews')}
             >
               Reviews
-            </p>
+            </p> */}
           </div>
           {/* tab details */}
           {activeTab === 'description' ? (

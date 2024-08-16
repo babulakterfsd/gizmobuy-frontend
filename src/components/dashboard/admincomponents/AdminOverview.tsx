@@ -1,6 +1,9 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import Loader from '@/components/common/Loader';
 import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
 import { useGetAdminOverviewMetaDataQuery } from '@/redux/api/authApi';
+import { AdminDonutChart } from '../CustomDonutChart';
+import { AdminPieChart } from '../CustomPieChart';
 
 const AdminOverview = () => {
   CheckRoleAndLogout('admin');
@@ -14,12 +17,16 @@ const AdminOverview = () => {
 
   return (
     <div>
-      <h3 className="text-center mt-10 lg:mt-14 text-2xl">Admin Overview</h3>
-      <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
-        In this section, you can see your sites total customers, total orders,
-        total vendors, revenue, and more. To see details, you need to visit the
-        relevant route. In this overview page, only summaries are shown.
-      </p>
+      {/* chart */}
+      <div className="flex flex-col lg:flex-row gap-6 justify-around items-center">
+        <AdminDonutChart totalOrders={overViewData?.data?.totalOrders} />
+        <AdminPieChart
+          admin={overViewData?.data?.totalAdmin}
+          vendor={overViewData?.data?.totalVendor}
+          customer={overViewData?.data?.totalCustomer}
+        />
+      </div>
+      {/* overview */}
       <div className="mt-16 md:mt-20 lg:mt-24 grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-8 px-6 pb-8 lg:pb-16">
         {/* users */}
         <div className="py-4 px-3 flex justify-center items-center flex-col shadow bg-gray-100 rounded">
