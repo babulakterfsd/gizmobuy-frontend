@@ -18,6 +18,7 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'sonner';
 import demoUserImage from '../../../assets/images/babul.png';
+import coverImage from '../../../assets/images/cover.jpg';
 
 const CustomerProfile = () => {
   CheckRoleAndLogout('customer');
@@ -55,7 +56,7 @@ const CustomerProfile = () => {
     setUpdateProfilePhotoOngoing(true);
 
     const preset_key = 'test';
-    const cloud_name = 'test';
+    const cloud_name = 'test2';
 
     const formData = new FormData();
 
@@ -275,87 +276,113 @@ const CustomerProfile = () => {
         see some short stats. In the next update, more amazing features will be
         added.
       </p>
-      <div className="mt-16 md:mt-20 lg:mt-24">
-        <div className="w-11/12 md:w-10/12 lg:w-5/12 mx-auto py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center relative">
+      <div className="mt-5">
+        <div className="w-full md:w-11/12 mx-auto py-5 px-3 relative">
           {isLoading ? (
             <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-red-300"></div>
           ) : (
             <>
-              <div className="absolute left-0 top-0 bg-orange py-0.5 px-1 rounded text-center text-white font-semibold">
-                {userProfileFromDb?.role}
-              </div>
               <img
-                src={userImage}
-                alt={userProfileFromDb?.name}
-                className="h-20 w-20 rounded-full object-cover"
+                src={coverImage}
+                alt="cover"
+                className="w-full h-16 md:h-20 lg:h-28 object-cover rounded-t-md"
               />
-              <h3 className="text-md font-semibold mt-4">
-                {userProfileFromDb?.name}
-              </h3>
-              <h3 className="text-sm mt-4">{userProfileFromDb?.email}</h3>
-              <h3 className="text-sm mt-0.5">
-                {userProfileFromDb?.address?.mobile}
-              </h3>
-              {userProfileFromDb?.address?.address &&
-              userProfileFromDb?.address?.city &&
-              userProfileFromDb?.address?.state &&
-              userProfileFromDb?.address?.country &&
-              userProfileFromDb?.address?.postalCode ? (
-                <div className="text-sm mt-4 text-center">
-                  <span>{userProfileFromDb?.address?.address}</span>
-                  {','}
-                  <span>{userProfileFromDb?.address?.postalCode}</span> <br />
-                  <span>
-                    {userProfileFromDb?.address?.city}
-                    {','}
-                    {userProfileFromDb?.address?.state}
-                    {','}
-                    {userProfileFromDb?.address?.country}
-                  </span>
+              <div className="flex justify-between items-center -mt-5">
+                <div className="flex justify-center space-x-3 items-center">
+                  <img
+                    src={userProfileFromDb?.profileImage || userImage}
+                    alt={userProfileFromDb?.name}
+                    className="h-20 w-20 rounded-full object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <h2 className="text-lg font-semibold mt-2">
+                      {userProfileFromDb?.name}
+                    </h2>
+                    <p className="w-16 bg-orange text-sm rounded-sm text-center text-white">
+                      {userProfileFromDb?.role}
+                    </p>
+                  </div>
                 </div>
-              ) : (
-                <span className="text-red-400 text-sm text-center mt-3">
-                  This customer didn't update his details yet
-                </span>
-              )}
+                <div
+                  className="text-md text-red-300 hover:text-red-400 duration-300 transition-all ease-in-out cursor-pointer"
+                  title="Update Account"
+                >
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <CiEdit
+                        style={{ fontSize: '24px', fontWeight: 'bold' }}
+                      />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent style={{ background: 'white' }}>
+                      <DropdownMenuItem>
+                        <button
+                          onClick={() => setShowProfileUpdateModal(true)}
+                          className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
+                        >
+                          Update Profile
+                        </button>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <button
+                          onClick={() => setShowProfilePhotoUpdateModal(true)}
+                          className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
+                        >
+                          Update Profile Photo
+                        </button>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <button
+                          onClick={() => setShowPasswordUpdateModal(true)}
+                          className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
+                        >
+                          Update Password
+                        </button>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
+              {/* about and adress section */}
+              <div className="flex flex-col lg:flex-row justify-between space-y-3">
+                <div className="flex flex-col">
+                  <h3 className="text-sm font-semibold mt-8">About</h3>
+                  <h3 className="text-sm mt-0.5 lg:w-8/12">
+                    Welcome to my profile! I love discovering new products and
+                    deals. Whether it's tech gadgets, home essentials, or the
+                    latest fashion trends, I enjoy finding items that enhance my
+                    daily life. My goal is to share reviews and feedback on
+                    purchases to help others make informed decisions. I value
+                    quality, convenience, and style in everything I buy. In my
+                    free time, I explore the latest product launches and engage
+                    with communities that share my interests. Let’s connect and
+                    enjoy the best of online shopping together!
+                  </h3>
+                </div>
+                <div className="flex flex-col space-y-3">
+                  <div className="text-sm mt-4">
+                    <h3 className="text-sm font-semibold">Address</h3>
+                    <span>{userProfileFromDb?.address?.address}</span>
+                    {','}
+                    <span>{userProfileFromDb?.address?.postalCode}</span>
+                    <span>
+                      {userProfileFromDb?.address?.city}
+                      {','}
+                      {userProfileFromDb?.address?.state}
+                      {','}
+                      {userProfileFromDb?.address?.country}
+                    </span>
+                  </div>
+                  <div className="flex flex-col w-full">
+                    <h3 className="text-sm font-semibold mt-2">Contact</h3>
+                    <span className="text-sm">{userProfileFromDb?.email}</span>
+                    <span className="text-sm">
+                      {userProfileFromDb?.address?.mobile}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </>
           )}
-          <div
-            className="absolute top-2 right-10 text-md text-red-300 hover:text-red-400 duration-300 transition-all ease-in-out cursor-pointer"
-            title="Update Account"
-          >
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <CiEdit style={{ fontSize: '24px', fontWeight: 'bold' }} />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent style={{ background: 'white' }}>
-                <DropdownMenuItem>
-                  <button
-                    onClick={() => setShowProfileUpdateModal(true)}
-                    className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
-                  >
-                    Update Profile
-                  </button>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <button
-                    onClick={() => setShowProfilePhotoUpdateModal(true)}
-                    className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
-                  >
-                    Update Profile Photo
-                  </button>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <button
-                    onClick={() => setShowPasswordUpdateModal(true)}
-                    className="text-md hover:text-red-300 transition-all duration-300 ease-out cursor-pointer"
-                  >
-                    Update Password
-                  </button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
           {/* profile update modal */}
           <div>
             {showProfileUpdateModal ? (
