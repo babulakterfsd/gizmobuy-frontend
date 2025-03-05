@@ -158,7 +158,7 @@ const MyOrders = () => {
                             className={`px-6 py-6 ${
                               order?.isPaid ? '' : 'text-red-400'
                             }`}
-                          >{`${order?.totalBill}`}</td>
+                          >{`$${order?.totalBill}`}</td>
                           <td
                             className={`px-6 py-6 text-sm ${
                               order.orderStatus === 'processing'

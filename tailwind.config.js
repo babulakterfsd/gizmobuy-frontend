@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -10,7 +10,7 @@ module.exports = {
   ],
   prefix: "",
   theme: {
-    extend: {  keyframes: {
+    extend: { keyframes: {
       "accordion-down": {
         from: { height: "0" },
         to: { height: "var(--radix-accordion-content-height)" },
