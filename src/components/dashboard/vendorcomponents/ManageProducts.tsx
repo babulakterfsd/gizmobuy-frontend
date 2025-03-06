@@ -207,7 +207,7 @@ const VendorManageProducts = () => {
                           >
                             {product?.title}
                           </th>
-                          <td className="px-6 py-6">{`${product?.price}`}</td>
+                          <td className="px-6 py-6">{`$${product?.price}`}</td>
                           <td className="px-6 py-6">{product?.category}</td>
                           <td className="px-6 py-6">{product?.releaseDate}</td>
                           <td className="ml-5 py-6 flex space-x-4 justify-start items-center">

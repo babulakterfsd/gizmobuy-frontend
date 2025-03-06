@@ -56,7 +56,7 @@ const CustomerProfile = () => {
     setUpdateProfilePhotoOngoing(true);
 
     const preset_key = 'test';
-    const cloud_name = 'test2';
+    const cloud_name = 'test';
 
     const formData = new FormData();
 

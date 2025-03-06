@@ -221,7 +221,7 @@ const SellsReport = () => {
                             className={`px-6 py-6 ${
                               order?.isPaid ? '' : 'text-red-400'
                             }`}
-                          >{`${order?.totalBill}`}</td>
+                          >{`$${order?.totalBill}`}</td>
                         </tr>
                       ))
                     : null}

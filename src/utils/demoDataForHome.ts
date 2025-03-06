@@ -99,7 +99,7 @@ export const categoriesData = [
     id: 2,
     name: 'Laptop',
     image:
-      'https://computermania-bd.b-cdn.net/wp-content/uploads/Apple-MacBook-Pro-13-M2-2.jpg',
+      'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1npTP?ver=829f',
   },
   {
     id: 3,
