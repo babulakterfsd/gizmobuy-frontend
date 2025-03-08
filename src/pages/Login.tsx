@@ -10,77 +10,16 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { FaSignInAlt } from 'react-icons/fa';
 import { FaDatabase } from 'react-icons/fa6';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
-import { RxCross2 } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const Login = () => {
-  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
-  const [showDemoAccountDataModal, setShowDemoAccountDataModal] =
-    useState(false);
-  const [forgetPasswordEmail, setForgetPasswordEmail] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector(useCurrentToken);
-
-  const handleShowDemoAccountData = () => {
-    setShowDemoAccountDataModal(true);
-  };
-
-  const handleForgotPassword = async (e: any) => {
-    e.preventDefault();
-    if (!forgetPasswordEmail) {
-      toast.error('Email is required', {
-        position: 'top-right',
-        icon: '😢',
-        duration: 1500,
-      });
-      return;
-    } else if (
-      forgetPasswordEmail === 'demoadmin@gmail.com' ||
-      forgetPasswordEmail === 'demovendor@gmail.com' ||
-      forgetPasswordEmail === 'democustomer@gmail.com'
-    ) {
-      toast.error('You can not reset demo accounts password', {
-        position: 'top-right',
-        icon: '😢',
-        duration: 1500,
-      });
-      return;
-    } else {
-      const response = await fetch(
-        'https://gizmobuy-backend.vercel.app/api/auth/forgot-password',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ userEmail: forgetPasswordEmail }),
-        }
-      );
-      const data = await response.json();
-      if (data?.statusCode === 200 && data?.success === true) {
-        toast.success(
-          'Password reset link successfully sent. Please check your email',
-          {
-            position: 'top-right',
-            icon: '👏',
-            duration: 3000,
-          }
-        );
-        setShowForgotPasswordModal(false);
-      } else {
-        toast.error(data?.message, {
-          position: 'top-right',
-          icon: '😢',
-          duration: 1500,
-        });
-      }
-    }
-  };
 
   useEffect(() => {
     fetch('https://gizmobuy-backend.vercel.app/api/auth/verify-token', {
@@ -95,7 +34,6 @@ const Login = () => {
         if (data?.data !== true) {
           dispatch(setUserInLocalState({ user: null, token: null }));
         } else {
-          // navigate(`/dashboard/${currentUser?.role}/overview`);
           navigate('/');
         }
       });
@@ -110,7 +48,6 @@ const Login = () => {
       });
     } else {
       const response = await login(loginData).unwrap();
-
       const userFromDB = response?.data?.user;
       const accessToken = response?.data?.token;
 
@@ -127,7 +64,6 @@ const Login = () => {
           })
         );
         setTimeout(() => {
-          // navigate(`/dashboard/${userFromDB?.role}/overview`);
           navigate('/');
         }, 500);
       }
@@ -145,6 +81,18 @@ const Login = () => {
       passwordInput.type = 'password';
       setIsPasswordVisible(false);
     }
+  };
+
+  const demoCredentials = {
+    admin: { email: 'demoadmin@gmail.com', password: 'admin123' },
+    vendor: { email: 'demovendor@gmail.com', password: 'vendor123' },
+    customer: { email: 'democustomer@gmail.com', password: 'customer123' },
+  };
+
+  const handleFillCredentials = (role: 'admin' | 'vendor' | 'customer') => {
+    const { email, password } = demoCredentials[role];
+    setValue('email', email);
+    setValue('password', password);
   };
 
   return (
@@ -190,12 +138,7 @@ const Login = () => {
                   >
                     Password
                   </label>
-                  <p
-                    className="text-sm cursor-pointer text-orange-400"
-                    onClick={() =>
-                      setShowForgotPasswordModal(!showForgotPasswordModal)
-                    }
-                  >
+                  <p className="text-sm cursor-pointer text-orange-400">
                     Forgot Password?
                   </p>
                 </div>
@@ -203,7 +146,7 @@ const Login = () => {
                   type="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   focus:outline-none"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 focus:outline-none"
                   {...register('password')}
                 />
                 <span
@@ -221,21 +164,45 @@ const Login = () => {
                 <span>Sign In</span>
               </button>
             </form>
-            {/* other parts */}
-            <div className="flex items-center justify-between mt-5">
-              <div className="h-[.5px] w-3/5 mb-6 bg-orange"></div>
-              <span className="-mt-6 mx-3 text-offgray">or</span>
-              <div className="h-[.5px] w-3/5 mb-6 bg-orange"></div>
+
+            {/* "Login as" Text with Horizontal Lines */}
+            <div className="mt-8 flex items-center justify-center space-x-4">
+              <hr className="flex-grow border-t-2 border-gray-300" />
+              <p className="text-sm font-bold text-gray-600">
+                Demo Credentials For
+              </p>
+              <hr className="flex-grow border-t-2 border-gray-300" />
             </div>
-            {/* demo account data button */}
-            <div
-              className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
-              onClick={handleShowDemoAccountData}
-            >
-              <span className="text-sm">
-                <FaDatabase />
-              </span>
-              <span className="ml-2 text-sm">Show Demo Credentials</span>
+
+            {/* Buttons for demo login */}
+            <div className="flex flex-col gap-y-4 mt-5 lg:flex-row lg:space-x-4 lg:justify-between">
+              <button
+                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                onClick={() => handleFillCredentials('customer')}
+              >
+                <span className="text-sm">
+                  <FaDatabase />
+                </span>
+                <span className="ml-2 text-sm">Customer</span>
+              </button>
+              <button
+                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                onClick={() => handleFillCredentials('vendor')}
+              >
+                <span className="text-sm">
+                  <FaDatabase />
+                </span>
+                <span className="ml-2 text-sm">Vendor</span>
+              </button>
+              <button
+                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                onClick={() => handleFillCredentials('admin')}
+              >
+                <span className="text-sm">
+                  <FaDatabase />
+                </span>
+                <span className="ml-2 text-sm">Admin</span>
+              </button>
             </div>
 
             {/* not registered */}
@@ -248,139 +215,6 @@ const Login = () => {
               </Link>
             </div>
           </div>
-        </div>
-        {/* forgot password modal */}
-        <div>
-          {showForgotPasswordModal ? (
-            <>
-              <div
-                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
-                data-aos="zoom-in"
-                data-aos-duration="500"
-              >
-                <div className="relative w-[370px] lg:w-[640px] my-6 mx-auto">
-                  {/*content*/}
-                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                      <h3 className="text-lg ml-4 font-bold text-center">
-                        Reset Password
-                      </h3>
-                      <button
-                        className="text-2xl text-orange hover:text-orange-400 hover:transition-all duration-300 ease-in-out"
-                        onClick={() => setShowForgotPasswordModal(false)}
-                      >
-                        <RxCross2 />
-                      </button>
-                    </div>
-                    {/*body*/}
-                    <form className="py-6 px-10">
-                      <div className="grid gap-4 grid-cols-1 sm:gap-x-6 sm:gap-y-4">
-                        {/*  email */}
-                        <div className="w-full">
-                          <label
-                            htmlFor="email"
-                            className="block mb-2 text-sm font-medium text-offgray"
-                          >
-                            Email Address
-                          </label>
-
-                          <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                            placeholder="e.g. babulakterfsd@gmail.com"
-                            required
-                            onChange={(e) =>
-                              setForgetPasswordEmail(e.target.value)
-                            }
-                          />
-                        </div>
-                      </div>
-                      <button
-                        type="submit"
-                        className="bg-orange rounded-md px-4 py-2 cursor-pointer text-white hover:bg-orange-400 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-6 ml-auto disabled:cursor-not-allowed disabled:bg-gray-300"
-                        onClick={(e) => handleForgotPassword(e)}
-                      >
-                        Send Reset Link
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-custom-black transition-all duration-300"></div>
-            </>
-          ) : null}
-        </div>
-        {/* forgot demo credentials modal */}
-        <div>
-          {showDemoAccountDataModal ? (
-            <>
-              <div
-                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
-                data-aos="zoom-in"
-                data-aos-duration="500"
-              >
-                <div className="relative w-[370px] lg:w-[640px] my-6 mx-auto">
-                  {/*content*/}
-                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                      <h3 className="text-lg ml-4 font-bold text-center">
-                        Demo Accounts
-                      </h3>
-                      <button
-                        className="text-2xl text-orange hover:text-orange-400 hover:transition-all duration-300 ease-in-out"
-                        onClick={() => setShowDemoAccountDataModal(false)}
-                      >
-                        <RxCross2 />
-                      </button>
-                    </div>
-                    {/*body*/}
-                    <div className="py-6 px-10">
-                      <div className="flex flex-col gap-y-4">
-                        <div className="border-b-2 pb-4 border-orange-200">
-                          <h4 className="text-md font-bold text-offgray">
-                            Admin
-                          </h4>
-                          <p className="text-sm text-offgray">
-                            Email: demoadmin@gmail.com
-                          </p>
-                          <p className="text-sm text-offgray">
-                            Password: admin123
-                          </p>
-                        </div>
-                        <div className="border-b-2 pb-4 border-orange-200">
-                          <h4 className="text-md font-bold text-offgray">
-                            Vendor
-                          </h4>
-                          <p className="text-sm text-offgray">
-                            Email: demovendor@gmail.com
-                          </p>
-                          <p className="text-sm text-offgray">
-                            Password: vendor123
-                          </p>
-                        </div>
-                        <div>
-                          <h4 className="text-md font-bold text-offgray">
-                            Customer
-                          </h4>
-                          <p className="text-sm text-offgray">
-                            Email: democustomer@gmail.com
-                          </p>
-                          <p className="text-sm text-offgray">
-                            Password: customer123
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-custom-black transition-all duration-300"></div>
-            </>
-          ) : null}
         </div>
       </div>
     </>
